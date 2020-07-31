@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="news">
     <el-container direction="vertical">
       <el-header>
         <el-menu :default-active="activeIndex" id="el-menu-nav" class="el-menu-nav" mode="horizontal"
@@ -23,17 +23,6 @@
     </el-container>
     <el-container>
       <el-main>
-        <template>
-          <el-carousel :interval="5000" height="350px" arrow="always">
-            <!-- v-for="(item, index) in news" :key="item.id" title="" -->
-            <el-carousel-item v-for="item in imgList" :key="item.id">
-              <el-row>
-                <el-col :span="24"><img ref="imgHeight" :src="item.idView" class="banner_img" /></el-col>
-              </el-row>
-            </el-carousel-item>
-          </el-carousel>
-        </template>
-        <el-divider></el-divider>
 
 
 
@@ -41,48 +30,25 @@
       </el-main>
     </el-container>
 
-
-
-    <div class="line"></div>
-
-
-    主页
+    政策信息
   </div>
 </template>
 
 <script>
   // @ is an alias to /src
 
-  // 主页
+  // 政策信息
   export default {
-    name: 'Home',
+    name: 'News',
     data() {
       return {
-        activeIndex: '1',
-        imgList: [{
-            id: 0,
-            idView: require('../assets/images/333.png')
-          },
-          {
-            id: 1,
-            name: '详情',
-            idView: require('../assets/images/333.png')
-          },
-          {
-            id: 2,
-            name: '推荐',
-            idView: require('../assets/images/333.png')
-          }
-        ]
+        activeIndex: '3',
       };
     },
-    components: {
 
-    },
     methods: {
       handleSelect(key, keyPath) {
         console.log(key, keyPath);
-        // 跳页面
         if(key==1){
           // 使用代码切换路径 (路由)
           this.$router.push('/');
@@ -103,20 +69,17 @@
           this.$router.push('/register');
         }
 
+
       },
-    },
-    mounted() {
-
-
-
 
     },
+    components: {
 
+    },
   }
 </script>
-
 <style>
-  .home {
+  .news {
     text-align: center;
     margin: 0 auto;
     width: 1240px;
@@ -126,7 +89,7 @@
   .el-header,
   .el-footer {
     background-color: #ffffff;
-    margin: 0 auto;
+    margin: center;
     text-align: center;
     line-height: 70px;
     min-height: 80px;
@@ -136,8 +99,6 @@
   }
 
   .el-menu--horizontal {
-    margin: 0 auto;
-    text-align: center;
     min-inline-size: 160px;
     font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
   }
@@ -145,7 +106,7 @@
   .el-menu--horizontal .el-menu-item {
     min-height: 80px;
     max-width: 70px;
-    min-inline-size: 130px;
+    min-inline-size: 120px;
     text-align: center;
     font-size: 22px;
   }
@@ -153,7 +114,7 @@
   .el-menu--horizontal>.el-submenu .el-submenu__title {
     text-align: center;
     font-size: 22px;
-    min-inline-size: 130px;
+    min-inline-size: 120px;
     min-height: 80px;
     max-width: 70px;
   }
