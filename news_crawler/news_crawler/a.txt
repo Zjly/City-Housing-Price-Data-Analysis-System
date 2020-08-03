@@ -1,0 +1,758 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+<title>北京 楼市 - 房天下资讯搜索引擎</title>
+<link href="//img2.soufunimg.com/search/news/zhcss-1.06.css" rel="stylesheet" type="text/css" />
+<link href="//img2.soufunimg.com/search/news/list-1.04.css" rel="stylesheet" type="text/css" />
+<!--  link type="text/css" href="//img2.soufunimg.com/search/news/jquery-ui-1.7.2.custom.css" rel="stylesheet" />
+<script type="text/javascript" src="//img2.soufunimg.com/search/news/jquery-1.3.2.min.js"></script>
+<script type="text/javascript" src="//img2.soufunimg.com/search/news/jquery-ui-1.7.2.custom.min.js"></script -->
+
+<script type="text/javascript" src="//img2.soufunimg.com/search/images/js.SFNH.js"></script>
+<script type="text/javascript" src="//img2.soufunimg.com/search/images/js.search.js"></script>
+<script type="text/javascript" src="//img2.soufunimg.com/search/news/js.SearchNews1.js"></script>
+
+
+
+
+<!--避免ie6下连接的颜色有时变红  -->
+<style rel="stylesheet" type="text/css">
+.titleBig a:link,.titleBig a:visited {color:#0033CC;
+	font-size: 14px;
+	font-weight: bold;}
+.titleBig a:hover {color:#0033CC;
+	font-size: 14px;
+	font-weight: bold;}
+.postTitle a:link {color:#0033CC;
+	font-size: 14px;
+	font-weight: bold;}
+.postTitle a:visited {color:#810081;
+	font-size: 14px;
+	font-weight: bold;}
+.postTitle a:hover {color:#0033CC;
+	font-size: 14px;
+	font-weight: bold;}
+</style>
+
+<!--   script type="text/javascript">
+jQuery.noConflict();
+
+			  jQuery(document).ready(function(){
+			    jQuery('#dialog').hide();//隐藏对话框
+				jQuery.ajaxSetup({cache:false});
+					jQuery(".preview").click(function(){//添加鼠标移动事件 
+					
+					    var titlevalue=jQuery(this).parent().parent().parent().children(".postTitle").html();
+					                                                                                                              
+						var path = jQuery(this).attr("path");//从自定义path属性中获取Ajax请求的路径
+						jQuery('#dialog').dialog('destroy');
+						jQuery('#dialog').dialog({autoOpen: false,position:['right','top'],width:530,height:430,title: titlevalue,
+							open: function(event, ui) { //当对话框打开后,会触发该方法
+								jQuery('#dialog').ajaxStart(function() {
+										jQuery(this).html("正在加载内容......");
+								});
+								//下面发起Ajax请求
+								jQuery.get(path, function(data){
+								   jQuery('#dialog').html(data);
+								});
+							}
+						});//初始化对话框
+						jQuery('#dialog').dialog("open");//显示对话框
+						return false;
+					});
+					
+					//jQuery(document).mousedown(function(){jQuery('#dialog').dialog('destroy');});
+				
+					jQuery('body').click(function(e){
+						var obj=e.target;
+						for(var i=0;i<=2;i++)
+						{
+						    if(jQuery(obj).attr("class")){
+							if(jQuery(obj).attr("class").indexOf("ui-dialog")>=0)
+							{
+								return;
+							}}
+							obj=jQuery(obj).parent();
+						}
+						jQuery('#dialog').dialog('destroy');
+						});
+					
+			       });
+			  
+			  
+			      /*jQuery("*").not(jQuery(".preview")).not(".ui-dialog").not(".ui-dialog *").not("#dialog").click(function(){
+
+                      jQuery('#dialog').dialog('destroy');
+                  });
+
+                  jQuery(".ui-dialog, .ui-dialog *, #dialog").click(function(){
+                  return false;
+                  });*/
+
+
+		</script  -->
+		
+		
+		<script language="javascript">
+		<!-- //
+		
+		// 搜索类型的缺省状态
+		var fld="title";
+		
+		function cst(frm, dosubmit) {
+		
+		    var fld="title";
+			var sl0;
+		  // 设置正确的action
+			for(i=0;i<frm.fld.length;i++){
+				if(frm.fld[i].checked) {
+					st0=frm.fld[i].value;
+					if(frm.fld[i].value=="title") {
+						frm.action="search.jsp";
+					} else if(frm.fld[i].value=="subject") {
+						frm.action="search0.jsp";
+					} 
+					break;
+				}
+			}
+			if(dosubmit) {
+				// 如果选项发生了变化
+				if(fld != sl0) {
+					fld=sl0;
+					frm.submit();
+				}
+			} else {
+				fld = sl0;
+			}
+			return true;
+		}
+		
+		// -->
+		</script>
+
+</head>
+
+<body>
+
+
+<!--顶部搜索框 begin-->
+<div id="search" style="height:97px;">
+    <div id="logoResult" style="padding-top:25px;">
+    <a href="http://www.fang.com/" ><img src="//js.soufunimg.com/homepage/logo/logoA1.png" alt="房地产门户-房天下" border="0" /></a>
+    </div>
+	<div class="zhscontent" style="float:left;clear:none;">
+    	<div class="zhscontentnav">
+        	<div class="navtd"><a  href="http://search.fang.com/so?q=%B1%B1%BE%A9+%C2%A5%CA%D0" target="_blank"><font color=#000000>综合</font></a></div>
+            <div class="navtd"><a  href="http://newhouse.fang.com/house/web/Search_Result.php?StrNameKeyword=%B1%B1%BE%A9+%C2%A5%CA%D0" target="_blank"><font color=#000000>新房</font></a></div>
+			<div class="navtd"><a  href="http://esf.fang.com/house/s31-c61-kw%B1%B1%BE%A9+%C2%A5%CA%D0/" target="_blank"><font color=#000000>二手房</font></a></div>
+			<div class="navtd"><a  href="http://zu.fang.com/house/s31-kw%B1%B1%BE%A9+%C2%A5%CA%D0/" target="_blank"><font color=#000000>租房</font></a></div>
+            <div class="navtd"><a  href="http://www.youtx.com/list/kw%E5%8C%97%E4%BA%AC+%E6%A5%BC%E5%B8%82/" target="_blank"><font color=#000000>短租</font></a></div>
+            <div class="navtd"><a  href="http://office.fang.com/zu/house/kw%B1%B1%BE%A9+%C2%A5%CA%D0/" target="_blank"><font color=#000000>写字楼</font></a></div>
+            <div class="navtd"><a  href="http://shop.fang.com/shou/house/kw%B1%B1%BE%A9+%C2%A5%CA%D0/" target="_blank"><font color=#000000>商铺</font></a></div>
+			<div class="navtd"><a  href="http://home.fang.com/zhuangxiu/casesearch.aspx?k=%B1%B1%BE%A9+%C2%A5%CA%D0" target="_blank"><font color=#000000>装修家居</font></a></div>
+            <div class="navtd"><a  href="http://search.fang.com/bbs/search.jsp?q=%B1%B1%BE%A9+%C2%A5%CA%D0" target="_blank"><font color=#000000>业主论坛</font></a></div>
+            <div class="navtdup"><font color=#ce0000>资讯</font></div>
+            <div class="navtd"><a  href="http://www.fang.com/ask/Search.html?searchtitle=%E5%8C%97%E4%BA%AC+%E6%A5%BC%E5%B8%82&cid=1" target="_blank"><font color=#000000>问答</font></a></div>
+            <div class="navtd"><a  href="http://land.fang.com/FinancingLandList.aspx?minarea=0&maxarea=0&province=&city=&keyword=%B1%B1%BE%A9+%C2%A5%CA%D0&itemtypelanduse=" target="_blank"><font color=#000000>土地</font></a></div>
+            <!--div class="navtd"><a  href="http://search.fang.com/images/search.jsp?q=%B1%B1%BE%A9+%C2%A5%CA%D0" target="_blank"><font color=#000000>图片</font></a></div-->
+            <!--div class="navtd"><a  href="http://search.fang.com/video/search.jsp?q=%B1%B1%BE%A9+%C2%A5%CA%D0" target="_blank"><font color=#000000>视频</font></a></div-->
+        </div>
+    <div class="zhscontentform bbsy">
+		<form action="search.jsp" method="get" name="bbsTop" id="bbsTop" onsubmit="return SearchNews.submitForm(this);">
+
+			<div class="tr01" >
+				
+                <input type="hidden" id="sll" name="sll" value="title" />
+                <a href="#" id="sll_a" class="selstyle" onclick="SearchMenu.menuTemplate(this, 'news');return false;">资讯</a>
+				
+				<input autocomplete="off" type="text" id="q" name="q" class="inputstyle_out" onclick="if(this.value=='输入关键字') this.value='';" onblur="SearchMenu.toggleHint(this,'输入关键字');this.className='inputstyle_out';" value="北京 楼市" onfocus="SFUI.toggleHint(this);this.className='inputstyle_on';this.onmouseout=''" onkeyup="SearchMenu.suggest(event, this, {q:this.value});" onmousemove="this.className='inputstyle_move'" onmouseout="this.className='inputstyle_out'" />
+				<span class="inpbj2"></span>
+				
+				
+				<input type="image" src="//img2.soufunimg.com/search/news/images/schh111.gif" style="width:auto;height:auto;margin-left:3px!important;margin-left:0px;"  />
+            <input type="hidden" name="pq" value="北京 楼市" />
+			<input type="hidden" name="sr" />
+			<input type="hidden" name="sc" value="" />
+			<input type="hidden" name="city" value="" />
+			<input type="hidden" name="num" value="10" />
+			<input type="hidden" name="sort" value="pubtime2" />
+            <input type="hidden" name="starttime" value="" />
+			</div>
+			<div class="tr02">
+				<span class="gaoj" ><a href="http://search.fang.com/news/advancedsearch.jsp"  target="_blank"><font color=#000000>高级搜索</font></a></span>
+				<span class="mobile" ><a href="http://m.fang.com/" target="_blank" ><font color=#000000>手机房天下</font></a></span>
+				<span class="searchmap" ><a href="http://map.fang.com/house/bj/" target="_blank" ><font color=#000000>在地图上找</font></a></span>
+				
+			</div>
+		</form>
+        <!--textarea name="template_news" id="template_news"  class="noshow">
+	        <table cellspacing="0" class="paneltable1" >
+	            <tr>
+				      <td class="selectInfo">请选择条件</td>
+				    </tr>
+				    <tr>
+				      <td><a onclick="SearchMenu.setInputA('sll','title','资讯');return false;" href="#">资讯</a></td>
+				    </tr>
+				    <tr>
+				      <td><a onclick="SearchMenu.setInputA('sll','subject','专题');return false;" href="#">专题</a></td>
+				    </tr>
+					
+	        </table>
+        </textarea-->
+		</div>
+     </div>
+  </div>
+<!--顶部搜索框 end-->
+
+<!--列表页概要 begin-->
+<div id="summary">
+<div id="summaryq">北京 楼市</div>
+	<div class="rit">符合内容约 <span class="fB">4877</span> 条(搜索用时 <span class="fB"> 0.02</span>秒)
+	</div>
+</div>
+<!--列表页概要 end-->
+
+<!--左侧导航菜单 begin-->
+<div id="quickselect">
+<div><a href="#" onclick="SearchNews.toggle();">&lt;&lt; 隐藏左侧框</a></div>
+<div class="contentlink" id="condition">
+
+
+<h4>时间<br></h4>
+<a href="#" onclick="SearchNews.condition('starttime','');">不限</a>
+<a href="#" onclick="SearchNews.condition('starttime','2020-08-02');">一天内</a>
+<a href="#" onclick="SearchNews.condition('starttime','2020-07-27');">一周内</a>
+<a href="#" onclick="SearchNews.condition('starttime','2020-07-03');">一月内</a>
+<a href="#" onclick="SearchNews.condition('starttime','2019-08-03');">一年内</a>
+
+<h4>资讯来源<br></h4>
+<a href="#" onclick="SearchNews.condition('sc','');">不限</a>
+<a href="#" onclick="SearchNews.condition('sc','新浪');">新浪</a>
+<a href="#" onclick="SearchNews.condition('sc','搜狐');">搜狐</a>
+<a href="#" onclick="SearchNews.condition('sc','网易');">网易</a>
+
+<h4>城市</h4>
+<a href="#" onclick="SearchNews.condition('city','');">全国</a>
+<a href="#" onclick="SearchNews.condition('city','北京');">北京</a>
+<a href="#" onclick="SearchNews.condition('city','上海');">上海</a>
+<a href="#" onclick="SearchNews.condition('city','广州');">广州</a>
+<a href="#" onclick="SearchNews.condition('city','成都');">成都</a>
+<!-- 要使用浮动菜单层，得给触发菜单的元素设置 id 值-->
+<a id="bbsCity" href="#" class="highlight" onclick="SearchNews.condCity(this);return false;">更多&gt;&gt;</a>
+<h4 class="arrowR"><a href="./advancedsearch.jsp">更多筛选条件</a></h4>
+<h4>搜索历史记录</h4>
+<!--<a href="#">全国(284723)</a> <a href="#">北京(21312</a> <a href="#">上海(1312)</a> <a href="#">广州(3312)</a>
+<p class="textRight"><a class="link" href="#">清除记录</a></p>-->
+<script type="text/javascript">
+SearchNews.bbsHistory();
+</script>
+</div>
+</div>
+<!--左侧导航菜单 end-->
+
+<!--右侧链接文字 begin-->
+<div id="more">
+
+<a target="_blank" href="../images/search.jsp?q=%B1%B1%BE%A9+%C2%A5%CA%D0">更多关于<span class="highlight">北京 楼市</span>的图片</a>
+<a href="../bbs/search.jsp?q=%B1%B1%BE%A9+%C2%A5%CA%D0">更多关于<span class="highlight">北京 楼市</span>的帖子</a>
+<a target="_blank" href="../video/search.jsp?q=%B1%B1%BE%A9+%C2%A5%CA%D0">更多关于<span class="highlight">北京 楼市</span>的视频</a>
+<a target="_blank" href="http://www.fang.com/ask/Search.html?searchtitle=%E5%8C%97%E4%BA%AC+%E6%A5%BC%E5%B8%82">更多关于<span class="highlight">北京 楼市</span>的问答</a>
+<!-- a target="_blank" href="http://name.cnnic.cn/cn.dll?pid=soufun&name=%B1%B1%BE%A9+%C2%A5%CA%D0">通用网址:<span class="highlight">北京 楼市</span></a>
+<a target="_blank" href="http://price.chetx.com/pic/">万张高清晰汽车图片</a>
+<a target="_blank" href="http://www.gutx.com/data/">图文解说地产股大盘走势</a -->
+
+</div>
+<!--右侧链接文字 end-->
+
+<!-- 内容主体开始 -->
+<div id="content">
+	<div id="toggle" class="noshow"><a href="#" onclick="SearchNews.toggle();">显示左侧框&gt;&gt;</a></div>
+
+	<div id="mode">
+		<div id="modeSort">排序:
+	
+		
+			<a title=相关度 href="?q=%B1%B1%BE%A9+%C2%A5%CA%D0&sl=title&sc=&sort=score&city=&starttime=&endtime=&forms=both">相关度</a>
+
+			|<span class="highlight">发布时间</span> 
+	   
+		</div>
+		<div id="modeShow">搜索范围：
+	    		    	
+
+			<a href="?q=%B1%B1%BE%A9+%C2%A5%CA%D0&sl=all&fld=&sort=date&sc=&city=&starttime=&endtime=&forms=both" >全文</a>
+
+						|
+
+			<span class="highlight">标题</span>
+    	
+		</div>
+	</div>
+	
+	
+<!-- 内容主体开始 -->
+ 
+			
+		<div class="result">
+			
+			
+			
+			
+			<div class="postTitle">
+				<a target="_blank" href="https://news.fang.com/2020-07-02/36566718.htm"><span>环京<font color=#ff6600>楼市</font>又现松绑:怀来取消限购,<font color=#ff6600>北京</font>客户买房不再受限</span></a>
+				  [2020-07-02 08:53:30]
+			</div>
+		 	<div class="postSource">
+				  <p> <font color=#ff6600>北京</font>“后花园” 怀来县隶属于河北省张家口市,也是张家口市离<font color=#ff6600>北京</font>最近的一个区域。…怀来素有<font color=#ff6600>北京</font>“后花园”之称,其房价也随着<font color=#ff6600>北京</font>而波动。 和环京许多区域一样,怀来<font color=#ff6600>楼市</font>的高光时刻发生在2016年。…</p>
+				  <p>来自 <a href="?q=%B1%B1%BE%A9+%C2%A5%CA%D0&sc=%BB%AA%CF%C4%CA%B1%B1%A8%CD%F8" class=m>华夏时报网 </a> 的更多结果   
+				         
+				         <!--   a href="" path="preview.jsp?urlstr=https://news.fang.com/2020-07-02/36566718.htm" class="preview" >预览</a  -->
+						 
+				  </p>
+			 </div>
+			
+		</div>
+	
+			
+		<div class="result">
+			
+			
+			
+			
+			<div class="postTitle">
+				<a target="_blank" href="https://news.fang.com/2020-07-02/36566684.htm"><span><font color=#ff6600>北京</font>6月<font color=#ff6600>楼市</font>成交低迷 7月或延续清淡态势</span></a>
+				  [2020-07-02 08:48:04]
+			</div>
+		 	<div class="postSource">
+				  <p>经历5月份如火如荼的<font color=#ff6600>楼市</font>行情后,<font color=#ff6600>北京</font>地区6月份成交迎来低迷期,一二手商品房成交量相比5月明显下滑。多位业内人士预计,<font color=#ff6600>北京</font>地区7月份<font color=#ff6600>楼市</font>成交或延续清淡。…<font color=#ff6600>北京</font>二手房市场继续萎缩,…</p>
+				  <p>来自 <a href="?q=%B1%B1%BE%A9+%C2%A5%CA%D0&sc=%D6%D0%B9%FA%D6%A4%C8%AF%B1%A8" class=m>中国证券报 </a> 的更多结果   
+				         
+				         <!--   a href="" path="preview.jsp?urlstr=https://news.fang.com/2020-07-02/36566684.htm" class="preview" >预览</a  -->
+						 
+				  </p>
+			 </div>
+			
+		</div>
+	
+			
+		<div class="result hasPic">
+			
+			
+			<div class="attPic">
+			<a href="https://news.fang.com/2020-07-01/36550306.htm" target="_blank"><img src="//imgwcs3.soufunimg.com/viewimage/open/2020_06/28/article/1f2f45d1-1913-4646-b3e3-2f184d0aa561/120x120.png" border="0" onerror="SearchNews.noImage(this);" /></a>
+			</div>
+			<div class="textwrap">
+			
+			
+			
+			<div class="postTitle">
+				<a target="_blank" href="https://news.fang.com/2020-07-01/36550306.htm"><span>二次疫情后,<font color=#ff6600>北京</font><font color=#ff6600>楼市</font>有点凉</span></a>
+				  [2020-07-01 14:27:11]
+			</div>
+		 	<div class="postSource2">
+				  <p>武汉的同事们告诉<font color=#ff6600>北京</font>的营销团队: 积极培训、练好内功、耐心等待、不可等死,不要作死。… <font color=#ff6600>北京</font>这轮以新发地为源头的疫情,来得突然。更为巧合的是,疫情的分布基本与<font color=#ff6600>北京</font>近半年以来<font color=#ff6600>楼市</font>供应主力的区域高度重合。…</p>
+				  <p>来自 <a href="?q=%B1%B1%BE%A9+%C2%A5%CA%D0&sc=%D8%FC%BF%CB%B5%D8%B2%FA" class=m>攸克地产 </a> 的更多结果   
+				         
+				         <!--   a href="" path="preview.jsp?urlstr=https://news.fang.com/2020-07-01/36550306.htm" class="preview" >预览</a  -->
+						 
+				  </p>
+			 </div>
+			
+			 </div>
+			
+		</div>
+	
+			
+		<div class="result">
+			
+			
+			
+			
+			<div class="postTitle">
+				<a target="_blank" href="https://news.fang.com/2020-07-01/36555237.htm"><span><font color=#ff6600>北京</font>6月<font color=#ff6600>楼市</font>成交低迷 业内人士称7月或延续清淡态势</span></a>
+				  [2020-07-01 08:01:39]
+			</div>
+		 	<div class="postSource">
+				  <p> 端午假期期间,中国证券报记者走访<font color=#ff6600>北京</font>多个热门楼盘发现,<font color=#ff6600>北京</font>地区多个楼盘加大了推盘力度,…端午节期间<font color=#ff6600>北京</font>新房市场成交量仍明显回落。据业内机构统计,端午节三天<font color=#ff6600>北京</font><font color=#ff6600>楼市</font>共成交新房179套,…</p>
+				  <p>来自 <a href="?q=%B1%B1%BE%A9+%C2%A5%CA%D0&sc=%D6%D0%B9%FA%D6%A4%C8%AF%B1%A8" class=m>中国证券报 </a> 的更多结果   
+				         
+				         <!--   a href="" path="preview.jsp?urlstr=https://news.fang.com/2020-07-01/36555237.htm" class="preview" >预览</a  -->
+						 
+				  </p>
+			 </div>
+			
+		</div>
+	
+			
+		<div class="result hasPic">
+			
+			
+			<div class="attPic">
+			<a href="https://zs.newhouse.fang.com/2020-06-30/36544275.htm" target="_blank"><img src="//imgwcs3.soufunimg.com/viewimage/news/2020_06/30/b83d4bdc-8a8d-4894-9e96-6b2a1864ed4d/120x120.png" border="0" onerror="SearchNews.noImage(this);" /></a>
+			</div>
+			<div class="textwrap">
+			
+			
+			
+			<div class="postTitle">
+				<a target="_blank" href="https://zs.newhouse.fang.com/2020-06-30/36544275.htm"><span>上半年<font color=#ff6600>北京</font><font color=#ff6600>楼市</font>成交低迷 新房库存创新高</span></a>
+				  [2020-06-30 09:56:13]
+			</div>
+		 	<div class="postSource2">
+				  <p>经济日报-中国经济网<font color=#ff6600>北京</font>6月29日讯 受疫情影响,上半年<font color=#ff6600>北京</font>房地产市场整体成交量低迷。据中原地产研究中心统计数据显示,截止6月28日,<font color=#ff6600>北京</font>房地产市场上半年基本结束,…最近<font color=#ff6600>北京</font>疫情影响再次反映到二手房市场,…</p>
+				  <p>来自 <a href="?q=%B1%B1%BE%A9+%C2%A5%CA%D0&sc=%D6%D0%B9%FA%BE%AD%BC%C3%CD%F8" class=m>中国经济网 </a> 的更多结果   
+				         
+				         <!--   a href="" path="preview.jsp?urlstr=https://zs.newhouse.fang.com/2020-06-30/36544275.htm" class="preview" >预览</a  -->
+						 
+				  </p>
+			 </div>
+			
+			 </div>
+			
+		</div>
+	
+			
+		<div class="result">
+			
+			
+			
+			
+			<div class="postTitle">
+				<a target="_blank" href="https://news.fang.com/2020-06-29/36531783.htm"><span><font color=#ff6600>北京</font>深圳等地端午<font color=#ff6600>楼市</font>成交量回落</span></a>
+				  [2020-06-29 08:44:58]
+			</div>
+		 	<div class="postSource">
+				  <p><font color=#ff6600>北京</font><font color=#ff6600>楼市</font>成交明显放缓。 数据统计,端午节期间,<font color=#ff6600>北京</font>新房市场成交量明显回落,…<font color=#ff6600>北京</font>端午节期间的日均成交量相比上周末也下降16.7%。 一位业内分析师表示,受到疫情影响,端午期间<font color=#ff6600>楼市</font>成交下滑比较明显。除<font color=#ff6600>北京</font>外的一些城市,…</p>
+				  <p>来自 <a href="?q=%B1%B1%BE%A9+%C2%A5%CA%D0&sc=%BE%AD%BC%C3%B2%CE%BF%BC%B1%A8" class=m>经济参考报 </a> 的更多结果   
+				         
+				         <!--   a href="" path="preview.jsp?urlstr=https://news.fang.com/2020-06-29/36531783.htm" class="preview" >预览</a  -->
+						 
+				  </p>
+			 </div>
+			
+		</div>
+	
+			
+		<div class="result">
+			
+			
+			
+			
+			<div class="postTitle">
+				<a target="_blank" href="https://news.fang.com/2020-06-29/36531406.htm"><span><font color=#ff6600>北京</font>深圳等地端午<font color=#ff6600>楼市</font>成交量回落 看房量锐减</span></a>
+				  [2020-06-29 08:16:30]
+			</div>
+		 	<div class="postSource">
+				  <p><font color=#ff6600>北京</font><font color=#ff6600>楼市</font>成交明显放缓。 机构统计,端午节期间,<font color=#ff6600>北京</font>新房市场成交量明显回落,…<font color=#ff6600>北京</font>端午节期间的日均成交量相比上周末也下降16.7%。 分析师表示,受到疫情影响,端午期间<font color=#ff6600>楼市</font>成交下滑比较明显。除<font color=#ff6600>北京</font>外的一些城市,…</p>
+				  <p>来自 <a href="?q=%B1%B1%BE%A9+%C2%A5%CA%D0&sc=%BE%AD%BC%C3%B2%CE%BF%BC%B1%A8" class=m>经济参考报 </a> 的更多结果   
+				         
+				         <!--   a href="" path="preview.jsp?urlstr=https://news.fang.com/2020-06-29/36531406.htm" class="preview" >预览</a  -->
+						 
+				  </p>
+			 </div>
+			
+		</div>
+	
+			
+		<div class="result">
+			
+			
+			
+			
+			<div class="postTitle">
+				<a target="_blank" href="https://news.fang.com/2020-06-28/36518311.htm"><span>实探<font color=#ff6600>北京</font><font color=#ff6600>楼市</font>:端午成交不升反降 房企年中冲刺优惠多</span></a>
+				  [2020-06-28 08:34:35]
+			</div>
+		 	<div class="postSource">
+				  <p>临近年中,<font color=#ff6600>北京</font>地区多数楼盘都加大了推盘力度,力求再冲一把。 记者走访<font color=#ff6600>北京</font>多个热门楼盘发现,…<font color=#ff6600>北京</font>通州某热门刚需楼盘销售告诉记者,“今天看房的算不多不少吧,主要是到了月底,会有来集中签约的。”…</p>
+				  <p>来自 <a href="?q=%B1%B1%BE%A9+%C2%A5%CA%D0&sc=%D6%D0%B9%FA%D6%A4%C8%AF%B1%A8" class=m>中国证券报 </a> 的更多结果   
+				         
+				         <!--   a href="" path="preview.jsp?urlstr=https://news.fang.com/2020-06-28/36518311.htm" class="preview" >预览</a  -->
+						 
+				  </p>
+			 </div>
+			
+		</div>
+	
+			
+		<div class="result">
+			
+			
+			
+			
+			<div class="postTitle">
+				<a target="_blank" href="https://news.fang.com/2020-06-20/36449585.htm"><span>土地市场溢价率持续走高 疫情反复<font color=#ff6600>北京</font><font color=#ff6600>楼市</font>或受冲击</span></a>
+				  [2020-06-20 08:52:52]
+			</div>
+		 	<div class="postSource">
+				  <p> <font color=#ff6600>北京</font>疫情的反复,对房地产市场的影响不容小觑,已经开始恢复看房的购房者或将延迟置业步伐,地产从业者再次迎来挑战,… <font color=#ff6600>北京</font>市场受到疫情影响 6月15日,北京市住建委下发通知,要求加强<font color=#ff6600>北京</font>房屋租赁中介机构疫情防控,…</p>
+				  <p>来自 <a href="?q=%B1%B1%BE%A9+%C2%A5%CA%D0&sc=%BB%AA%CF%C4%CA%B1%B1%A8%CD%F8" class=m>华夏时报网 </a> 的更多结果   
+				         
+				         <!--   a href="" path="preview.jsp?urlstr=https://news.fang.com/2020-06-20/36449585.htm" class="preview" >预览</a  -->
+						 
+				  </p>
+			 </div>
+			
+		</div>
+	
+			
+		<div class="result hasPic">
+			
+			
+			<div class="attPic">
+			<a href="https://news.fang.com/2020-06-17/36423656.htm" target="_blank"><img src="//imgwcs3.soufunimg.com/viewimage/news/2020_06/17/fd913792-3eb4-427e-a737-a4105be565a8/120x120.jpg" border="0" onerror="SearchNews.noImage(this);" /></a>
+			</div>
+			<div class="textwrap">
+			
+			
+			
+			<div class="postTitle">
+				<a target="_blank" href="https://news.fang.com/2020-06-17/36423656.htm"><span><font color=#ff6600>北京</font>售楼处还会关闭吗?新一轮<font color=#ff6600>楼市</font>降价还会来吗?</span></a>
+				  [2020-06-17 15:30:21]
+			</div>
+		 	<div class="postSource2">
+				  <p>回到2019年前水平。通过数据看出,4月市场恢复到80%,5月市场恢复到了100%以上。5月,一线城市新房成交面积平均环比继续上涨,环比涨幅达到了20.1%,其中<font color=#ff6600>北京</font>上涨最明显, …</p>
+				  <p>来自 <a href="?q=%B1%B1%BE%A9+%C2%A5%CA%D0&sc=%B9%E2%D3%EE%CD%C2%C2%A5%CA%D0" class=m>光宇吐楼市 </a> 的更多结果   
+				         
+				         <!--   a href="" path="preview.jsp?urlstr=https://news.fang.com/2020-06-17/36423656.htm" class="preview" >预览</a  -->
+						 
+				  </p>
+			 </div>
+			
+			 </div>
+			
+		</div>
+	
+        <!-- 内容主体结束 -->
+
+		
+		
+        <!-- 分页begin -->
+        <div class="pages">
+			
+			  
+				
+				
+				    
+					1&nbsp;
+				
+				    
+					<a href=?q=%B1%B1%BE%A9+%C2%A5%CA%D0&start=10&num=10&sl=title&sort=date&sc=&starttime=&endtime=&city=&newschannel=&snid=0>[2]</a>&nbsp;
+				
+				    
+					<a href=?q=%B1%B1%BE%A9+%C2%A5%CA%D0&start=20&num=10&sl=title&sort=date&sc=&starttime=&endtime=&city=&newschannel=&snid=0>[3]</a>&nbsp;
+				
+				    
+					<a href=?q=%B1%B1%BE%A9+%C2%A5%CA%D0&start=30&num=10&sl=title&sort=date&sc=&starttime=&endtime=&city=&newschannel=&snid=0>[4]</a>&nbsp;
+				
+				    
+					<a href=?q=%B1%B1%BE%A9+%C2%A5%CA%D0&start=40&num=10&sl=title&sort=date&sc=&starttime=&endtime=&city=&newschannel=&snid=0>[5]</a>&nbsp;
+				
+				    
+					<a href=?q=%B1%B1%BE%A9+%C2%A5%CA%D0&start=50&num=10&sl=title&sort=date&sc=&starttime=&endtime=&city=&newschannel=&snid=0>[6]</a>&nbsp;
+				
+				    
+					<a href=?q=%B1%B1%BE%A9+%C2%A5%CA%D0&start=60&num=10&sl=title&sort=date&sc=&starttime=&endtime=&city=&newschannel=&snid=0>[7]</a>&nbsp;
+				
+				    
+					<a href=?q=%B1%B1%BE%A9+%C2%A5%CA%D0&start=70&num=10&sl=title&sort=date&sc=&starttime=&endtime=&city=&newschannel=&snid=0>[8]</a>&nbsp;
+				
+				    
+					<a href=?q=%B1%B1%BE%A9+%C2%A5%CA%D0&start=80&num=10&sl=title&sort=date&sc=&starttime=&endtime=&city=&newschannel=&snid=0>[9]</a>&nbsp;
+				
+				    
+					<a href=?q=%B1%B1%BE%A9+%C2%A5%CA%D0&start=90&num=10&sl=title&sort=date&sc=&starttime=&endtime=&city=&newschannel=&snid=0>[10]</a>&nbsp;
+				
+				
+				
+					<a href="?q=%B1%B1%BE%A9+%C2%A5%CA%D0&start=10&num=10&sl=title&sort=date&sc=&starttime=&endtime=&city=&newschannel=&snid=0">下一页</a>
+				
+				
+			  
+			
+		</div>
+		 <!-- 分页end -->
+
+<iframe src="relative.jsp?q=%B1%B1%BE%A9+%C2%A5%CA%D0&scope=news&tc=true&cl=search.jsp" height="30" width="100%" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="display:inline;" id="childFrame"></iframe>
+</div>
+    <form action="?" method="get" id="bbsBottom" name="bbsBottom" onsubmit="return SearchNews.submitForm(this);" >
+    <div id="formBot">
+      <div>
+        	<input class="searchInput" id="qq" name="q" type="text" maxlength="38" value="北京 楼市" onkeyup="SearchMenu.suggest0(event, this, {q:this.value});" autocomplete="off" />
+		   
+		    <input type="submit" value="" class="searchButton" />
+		    <a href="#" class="searchLink" onclick="SearchNews.searchResult(1);return false;" >在结果中搜索</a>
+		    <input type="hidden" name="pq" value="北京 楼市" />
+			<input type="hidden" name="sr" />   
+			<input type="hidden" name="sort" value="pubtime2" />
+            <input type="hidden" name="sc" value="" />
+            <input type="hidden" name="city" value="" />
+            <input type="hidden" name="num" value="10" />
+            <input type="hidden" name="starttime" value="" />        
+      </div>
+      <div class="searchBottom">
+         <label><input type="radio" id=fld_title_02 name="fld" value="title" checked />资讯</label>        
+         <label><input type="radio" id=fld_subject_02 name="fld" value="subject" />专题</label>
+         
+	  </div>
+    </div>
+    </form>
+    
+    <div id="dialog" >
+    
+    </div>
+
+
+
+<style type="text/css">
+div,form,img,ul,ol,li,dl,dt,dd,p{margin:0;padding:0px;border:0;}
+.sfunfooter20120411{width:960px;background:#fff;color:#333;font-size:12px;font-family:'宋体';text-align:center;clear:both;margin:0 auto;}
+.sfunfooter20120411 a:link{font-size:12px;color:#333;text-decoration:none;}
+.sfunfooter20120411 a:visited{font-size:12px;color:#333;text-decoration:none;}
+.sfunfooter20120411 a:hover{font-size:12px;color:#c00;text-decoration:underline;}
+.sfunfooter20120411 .song{line-height:20px;}
+.sfunfooter20120411 .verdana{line-height:20px;font-family: Verdana;}
+.sfunfooter20120411 .verdana a{color:#333;font-family:'宋体';padding:2px 7px;text-decoration:none;}
+.sfunfooter20120411 .verdana a:hover{color:#c00;text-decoration:underline;}
+.sfunfooter20120411 em{ font-style:normal;font-family: Verdana;}
+.sfunfooter20120411 .spacing{line-height:23px;letter-spacing:3px;font-family:Verdana;margin-top:5px;}
+.sfunfooter20120411 td a{display:block}
+.sfunfooter20120411 td a:hover{color:#c00;text-decoration:none;}
+.footershaixa{position:relative; z-index:2}
+.footershaixa a{color:#333;text-decoration:none;}
+.footershaixb{display:none;width:500px;height:175px;position:absolute;left:-230px;top:16px;cursor:auto;background:#fff;border:1px solid #c00;text-align:left;}
+.footershaixa.activexiala div{display:block;padding:5px 10px;}
+.footershaixa.activexiala div td{line-height:22px;}
+</style>
+
+<div class="sfunfooter20120411">
+	<div class="verdana">
+   	  <a href="http://www.fang.com/aboutus/index.asp" target="_blank">关于我们</a>‖
+		<a href="http://www.fang.com/hezuo_file/house/index.html" target="_blank">网站合作</a>‖
+       <a href="http://www.fang.com/aboutus/contactus.html" target="_blank">联系我们</a>‖
+        <a href="http://www.fang.com/zhaopin" target="_blank">招聘信息</a>‖
+      <span onmouseover="this.className='footershaixa activexiala'" onmouseout="this.className='footershaixa'" style="width:80px" class="footershaixa"><a href="http://www.fang.com/SoufunFamily.htm">房天下家族</a>‖<div class="footershaixb">
+              <table width="100%" border="0" cellspacing="0" cellpadding="0">
+			  <tbody><tr>
+				<td width="16"><strong style="color:#c00;">B</strong></td>
+				<td width="80"><a href="http://bj.fang.com/" target="_blank">北京房地产</a></td>
+				<td width="16"><strong style="color:#c00;">D</strong></td>
+				<td width="80"><a href="http://dg.fang.com/" target="_blank">东莞房地产</a></td>
+				<td width="16">&nbsp;</td>
+				<td width="80"><a href="http://hn.fang.com/" target="_blank">海南房地产</a></td>
+				<td width="16">&nbsp;</td>
+				<td width="100"><a href="http://nn.fang.com/" target="_blank">南宁房地产</a></td>
+				<td width="16">&nbsp;</td>
+				<td width="80"><a href="http://sy.fang.com/" target="_blank">沈阳房地产</a></td>
+			  </tr>
+			  <tr>
+				<td><strong style="color:#c00;">C</strong></td>
+				<td><a href="http://cd.fang.com/" target="_blank">成都房地产</a></td>
+				<td>&nbsp;</td>
+				<td><a href="http://dl.fang.com/" target="_blank">大连房地产</a></td>
+				<td>&nbsp;</td>
+				<td><a href="http://hf.fang.com" target="_blank">合肥房地产</a></td>
+				<td><strong style="color:#c00;">Q</strong></td>
+				<td><a href="http://qd.fang.com/" target="_blank">青岛房地产</a></td>
+				<td><strong style="color:#c00;">T</strong></td>
+				<td><a href="http://tj.fang.com/" target="_blank">天津房地产</a></td>
+			  </tr>
+			  <tr>
+				<td>&nbsp;</td>
+				<td><a href="http://cq.fang.com/" target="_blank">重庆房地产</a></td>
+				<td><strong style="color:#c00;">F</strong></td>
+				<td><a href="http://fz.fang.com/" target="_blank">福州房地产</a></td>
+				<td><strong style="color:#c00;">J</strong></td>
+				<td><a href="http://jn.fang.com/" target="_blank">济南房地产</a></td>
+				<td><strong style="color:#c00;">S</strong></td>
+				<td><a href="http://sh.fang.com/" target="_blank">上海房地产</a></td>
+				<td><strong style="color:#c00;">W</strong></td>
+				<td><a href="http://wuhan.fang.com/" target="_blank">武汉房地产</a></td>
+			  </tr>
+			  <tr>
+				<td>&nbsp;</td>
+				<td><a href="http://cs.fang.com/" target="_blank">长沙房地产</a></td>
+				<td><strong style="color:#c00;">G</strong></td>
+				<td><a href="http://gz.fang.com/" target="_blank">广州房地产</a></td>
+				<td><strong style="color:#c00;">N</strong></td>
+				<td><a href="http://nanjing.fang.com/" target="_blank">南京房地产</a></td>
+				<td>&nbsp;</td>
+				<td><a href="http://sz.fang.com/" target="_blank">深圳房地产</a></td>
+				<td>&nbsp;</td>
+				<td><a href="http://wuxi.fang.com/" target="_blank">无锡房地产</a></td>
+			  </tr>
+			  <tr>
+				<td>&nbsp;</td>
+				<td><a href="http://changchun.fang.com/" target="_blank">长春房地产</a></td>
+				<td>&nbsp;</td>
+				<td><a href="http://gy.fang.com" target="_blank">贵阳房地产</a></td>
+				<td>&nbsp;</td>
+				<td><a href="http://nc.fang.com/" target="_blank">南昌房地产</a></td>
+				<td>&nbsp;</td>
+				<td><a href="http://suzhou.fang.com/" target="_blank">苏州房地产</a></td>
+				<td><strong style="color:#c00;">X</strong></td>
+				<td><a href="http://xian.fang.com/" target="_blank">西安房地产</a></td>
+			  </tr>
+			  <tr>
+				<td>&nbsp;</td>
+				<td><a href="http://cz.fang.com/" target="_blank">常州房地产</a></td>
+				<td><strong style="color:#c00;">H</strong></td>
+				<td><a href="http://hz.fang.com/" target="_blank">杭州房地产</a></td>
+				<td>&nbsp;</td>
+				<td><a href="http://nb.fang.com/" target="_blank">宁波房地产</a></td>
+				<td>&nbsp;</td>
+				<td><a href="http://sjz.fang.com/" target="_blank">石家庄房地产</a></td>
+
+				<td><strong style="color:#c00;">Z</strong></td>
+				<td><a href="http://zz.fang.com/" target="_blank">郑州房地产</a></td>
+			  </tr>
+			  
+			</tbody></table>
+			<div style="text-align:right;padding:0px;"><a href="http://www.fang.com/SoufunFamily.htm" target="_blank">进入房天下家族&gt;&gt;</a></div>
+      </div></span>
+        <a href="http://www.fang.com/sitemap/sitemap.html" target="_blank">网站地图</a>‖
+        <a href="http://www.fang.com/service/feedback/LeaveMess.aspx/" target="_blank">意见反馈</a>‖
+        <a href="http://m.fang.com/" target="_blank">手机房天下</a>‖
+        <a href="http://open.fang.com" target="_blank">开放平台</a>‖
+      <a href="http://www.fang.com/aboutus/copyright.html" target="_blank">服务声明</a>‖
+	  <a href="http://www.fang.com/zt/201107/xbc.html" target="_blank">加盟房天下</a>
+    </div>
+
+	<div class="verdana">Copyright &copy; <script language="javascript">
+                                                                                            var dt = new Date();
+                                                                                            y = dt.getFullYear(); //获取年(四位)
+                                                                                            document.write(y)</script> 北京拓世宏业科技发展有限公司</div>
+	<div class="song" style="line-height:23px;position:relative;z-index:1">Beijing Tuo Shi Hong Ye Science&amp;Technology Development Co.,Ltd 版权所有</div>
+	<div class="song">客服电话：<em> 400-850-8888</em> 违法信息举报邮箱：<a href="mailto:jubao@fang.com" rel="nofollow"><em>jubao@fang.com</em></a></div>
+	
+</div>
+
+
+
+
+<script type="text/javascript">
+var _dctc=_dctc || {};
+_dctc._account=_dctc._account || ['UA-24140496-1','UA-24830455-1'];
+_dctc.isNorth = _dctc.isNorth || 'Y';
+_dctc.bid = '1';
+(function() {
+    var script = document.createElement('script'); script.type =
+'text/javascript'; script.async = true;
+    script.src = '//js.soufunimg.com/count/load.min.js';
+    var s = document.getElementsByTagName('script')[0];
+s.parentNode.insertBefore(script, s);
+  })();
+</script>
+
+
+</body>
+</html>
+</body>
+</html>
+<!--STATUS OK-->
