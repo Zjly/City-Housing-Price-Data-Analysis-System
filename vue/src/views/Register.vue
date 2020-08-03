@@ -25,7 +25,18 @@
                 </el-menu>
             </el-header>
             <el-container>
-                <el-aside width="300px">Aside</el-aside>
+                <el-aside width="500px">
+                    <div class="re_left">
+                        <label>房价云大数据库</label>
+                        <p><span>Big Database</span></p>
+                        <p><small>获取超过5年的时间序列房产数据
+                                <br>持续稳定的数据来源，周度更新频率
+                                <br>应用广泛的房产大数据库
+                            </small>
+                        </p>
+
+                    </div>
+                </el-aside>
 
                 <el-main>
                     <div class="register-wrapper">
@@ -250,10 +261,16 @@
     }
 
     .el-aside {
-        background-color: #E9EEF3;
+
         color: #333;
         text-align: center;
-        line-height: 600px;
+        background-image: url("../assets/images/re_left.png");
+    }
+
+    .re_left {
+        text-align: left;
+        margin-left: 20px;
+        margin-top: 40px;
     }
 
 
