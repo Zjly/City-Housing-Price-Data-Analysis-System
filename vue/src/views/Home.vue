@@ -12,9 +12,10 @@
           <el-menu-item index="4" class="el-menu-item-nav">房价预测</el-menu-item>
           <el-menu-item></el-menu-item>
           <el-menu-item style="min-inline-size: 150px;"></el-menu-item>
-          <el-menu-item style="min-inline-size: 110px;text-align:center;margin:0 auto" class="el-menu-item-nav" index="5" ><u>登录</u>
+          <el-menu-item style="min-inline-size: 110px;text-align:center;margin:0 auto" class="el-menu-item-nav"
+            index="5"><u>登录</u>
           </el-menu-item>
-          <el-menu-item style="min-inline-size: 0px;margin-left:-20px" >|
+          <el-menu-item style="min-inline-size: 0px;margin-left:-20px">|
           </el-menu-item>
           <el-menu-item style="min-inline-size: 100px;margin-left:-10px" index="6" class="el-menu-item-nav"><u>注册</u>
           </el-menu-item>
@@ -33,20 +34,165 @@
             </el-carousel-item>
           </el-carousel>
         </template>
-        <el-divider></el-divider>
+
+        <div class="introduce">
+
+          <p class="title">
+            房产介绍
+          </p>
+
+          <p>
+            房价网走势频道提供城市精准及时、权威全面的房价行情走势，
+          </p>
+          为各城市随时免费提供查询最新季度房价、最近半年房价走势。
+          <p>
+            并且结合城市的环境状况、最新房产政策，预测出来的房价，具有一定权威性、精准性。
+          </p>
+          <p>
+            希望每周的房价走势数据，能让你更好的判断当前房价形势和更好的预计的房价走向。
+          </p>
+
+        </div>
+        <div class="que">
+          <p>
+            为什么选择我们
+          </p>
+          <br>
+        </div>
+        <el-collapse v-model="activeName" accordion>
+          <el-collapse-item name="1">
+            <template slot="title">
+              <p class="item-title">一致性 Consistency</p><i class="header-icon el-icon-info"></i>
+            </template>
+            <br>
+            <div class="item-content">与现实生活一致：与现实生活的流程、逻辑保持一致，遵循用户习惯的语言和概念；</div>
+            <div class="item-content">在界面中一致：所有的元素和结构需保持一致，比如：设计样式、图标和文本、元素的位置等。</div>
+          </el-collapse-item>
+          <el-collapse-item name="2">
+            <template slot="title">
+              <p class="item-title">反馈 Feedback</p><i class="header-icon el-icon-info"></i>
+            </template>
+            <br>
+            <div class="item-content">控制反馈：通过界面样式和交互动效让用户可以清晰的感知自己的操作；</div>
+            <div class="item-content">页面反馈：操作后，通过页面元素的变化清晰地展现当前状态。</div>
+          </el-collapse-item>
+          <el-collapse-item name="3">
+            <template slot="title">
+              <p class="item-title">效率 Efficiency</p><i class="header-icon el-icon-info"></i>
+            </template>
+            <br>
+            <div class="item-content">简化流程：设计简洁直观的操作流程；</div>
+            <div class="item-content">清晰明确：语言表达清晰且表意明确，让用户快速理解进而作出决策；</div>
+            <div class="item-content">帮助用户识别：界面简单直白，让用户快速识别而非回忆，减少用户记忆负担。</div>
+          </el-collapse-item>
+          <el-collapse-item name="4">
+            <template slot="title">
+              <p class="item-title">可控 Controllability</p><i class="header-icon el-icon-info"></i>
+            </template>
+            <br>
+            <div class="item-content">用户决策：根据场景可给予用户操作建议或安全提示，但不能代替用户进行决策；</div>
+            <div class="item-content">结果可控：用户可以自由的进行操作，包括撤销、回退和终止当前操作等。</div>
+          </el-collapse-item>
+          <el-collapse-item name="5">
+            <template slot="title">
+              <p class="item-title">其他 Others</p><i class="header-icon el-icon-info"></i>
+            </template>
+            <br>
+            <div class="item-content">用户决策：根据场景可给予用户操作建议或安全提示，但不能代替用户进行决策；</div>
+            <div class="item-content">结果可控：用户可以自由的进行操作，包括撤销、回退和终止当前操作等。</div>
+          </el-collapse-item>
+
+        </el-collapse>
 
 
+        主页
 
 
       </el-main>
+      <el-footer>
+        <div class="footer">
+          <template>
+            <div>
+              <el-row :gutter="12">
+                <el-col :span="8">
+                  <span>
+                    <el-card class="box-card" shadow="hover">
+                      <div class="text item" id="item-title">
+                        小组成员
+                      </div>
+                      <div class="text item">
+                        组长：张雷
+                      </div>
+                      <div class="text item">
+                        组员：王亮
+                      </div>
+                      <div class="text item">
+                        组员：汪志豪
+                      </div>
+                      <div class="text item">
+                        组员：夏宇航
+                      </div>
+                    </el-card>
+                  </span>
+                </el-col>
+                <el-col :span="8">
+                  <span>
+                    <el-card class="box-card" shadow="hover">
+                      <div class="text item" id="item-title">
+                        关于我们
+                      </div>
+                      <div class="text item">
+                        小组简介
+                      </div>
+                      <div class="text item">
+                        联系我们
+                      </div>
+                      <div class="text item">
+                        合作伙伴
+                      </div>
+                      <div class="text item">
+                        人才招募
+                      </div>
+                    </el-card>
+                  </span>
+
+                </el-col>
+
+                <el-col :span="8">
+                  <span>
+                    <el-card class="box-card" shadow="hover">
+                      <div class="text item" id="item-title">
+                        网页说明
+                      </div>
+                      <div class="text item">
+                        用户协议
+                      </div>
+                      <div class="text item">
+                        版权声明
+                      </div>
+                      <div class="text item">
+                        免责条款
+                      </div>
+                    </el-card>
+                  </span>
+                </el-col>
+              </el-row>
+            </div>
+          </template>
+        </div>
+        <span>©<label>2020</label> 武汉大学 28组 房价云 版权所有</span><br>
+
+      </el-footer>
+
+
     </el-container>
 
 
 
-    <div class="line"></div>
 
 
-    主页
+
+
   </div>
 </template>
 
@@ -58,6 +204,7 @@
     name: 'Home',
     data() {
       return {
+        activeName: '1',
         activeIndex: '1',
         imgList: [{
             id: 0,
@@ -83,23 +230,23 @@
       handleSelect(key, keyPath) {
         console.log(key, keyPath);
         // 跳页面
-        if(key==1){
+        if (key == 1) {
           // 使用代码切换路径 (路由)
           this.$router.push('/');
         }
-        if(key==2){
+        if (key == 2) {
           this.$router.push('/house');
         }
-        if(key==3){
+        if (key == 3) {
           this.$router.push('/news');
         }
-        if(key==4){
+        if (key == 4) {
           this.$router.push('/forecast');
         }
-        if(key==5){
+        if (key == 5) {
           this.$router.push('/login');
         }
-        if(key==6){
+        if (key == 6) {
           this.$router.push('/register');
         }
 
@@ -123,8 +270,7 @@
     font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
   }
 
-  .el-header,
-  .el-footer {
+  .el-header {
     background-color: #ffffff;
     margin: 0 auto;
     text-align: center;
@@ -133,6 +279,12 @@
     margin-left: -30px;
     margin-top: -8px;
 
+  }
+
+  .footer {
+    background-color: #eeeeee;
+    height: 200px;
+    margin-left: 10px;
   }
 
   .el-menu--horizontal {
@@ -185,5 +337,73 @@
 
   .el-select {
     min-height: 150px;
+  }
+
+  .introduce .title {
+    text-align: left;
+    font-size: 28px;
+
+  }
+
+  .introduce {
+    text-align: left;
+    background-image: url("../assets/images/introduce_banner.png");
+    height: 290px;
+    background-size: 1400px 290px;
+    font-size: 15px;
+  }
+
+  .que {
+    text-align: left;
+    font-size: 28px;
+  }
+
+  .el-collapse-item {
+    text-align: left;
+    font-size: 25px;
+
+  }
+
+  .item-title {
+    font-size: 18px;
+  }
+
+  .item-content {
+    font-size: 15px;
+  }
+
+  /* 卡片 */
+  .text {
+    font-size: 16px;
+    text-align: left;
+    margin-left: 80px;
+
+  }
+
+  .text#item-title {
+    font-size: 23px;
+    text-align: left;
+    margin-left: 80px;
+  }
+
+  .item {
+    margin-bottom: -20px;
+  }
+
+  .clearfix:before,
+  .clearfix:after {
+    display: table;
+    content: "";
+  }
+
+  .clearfix:after {
+    clear: both
+  }
+
+  .box-card {
+    width: 410px;
+    height: 280px;
+    background-color: #eeeeee;
+
   }
 </style>
