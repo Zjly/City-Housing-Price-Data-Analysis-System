@@ -1,0 +1,16 @@
+<!DOCTYPE html><html lang=en><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><link rel=icon href=/favicon.ico><script src=http://code.highcharts.com.cn/highcharts/8.1.2/highcharts.js></script><script src=http://code.highcharts.com.cn/highcharts/8.1.2/modules/exporting.js></script><script src=http://code.highcharts.com.cn/highcharts/8.1.2/modules/wordcloud.js></script><script src=http://code.highcharts.com.cn/highcharts/8.1.2/modules/oldie.js></script><title>vue</title><link href=/css/app.fd55f068.css rel=preload as=style><link href=/css/chunk-vendors.2ac5db4b.css rel=preload as=style><link href=/js/app.aa24b552.js rel=preload as=script><link href=/js/chunk-vendors.8418ff6f.js rel=preload as=script><link href=/css/chunk-vendors.2ac5db4b.css rel=stylesheet><link href=/css/app.fd55f068.css rel=stylesheet></head><body style=text-align:center><noscript><strong>We're sorry but vue doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id=app></div><script src=/js/chunk-vendors.8418ff6f.js></script><script src=/js/app.aa24b552.js></script></body><script>var X = document.getElementsByClassName("el-menu-item-nav");
+  Object.keys(X).forEach(function (key) {
+    console.log(key, X[key].getAttribute("class"));
+    if (X[key].getAttribute("class") != "el-menu-item el-menu-item-nav is-active") {
+      X[key].onmouseenter = function () {
+        // onmouseenter鼠标移入
+        X[key].style.color = '#3196FF';
+      }
+      X[key].onmouseleave = function () {
+        // onmouseenter鼠标移出
+        X[key].style.color = '#95C9FF';
+      }
+    }
+
+
+  });</script></html>

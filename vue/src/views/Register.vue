@@ -85,7 +85,7 @@
         name: 'Register',
         data() {
             // <!--验证邮箱号是否合法-->
-            let checkTel = (rule, value, callback) => {
+            let checkmail = (rule, value, callback) => {
                 if (value === '') {
                     callback(new Error('请输入邮箱号'))
                 } else if (!this.checkMail(value)) {
@@ -142,7 +142,7 @@
                         trigger: 'change'
                     }],
                     mail: [{
-                        validator: checkTel,
+                        validator: checkmail,
                         trigger: 'change'
                     }],
                     smscode: [{
