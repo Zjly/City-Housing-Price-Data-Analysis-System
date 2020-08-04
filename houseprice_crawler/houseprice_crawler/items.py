@@ -6,6 +6,15 @@
 import scrapy
 
 
+class LocationItem(scrapy.Item):
+    # 所有省份
+    provinces = scrapy.Field()
+    # 城市
+    cities = scrapy.Field()
+    # urls
+    city_dic = scrapy.Field()
+
+
 class NewHouseItem(scrapy.Item):
     # 省份
     province = scrapy.Field()

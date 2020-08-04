@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
 
-import csv
 import scrapy
 import re
-import time
 
 
 from houseprice_crawler.items import NewHouseItem, ESFHouseItem

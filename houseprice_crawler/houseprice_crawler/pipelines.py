@@ -10,7 +10,7 @@ import pymysql
 from houseprice_crawler.settings import (
     db_charset, db_name, db_pwd, db_user, db_port, db_host
 )
-from houseprice_crawler.items import NewHouseItem, ESFHouseItem
+from houseprice_crawler.items import NewHouseItem, ESFHouseItem, LocationItem
 
 
 class HousepriceCrawlerPipeline:
@@ -27,11 +27,31 @@ class HousepriceCrawlerPipeline:
 
 
     def process_item(self, item, spider):
-        if isinstance(item, NewHouseItem):
+        if isinstance(item, LocationItem):
+            self.save_location(item)
+        elif isinstance(item, NewHouseItem):
             self.save_newhouse(item)
         elif isinstance(item, ESFHouseItem):
             self.save_esf(item)
         return item
+
+
+    def save_location(self, item):
+        provinces = item['provinces']
+        cities = item['cities']
+        city_dic = item['city_dic']
+        print (1)
+        for i in range(len(provinces)):
+            select_sql = "select count(1) from info_location where province='%s';" % provinces[i]
+            self.cursor.execute(select_sql)
+            res = self.cursor.fetchone()[0]
+            print('%s 爬取完成' % (provinces[i]))
+            if res > 0:
+                continue
+            for city in cities[i]:
+                sql = "insert into info_location(province, city, url) values (%s, %s, %s)"
+                self.cursor.execute(sql, (provinces[i], city, city_dic[city]))
+                self.conn.commit()
 
 
     def save_newhouse(self, item):
