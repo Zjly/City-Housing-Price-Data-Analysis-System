@@ -44,8 +44,8 @@
                             <p class="title">注册</p>
                             <el-form :model="ruleForm2" status-icon :rules="rules2" ref="ruleForm2" label-width="0"
                                 class="demo-ruleForm">
-                                <el-form-item prop="tel">
-                                    <el-input v-model="ruleForm2.tel" auto-complete="off" placeholder="请输入手机号">
+                                <el-form-item prop="mail">
+                                    <el-input v-model="ruleForm2.mail" auto-complete="off" placeholder="请输入邮箱号">
                                     </el-input>
                                 </el-form-item>
                                 <el-form-item prop="smscode" class="code">
@@ -84,12 +84,12 @@
     export default {
         name: 'Register',
         data() {
-            // <!--验证手机号是否合法-->
+            // <!--验证邮箱号是否合法-->
             let checkTel = (rule, value, callback) => {
                 if (value === '') {
-                    callback(new Error('请输入手机号码'))
-                } else if (!this.checkMobile(value)) {
-                    callback(new Error('手机号码不合法'))
+                    callback(new Error('请输入邮箱号'))
+                } else if (!this.checkMail(value)) {
+                    callback(new Error('邮箱号不合法'))
                 } else {
                     callback()
                 }
@@ -97,7 +97,7 @@
             //  <!--验证码是否为空-->
             let checkSmscode = (rule, value, callback) => {
                 if (value === '') {
-                    callback(new Error('请输入手机验证码'))
+                    callback(new Error('请输入邮箱验证码'))
                 } else {
                     callback()
                 }
@@ -129,7 +129,7 @@
                 ruleForm2: {
                     pass: "",
                     checkPass: "",
-                    tel: "",
+                    mail: "",
                     smscode: ""
                 },
                 rules2: {
@@ -141,7 +141,7 @@
                         validator: validatePass2,
                         trigger: 'change'
                     }],
-                    tel: [{
+                    mail: [{
                         validator: checkTel,
                         trigger: 'change'
                     }],
@@ -183,9 +183,9 @@
             },
             // <!--发送验证码-->
             sendCode() {
-                let tel = this.ruleForm2.tel
-                if (this.checkMobile(tel)) {
-                    console.log(tel)
+                let mail = this.ruleForm2.mail
+                if (this.checkMail(mail)) {
+                    console.log(mail)
                     let time = 60
                     this.buttonText = '已发送'
                     this.isDisabled = true
@@ -223,9 +223,9 @@
                     path: "/login"
                 });
             },
-            // 验证手机号
-            checkMobile(str) {
-                let re = /^1\d{10}$/
+            // 验证邮箱号
+            checkMail(str) {
+                let re = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/
                 if (re.test(str)) {
                     return true;
                 } else {

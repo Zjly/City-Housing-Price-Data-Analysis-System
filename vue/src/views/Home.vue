@@ -106,6 +106,16 @@
 
 
         主页
+        
+        <div class="que">
+          <p>
+            最新行情
+          </p>
+          <br>
+        </div>
+        <div id="container">
+        </div>
+        <br>
 
 
       </el-main>
@@ -253,6 +263,42 @@
       },
     },
     mounted() {
+      // aixos 请求数据
+      this.axios.get('http://127.0.0.1:5000/line').then(res=>{
+        console.log(res)
+        var data = res.data.data
+        var city = new Array()
+        var money = new Array()
+        for(var i = 0;i<data.length;i++){
+          city.push(data[i].name)
+          money.push(data[i].money)
+        }
+        var Highcharts = require('highcharts');
+        // 在 Highcharts 加载之后加载功能模块
+        require('highcharts/modules/exporting')(Highcharts);
+         Highcharts.chart('container',{
+          title:{
+            text:'一线城市平均房价'
+          },
+          yAxis:{
+            title:{
+              text:'房价'
+            }
+          },
+          xAxis:{
+            title:{
+              text:'城市'
+            },
+            categories:city
+          },
+          series:[{
+            name:'平均房价',
+            data:money
+          }]
+        }
+
+        )
+      })
 
 
 
@@ -293,6 +339,7 @@
     min-inline-size: 160px;
     font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
   }
+  
 
   .el-menu--horizontal .el-menu-item {
     min-height: 80px;
@@ -406,4 +453,13 @@
     background-color: #eeeeee;
 
   }
+  #container{
+    max-width:800px;
+    height:400px;
+    margin:0 auto;
+    border:solid orange 1px;
+    font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+
+  }
+  
 </style>
