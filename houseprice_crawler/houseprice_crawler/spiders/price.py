@@ -6,11 +6,11 @@ import re
 import time
 
 
-from scrapyspider.items import NewHouseItem, ESFHouseItem
+from houseprice_crawler.items import NewHouseItem, ESFHouseItem
 
 
-class HousePriseSpider(scrapy.Spider):
-    name = 'houseprise'
+class PriceSpider(scrapy.Spider):
+    name = 'price'
     allowed_domains = ['fang.com']
     start_urls = ['https://www.fang.com/SoufunFamily.htm']
 
@@ -45,10 +45,6 @@ class HousePriseSpider(scrapy.Spider):
                     newhouse_url = "https://newhouse.fang.com/house/s"
                     esf_url = "https://esf.fang.com/"
                 data.append((str(province), str(city), str(city_url), str(newhouse_url), str(esf_url)))
-        # print(data)
-        # with open('the_first_url.csv', 'w', newline='') as csvfile:
-        #     writer = csv.writer(csvfile)
-        #     writer.writerows(data)
 
                 yield scrapy.Request(url=newhouse_url, callback=self.parse_newhouse, meta={"info": (province, city)})
                 yield scrapy.Request(url=esf_url, callback=self.parse_esf, meta={"info": (province, city)})

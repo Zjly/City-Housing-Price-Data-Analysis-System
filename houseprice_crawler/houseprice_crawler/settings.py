@@ -1,4 +1,4 @@
-# Scrapy settings for scrapyspider project
+# Scrapy settings for houseprice_crawler project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -7,14 +7,14 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'scrapyspider'
+BOT_NAME = 'houseprice_crawler'
 
-SPIDER_MODULES = ['scrapyspider.spiders']
-NEWSPIDER_MODULE = 'scrapyspider.spiders'
+SPIDER_MODULES = ['houseprice_crawler.spiders']
+NEWSPIDER_MODULE = 'houseprice_crawler.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'scrapyspider (+http://www.yourdomain.com)'
+#USER_AGENT = 'houseprice_crawler (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False
@@ -45,13 +45,13 @@ DEFAULT_REQUEST_HEADERS = {
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 SPIDER_MIDDLEWARES = {
-    'scrapyspider.middlewares.ScrapyspiderSpiderMiddleware': 543,
+    'houseprice_crawler.middlewares.HousepriceCrawlerSpiderMiddleware': 543,
 }
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #DOWNLOADER_MIDDLEWARES = {
-#    'scrapyspider.middlewares.ScrapyspiderDownloaderMiddleware': 543,
+#    'houseprice_crawler.middlewares.HousepriceCrawlerDownloaderMiddleware': 543,
 #}
 
 # Enable or disable extensions
@@ -63,7 +63,7 @@ SPIDER_MIDDLEWARES = {
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-    'scrapyspider.pipelines.ScrapyspiderPipeline': 300,
+    'houseprice_crawler.pipelines.HousepriceCrawlerPipeline': 300,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
@@ -86,3 +86,10 @@ ITEM_PIPELINES = {
 #HTTPCACHE_DIR = 'httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
+
+db_charset = 'utf8'
+db_name = 'fangjia'
+db_pwd = 'root'
+db_user = 'root'
+db_port = 3306
+db_host = 'localhost'
