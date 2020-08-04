@@ -80,8 +80,15 @@ class PriceSpider(scrapy.Spider):
 
             price = "".join(li.xpath(".//div[@class='nhouse_price']//text()").getall())
             price = re.sub(r"\s|广告", "", price)
+            price = ''.join([x for x in price if x.isdigit()])
+            try:
+                price = int(price)
+            except Exception:
+                price = 0
+            if not price:
+                price = 0
 
-            origin_url = li.xpath(".//div[@class='nlcd_name']/a/@href").get()
+            origin_url = li.xpath(".//div[@class='nlcd_name']/a/@href").get().strip('/')
 
             item = NewHouseItem(province=province, city=city, name=name, rooms=rooms, area=area, address=address, district=district, sale=sale, price=price, origin_url=origin_url)
 
@@ -98,11 +105,6 @@ class PriceSpider(scrapy.Spider):
             # print(complete_orl)
             yield scrapy.Request(url=complete_orl, callback=self.parse_newhouse, meta={"info": (province, city)})
 
-    """
-    必须吐槽房天下 新房 网站，第五页之前没有上一页的选项，但是前段代码居然有class = ‘last’，第五页之后有了上一页，但是上一页的前端代码的class设为了next，下一页的class还是next
-    ？？？？？？？？？？？？？？？？？？？？？？？？？
-    一不小心莫名死循环
-    """
 
     def parse_esf(self, response):
         province, city = response.meta.get("info")
@@ -115,6 +117,13 @@ class PriceSpider(scrapy.Spider):
 
             infos = dl.xpath(".//p[@class='tel_shop']/text()").getall()
             infos = list(map(lambda x: re.sub(r"\s", "", x), infos))
+
+            item["rooms"] = ""
+            item["floor"] = ""
+            item["toward"] = ""
+            item["year"] = ""
+            item["area"] = 0.0
+
             for info in infos:
                 if '厅' in info:
                     item["rooms"] = info
@@ -125,16 +134,30 @@ class PriceSpider(scrapy.Spider):
                 elif '年' in info:
                     item["year"] = info.replace("年建", "")
                 elif '㎡' in info:
-                    item["area"] = info.replace("㎡", "")
+                    item["area"] = float(info.replace("㎡", ""))
 
             item["address"] = dl.xpath(".//p[@class='add_shop']/span/text()").get()
 
-            item["price"] = dl.xpath(".//dd[@class='price_right']/span/b/text()").get()
+            try:
+                price = dl.xpath(".//dd[@class='price_right']/span/b/text()").get()
+                price = int(price)
+            except Exception:
+                price = 0
+            if not price:
+                continue
+            item["price"] = price
 
-            item["unit"] = dl.xpath(".//dd[@class='price_right']/span[2]//text()").get()
+            try:
+                unit = dl.xpath(".//dd[@class='price_right']/span[2]//text()").get().split('元')[0]
+                unit = int(unit)
+            except Exception:
+                unit = 0
+            if not unit:
+                continue
+            item["unit"] = unit
 
             detail_url = dl.xpath(".//h4[@class='clearfix']/a/@href").get()
-            item["origin_url"] = response.urljoin(detail_url)
+            item["origin_url"] = response.urljoin(detail_url).split(':')[1].strip('/')
 
             yield item
 

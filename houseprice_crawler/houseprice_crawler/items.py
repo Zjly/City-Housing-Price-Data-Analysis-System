@@ -15,7 +15,7 @@ class NewHouseItem(scrapy.Item):
     name = scrapy.Field()
     # 价格
     price = scrapy.Field()
-    # 几居。列表
+    # 几居
     rooms = scrapy.Field()
     # 面积
     area = scrapy.Field()
