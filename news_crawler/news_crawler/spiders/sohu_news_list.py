@@ -1,6 +1,6 @@
 import scrapy
 
-from news_crawler.sohu_news_list_items import SohuNewsListCrawlerItem
+from news_crawler.items.sohu_news_list_items import SohuNewsListCrawlerItem
 
 
 class FangSpider(scrapy.Spider):
@@ -16,9 +16,9 @@ class FangSpider(scrapy.Spider):
 		for news in response.xpath('//li[@class="news-list-item global-clearfix"]'):
 			item = SohuNewsListCrawlerItem()
 			# 获取文章标题
-			item["title"] = news.xpath('.//div[@class="news-list-detail"]/a/@title').extract()
+			item["title"] = news.xpath('.//div[@class="news-list-detail"]/a/@title').extract_first()
 			# 获取文章链接
-			item["link"] = news.xpath('.//div[@class="news-list-detail"]/a/@href').extract()
+			item["link"] = news.xpath('.//div[@class="news-list-detail"]/a/@href').extract_first()
 			yield item
 
 		# 爬取下一页

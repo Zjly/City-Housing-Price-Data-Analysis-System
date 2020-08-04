@@ -2,7 +2,7 @@ import json
 import re
 import scrapy
 
-from news_crawler.sohu_news_details_items import SohuNewsDetailsCrawlerItem
+from news_crawler.items.sohu_news_details_items import SohuNewsDetailsCrawlerItem
 
 
 class NewsDetailsSpider(scrapy.Spider):
@@ -15,7 +15,7 @@ class NewsDetailsSpider(scrapy.Spider):
 		json_data = json.load(f)
 
 		for data in json_data:
-			links.append(data["link"][0])
+			links.append(data["link"])
 
 	start_urls = links
 
