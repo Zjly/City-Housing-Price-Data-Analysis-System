@@ -15,6 +15,38 @@ class LocationItem(scrapy.Item):
     city_dic = scrapy.Field()
 
 
+class InfoItem(scrapy.Item):
+    areaPrice = scrapy.Field()
+    esfareaPrice = scrapy.Field()
+    compareDate = scrapy.Field()
+    compareYear = scrapy.Field()
+    minPrice = scrapy.Field()
+    maxPrice = scrapy.Field()
+
+    threeAreaPrice = scrapy.Field()
+    threeEsfareaPrice = scrapy.Field()
+    threeCompareDate = scrapy.Field()
+    threeCompareYear = scrapy.Field()
+    threeminPrice = scrapy.Field()
+    threemaxPrice = scrapy.Field()
+
+    buildPriceNameList = scrapy.Field()
+    buildPriceCount = scrapy.Field()
+    esfPriceNameList = scrapy.Field()
+    esfPriceCount = scrapy.Field()
+
+    domain = scrapy.Field()
+
+    new_avg = scrapy.Field()
+    esf_avg = scrapy.Field()
+    new_cgreen = scrapy.Field()
+    esf_cgreen = scrapy.Field()
+
+    cid = scrapy.Field()
+    province = scrapy.Field()
+    city = scrapy.Field()
+
+
 class NewHouseItem(scrapy.Item):
     # 省份
     province = scrapy.Field()
