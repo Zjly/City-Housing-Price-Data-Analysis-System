@@ -1,9 +1,9 @@
 后端部分文件结构：<br/>
 1.blueprints文件夹：蓝图管理，存放视图函数<br/>
-其中：agent_ops.py:管理员部分
-fm_options.py:管理员部分
-forum.py:主页部分
-myutils.py:登录注册注销
+其中：agent_ops.py:管理员部分<br/>
+fm_options.py:管理员部分<br/>
+forum.py:主页部分<br/>
+myutils.py:登录注册注销<br/>
 2.migrations文件夹：数据库迁移<br/>
 3.config.py：连接数据库，配置基本信息<br/>
 4.decorators.py：存装饰器（主要实现的是查看详情前要登录）<br/>
