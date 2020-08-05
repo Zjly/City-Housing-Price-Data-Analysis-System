@@ -13,11 +13,12 @@
           <el-menu-item></el-menu-item>
           <el-menu-item style="min-inline-size: 150px;"></el-menu-item>
           <el-menu-item style="min-inline-size: 110px;text-align:center;margin:0 auto" class="el-menu-item-nav"
-            index="5"><u>登录</u>
+            index="5"><u>{{name}}</u>
           </el-menu-item>
           <el-menu-item style="min-inline-size: 0px;margin-left:-20px">|
           </el-menu-item>
-          <el-menu-item style="min-inline-size: 100px;margin-left:-10px" index="6" class="el-menu-item-nav"><u>注册</u>
+          <el-menu-item style="min-inline-size: 100px;margin-left:-10px" index="6" class="el-menu-item-nav"><u><a
+                href="/" v-on:click="quit">注销登入</a></u>
           </el-menu-item>
         </el-menu>
       </el-header>
@@ -106,7 +107,7 @@
 
 
         主页
-        
+
         <div class="que">
           <p>
             最新行情
@@ -208,7 +209,10 @@
 
 <script>
   // @ is an alias to /src
-
+  import {
+    getCookie,
+    delCookie
+  } from '../../assets/js/cookie.js'
   // 主页
   export default {
     name: 'Home',
@@ -216,6 +220,7 @@
       return {
         activeName: '1',
         activeIndex: '1',
+        name: '注册',
         imgList: [{
             id: 0,
             idView: require('../assets/images/333.png')
@@ -233,10 +238,14 @@
         ]
       };
     },
+    
     components: {
 
     },
     methods: {
+      quit() {
+        delCookie("username")
+      },
       handleSelect(key, keyPath) {
         console.log(key, keyPath);
         // 跳页面
@@ -264,38 +273,43 @@
     },
     mounted() {
       // aixos 请求数据
-      this.axios.get('http://127.0.0.1:5000/line').then(res=>{
+      let uname = getCookie("username")
+      this.name = uname
+      if (uname == "") {
+        this.$router.push("/")
+      }
+      this.axios.get('http://127.0.0.1:5000/line').then(res => {
         console.log(res)
         var data = res.data.data
         var city = new Array()
         var money = new Array()
-        for(var i = 0;i<data.length;i++){
+        for (var i = 0; i < data.length; i++) {
           city.push(data[i].name)
           money.push(data[i].money)
         }
         var Highcharts = require('highcharts');
         // 在 Highcharts 加载之后加载功能模块
         require('highcharts/modules/exporting')(Highcharts);
-         Highcharts.chart('container',{
-          title:{
-            text:'一线城市平均房价'
-          },
-          yAxis:{
-            title:{
-              text:'房价'
-            }
-          },
-          xAxis:{
-            title:{
-              text:'城市'
+        Highcharts.chart('container', {
+            title: {
+              text: '一线城市平均房价'
             },
-            categories:city
-          },
-          series:[{
-            name:'平均房价',
-            data:money
-          }]
-        }
+            yAxis: {
+              title: {
+                text: '房价'
+              }
+            },
+            xAxis: {
+              title: {
+                text: '城市'
+              },
+              categories: city
+            },
+            series: [{
+              name: '平均房价',
+              data: money
+            }]
+          }
 
         )
       })
@@ -339,7 +353,7 @@
     min-inline-size: 160px;
     font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
   }
-  
+
 
   .el-menu--horizontal .el-menu-item {
     min-height: 80px;
@@ -453,13 +467,13 @@
     background-color: #eeeeee;
 
   }
-  #container{
-    max-width:800px;
-    height:400px;
-    margin:0 auto;
-    border:solid orange 1px;
+
+  #container {
+    max-width: 800px;
+    height: 400px;
+    margin: 0 auto;
+    border: solid orange 1px;
     font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
 
   }
-  
 </style>

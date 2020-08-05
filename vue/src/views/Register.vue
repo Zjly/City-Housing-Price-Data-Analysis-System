@@ -25,7 +25,7 @@
                 </el-menu>
             </el-header>
             <el-container>
-                <el-aside width="500px">
+                <el-aside width="500px" v-show="showDatabase">
                     <div class="re_left">
                         <label>房价云大数据库</label>
                         <p><span>Big Database</span></p>
@@ -39,7 +39,7 @@
                 </el-aside>
 
                 <el-main>
-                    <div class="register-wrapper">
+                    <div class="register-wrapper" v-show="showRegister">
                         <div id="register">
                             <p class="title">注册</p>
                             <el-form :model="ruleForm2" status-icon :rules="rules2" ref="ruleForm2" label-width="0"
@@ -126,6 +126,8 @@
             };
             return {
                 activeIndex: '6',
+                showRegister: true,
+                showDatabase: true,
                 ruleForm2: {
                     pass: "",
                     checkPass: "",
@@ -202,6 +204,12 @@
                             }
                         }, 1000)
                     }
+                } else {
+                    this.$alert('不是合法的邮箱输入', '警告', {
+                        type: 'error',
+                        confirmButtonText: '确定',
+                        center: true,
+                    });
                 }
             },
             // <!--提交注册-->
@@ -209,12 +217,42 @@
                 this.$refs[formName].validate(valid => {
                     if (valid) {
                         setTimeout(() => {
-                            alert('注册成功')
+                            this.$alert('注册成功', '提示', {
+                                type: 'success',
+                                confirmButtonText: '确定',
+                                center: true,
+                                callback: action => {
+                                    this.$message({
+                                        type: 'success',
+                                        message: `${ action } ：已成功跳转到个人中心！ `
+                                    });
+                                }
+                            });
+                            // alert('注册成功')
                         }, 400);
-                    } else {
+                    }else if (this.ruleForm2.smscode != '123'){
+                        this.$alert('请输入正确的验证码', '提示', {
+                            type: 'error',
+                            confirmButtonText: '确定',
+                            center: true
+                        });
                         console.log("error submit!!");
                         return false;
-                    }
+                    } else if (this.ruleForm2.checkPass != this.ruleForm2.Pass) {
+                        this.$alert('两次密码不一致', '提示', {
+                            type: 'error',
+                            confirmButtonText: '确定',
+                            center: true,
+                            callback: action => {
+                                this.$message({
+                                    type: 'info',
+                                    message: `${ action } ：请重新确认两次密码！ `
+                                });
+                            }
+                        });
+                        console.log("error submit!!");
+                        return false;
+                    } 
                 })
             },
             // <!--进入登录页-->

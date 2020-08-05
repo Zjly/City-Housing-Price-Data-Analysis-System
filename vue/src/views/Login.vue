@@ -1,5 +1,5 @@
 <template>
-    <div class="login">
+    <div class="Login">
         <el-container direction="vertical">
             <el-header>
                 <el-menu :default-active="activeIndex" id="el-menu-nav" class="el-menu-nav" mode="horizontal"
@@ -25,7 +25,7 @@
                 </el-menu>
             </el-header>
             <el-container>
-                <el-aside width="500px">
+                <el-aside width="500px" v-show="showDatabase">
                     <div class="re_left">
                         <label>房价云大数据库</label>
                         <p><span>Big Database</span></p>
@@ -39,8 +39,8 @@
                 </el-aside>
 
                 <el-main>
-                    <div class="register-wrapper">
-                        <div id="register">
+                    <div class="login-wrapper" v-show="showLogin">
+                        <div id="login">
                             <p class="title">登录</p>
                             <el-form :model="ruleForm1" status-icon :rules="rules2" ref="ruleForm1" label-width="0"
                                 class="demo-ruleForm">
@@ -50,7 +50,7 @@
                                 </el-form-item>
                                 <el-form-item prop="smscode" class="code">
                                     <el-input v-model="ruleForm1.smscode" placeholder="验证码"></el-input>
-                                    <img :src="imgList[r_num].idView"  :id="r_num" class="image">
+                                    <img :src="imgList[r_num].idView" :id="r_num" class="image">
                                 </el-form-item>
                                 <el-form-item prop="pass">
                                     <el-input type="password" v-model="ruleForm1.pass" auto-complete="off"
@@ -80,34 +80,37 @@
 </template>
 
 <script>
-    // @ is an alias to /src
+    import {
+        setCookie,
+        getCookie
+    } from '../../assets/js/cookie.js'
 
     // 注册页面
     export default {
         name: 'Register',
         data() {
             // 生成随机整数
-            var r_num = Math.floor(Math.random()*2+1);
+            var r_num = Math.floor(Math.random() * 2 + 1);
 
             var imgList = [{
-                        id: 0,
-                        name: 'wy71',
-                        idView: require('../assets/images/randomCode.jpg')
-                    },
-                    {
-                        id: 1,
-                        name: 'k5b2',
-                        idView: require('../assets/images/randomCode1.jpg')
-                    },
-                    {
-                        id: 2,
-                        name: 'umt8',
-                        idView: require('../assets/images/randomCode2.jpg')
-                    }
-                ];
+                    id: 0,
+                    name: 'wy71',
+                    idView: require('../assets/images/randomCode.jpg')
+                },
+                {
+                    id: 1,
+                    name: 'k5b2',
+                    idView: require('../assets/images/randomCode1.jpg')
+                },
+                {
+                    id: 2,
+                    name: 'umt8',
+                    idView: require('../assets/images/randomCode2.jpg')
+                }
+            ];
             // <!--验证邮箱号是否合法-->
             let checkmail = (rule, value, callback) => {
-                
+
                 if (value === '') {
                     callback(new Error('请输入邮箱'))
                 } else if (!this.checkMail(value)) {
@@ -121,7 +124,7 @@
                 if (value === '') {
                     console.log(r_num)
                     callback(new Error('请输入验证码'))
-                }else if ( value !== imgList[r_num].name) {
+                } else if (value !== imgList[r_num].name) {
                     console.log(imgList[r_num].name)
                     callback(new Error('验证码错误'))
 
@@ -154,6 +157,8 @@
             return {
                 activeIndex: '5',
                 checked: false,
+                showLogin: true,
+                showDatabase: true,
                 imgList: [{
                         id: 0,
                         name: 'wy71',
@@ -199,6 +204,11 @@
                 isDisabled: false, // 是否禁止点击发送验证码按钮
                 flag: true
             };
+        },
+        mounted() {
+            if (getCookie("username")) {
+                this.$router.push('/home')
+            }
         },
 
         methods: {
@@ -252,15 +262,95 @@
             // <!--提交登录-->
             submitForm(formName) {
                 this.$refs[formName].validate(valid => {
-                    if (this.checked == false){
+                    if (this.checked == false) {
                         setTimeout(() => {
-                            alert('您没有同意房价云制订的用户协议和免责条款')
+                            this.$confirm('您没有同意房价云制订的用户协议和免责条款?', '提示', {
+                                confirmButtonText: '确定',
+                                cancelButtonText: '取消',
+                                type: 'error',
+                                center: true
+                            }).then(() => {
+                                this.checked = true;
+                                this.$message({
+                                    type: 'success',
+                                    message: '已经自动同意协议条款！请重新登录'
+                                });
+                            }).catch(() => {
+                                this.$message({
+                                    type: 'warning',
+                                    message: '请同意协议条款!'
+                                });
+                            });
+                            // alert('您没有同意房价云制订的用户协议和免责条款')
                         }, 300);
                     } else if (valid) {
                         setTimeout(() => {
-                            alert('登录成功')
+                            // URLSearchParams对象是为了让参数以form data形式
+                            let params = new URLSearchParams();
+                            params.append('username', this.ruleForm1.Mail);
+                            params.append('password', this.ruleForm1.pass);
+                            this.axios.post("http://127.0.0.1:5000/login", params).then((res) => {
+                                console.log(res.data)
+                                console.log(typeof res.data)
+                                if (res.data == -1) {
+                                    this.$alert('该用户不存在', '提示', {
+                                        type: 'warning',
+                                        confirmButtonText: '确定',
+                                        center: true
+                                    });
+                                } else if (res.data == 0) {
+                                    this.$alert('密码输入错误', '提示', {
+                                        type: 'warning',
+                                        confirmButtonText: '确定',
+                                        center: true
+                                    });
+                                    this.showTishi = true
+                                } else if (res.data == "admin") {
+                                    this.$router.push("/home")
+                                } else {
+                                    this.$alert('登录成功', '提示', {
+                                        type: 'success',
+                                        confirmButtonText: '确定',
+                                        center: true,
+                                        callback: action => {
+                                            this.$message({
+                                                type: 'success',
+                                                message: `${ action } ：已成功跳转到个人中心！ `
+                                            });
+                                        }
+                                    });
+                                    // alert('登录成功')
+                                    setCookie("username", this.ruleForm1.Mail, 1000 * 60)
+                                    setTimeout(function () {
+                                        this.$router.push("/home")
+                                    }.bind(this), 1000)
+                                }
+                            })
+
+
                         }, 400);
                     } else {
+                        setTimeout(() => {
+                            this.$confirm('您没有输入正确的验证码或账号密码匹配不成功?', '提示', {
+                                confirmButtonText: '提交修改',
+                                cancelButtonText: '重新输入',
+                                type: 'error',
+                                center: true
+                            }).then(() => {
+                                this.$message({
+                                    type: 'warning',
+                                    message: '请修改输入表单！'
+                                });
+                            }).catch(() => {
+                                this.$refs[formName].resetFields();
+                                this.$message({
+                                    type: 'info',
+                                    message: '已刷新表单！'
+                                });
+                            });
+                            // alert('验证码错误或密码和账号不匹配')
+                        }, 300);
+
                         console.log("error submit!!");
                         return false;
                     }
@@ -282,20 +372,21 @@
                 }
             },
             // 验证验证码
-            
-            
+
+
 
 
 
         },
         components: {
-            
+
 
         },
+
     }
 </script>
 <style scoped>
-    .login {
+    .Login {
         text-align: center;
         margin: 0 auto;
         width: 1240px;
@@ -391,12 +482,12 @@
         justify-content: center;
     }
 
-    .register-wrapper img {
+    .login-wrapper img {
         /* position: absolute; */
         z-index: 1;
     }
 
-    .register-wrapper {
+    .login-wrapper {
         /* position: fixed; */
         top: 0;
         right: 0;
@@ -404,7 +495,7 @@
         bottom: 0;
     }
 
-    #register {
+    #login {
         max-width: 400px;
         margin: 60px auto;
         background: #fff;
@@ -438,7 +529,7 @@
         width: 160px;
     }
 
-    .register:hover {
+    .login:hover {
         color: #2c2fd6;
     }
 
