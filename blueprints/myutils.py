@@ -1,10 +1,11 @@
 from flask import Blueprint
 from decorators import login_required
-from models import User,Question,Answer,Worker,Cooperation,Workshop,Product,Warehouse,Produce,Order,Attendance,Performance,Store,Order_product
+from models import User,City,Worker,Cooperation,Workshop,Product,Warehouse,Produce,Order,Attendance,Performance,Store,Order_product
 from flask import Flask,render_template,request,redirect,url_for,session,jsonify
 from exts import db
 utils_bp = Blueprint('utils',__name__) #url_prefix url前缀 template_folder static_folder
 
+#用户中心
 @utils_bp.route('/usercenter/<user_id>/<tag>')
 @login_required
 def usercenter(user_id,tag='1'):
@@ -21,7 +22,7 @@ def usercenter(user_id,tag='1'):
     else:
         return render_template('utils/user_center.html', **context)
 
-
+#登录
 @utils_bp.route('/login/',methods=['GET','POST'])
 def login():
     if request.method == 'GET':
@@ -39,6 +40,7 @@ def login():
         else:
             return render_template('utils/login.html',success=False,msg="您输入的密码不正确，请重新输入~")
 
+#注册
 @utils_bp.route('/regist/',methods=['GET','POST'])
 def regist():
     if request.method == 'GET':
@@ -69,6 +71,7 @@ def logout():
     session.pop('user_id')
     return redirect(url_for('utils.login'))
 
+#修改信息
 @utils_bp.route('/updateuser')
 def updateUserInfo():
     userid = session.get('user_id')
