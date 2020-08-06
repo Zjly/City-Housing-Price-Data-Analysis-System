@@ -80,10 +80,7 @@
 </template>
 
 <script>
-    import {
-        setCookie,
-        getCookie
-    } from '../../assets/js/cookie.js'
+
 
     // 注册页面
     export default {
@@ -206,9 +203,6 @@
             };
         },
         mounted() {
-            if (getCookie("username")) {
-                this.$router.push('/home')
-            }
         },
 
         methods: {
@@ -320,10 +314,7 @@
                                         }
                                     });
                                     // alert('登录成功')
-                                    setCookie("username", this.ruleForm1.Mail, 1000 * 60)
-                                    setTimeout(function () {
-                                        this.$router.push("/home")
-                                    }.bind(this), 1000)
+ 
                                 }
                             })
 
