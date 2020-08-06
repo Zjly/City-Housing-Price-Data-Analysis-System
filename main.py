@@ -4,9 +4,9 @@ from models import User,Question
 from exts import db
 from sqlalchemy import and_,or_
 from blueprints.myutils import utils_bp
-from blueprints.forum import forum_bp
-from blueprints.fm_options import dbOption_bp
-from blueprints.agent_ops import ag_ops
+from blueprints.mainpage import forum_bp
+from blueprints.options import dbOption_bp
+from blueprints.options import ag_ops
 import os
 app = Flask(__name__)
 app.config['JSON_SORT_KEYS'] = False
