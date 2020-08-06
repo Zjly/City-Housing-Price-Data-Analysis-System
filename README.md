@@ -2,6 +2,7 @@
 1.blueprints文件夹：蓝图管理，存放视图函数<br/>
 其中：options.py:管理员部分<br/>
 mainpage.py:主页部分<br/>
+detail.py:详情页面<br/>
 myutils.py:登录注册注销<br/>
 2.migrations文件夹：数据库迁移<br/>
 3.config.py：连接数据库，配置基本信息<br/>
