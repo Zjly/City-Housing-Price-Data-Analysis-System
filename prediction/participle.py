@@ -1,25 +1,20 @@
 import re
-import MySQLdb
 import jieba as jieba
 
 
-def participle():
-	# 新建连接
-	db = MySQLdb.connect("localhost", "root", "root", "house", charset="utf8")
-	cursor = db.cursor()
-
-	# 取出新闻数据
-	sql_content = "SELECT content FROM sohu_news_details LIMIT 10"
-	cursor.execute(sql_content)
-	results = cursor.fetchall()
-
+def participle(data):
+	"""
+	对新闻列表中的新闻进行分词
+	:return: news_cut_list[news_id, sentence_cut_list] 所有新闻的分词列表 -> sentence_cut_list 单篇新闻内的分词列表 -> cut_list 单句话的分词列表
+	"""
 	# 各篇新闻划分列表
 	news_cut_list = []
 
 	# 进行分词
-	for news in results:
+	for news in data:
+		news_id = news[0]
 		# 取得新闻内容
-		news = news[0]
+		news = news[1]
 
 		# 去除标点符号
 		news = re.sub("[\s+\.\!\/_,$%^*(+\"\']+|[+——！，？、~@#￥%……&*（）《》“”:：]+", "", news)
@@ -36,8 +31,6 @@ def participle():
 			cut_list = [i for i in cut]
 			sentence_cut_list.append(cut_list)
 
-		news_cut_list.append(sentence_cut_list)
-
-	db.close()
+		news_cut_list.append([news_id, sentence_cut_list])
 
 	return news_cut_list
