@@ -2,9 +2,8 @@
   <div class="container">
     <alert 
       v-for="(alert, index) in alerts" :key="index"
-      v-if="alert.showAlert"
-      v-bind:variant="alert.alertVariant"
-      v-bind:message="alert.alertMessage">
+      v-bind:variant="alert.variant"
+      v-bind:message="alert.message">
     </alert>
     <button type="button" class="btn btn-primary">HomePage</button>
   </div>
@@ -21,27 +20,19 @@ export default {
     return {
       alerts: [
         {
-          showAlert: true,
-          alertVariant: 'danger',
-          alertMessage: 0
+          variant: 'info',
+          message: 'Hi'
         },
         {
-          showAlert: true,
-          alertVariant: 'info',
-          alertMessage: 1
+          variant: 'danger',
+          message: 'Oops..'
         },
         {
-          showAlert: true,
-          alertVariant: 'dark',
-          alertMessage: 2
+          variant: 'success',
+          message: 'OK'
         }
       ]
     }
   }
 }
 </script>
-<style scoped>
-  .container {
-    font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
-  }
-</style>

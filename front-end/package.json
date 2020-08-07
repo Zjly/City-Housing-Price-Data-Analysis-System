@@ -12,8 +12,10 @@
   "dependencies": {
     "axios": "^0.19.2",
     "bootstrap": "^4.5.1",
+    "moment": "^2.27.0",
     "vue": "^2.5.2",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "vue-toasted": "^1.1.28"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
