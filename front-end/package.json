@@ -19,6 +19,7 @@
     "vue": "^2.5.2",
     "vue-markdown": "^2.2.4",
     "vue-router": "^3.0.1",
+    "vue-scrollto": "^2.18.2",
     "vue-sweetalert2": "^3.0.6",
     "vue-toasted": "^1.1.28"
   },

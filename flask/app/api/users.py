@@ -5,7 +5,7 @@ from app.api import bp
 from app.api.auth import token_auth
 from app.api.errors import bad_request, error_response
 from app.extensions import db
-from app.models import User, Post
+from app.models import User, Post, Comment
 
 
 @bp.route('/users/', methods=['POST'])
@@ -16,12 +16,12 @@ def create_user():
         return bad_request('You must post JSON data.')
 
     message = {}
-    if 'username' not in data or not data.get('username', None):
+    if 'username' not in data or not data.get('username', None).strip():
         message['username'] = 'Please provide a valid username.'
     pattern = '^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$'
     if 'email' not in data or not re.match(pattern, data.get('email', None)):
         message['email'] = 'Please provide a valid email address.'
-    if 'password' not in data or not data.get('password', None):
+    if 'password' not in data or not data.get('password', None).strip():
         message['password'] = 'Please provide a valid password.'
 
     if User.query.filter_by(username=data.get('username', None)).first():
@@ -77,7 +77,7 @@ def update_user(id):
         return bad_request('You must post JSON data.')
 
     message = {}
-    if 'username' in data and not data.get('username', None):
+    if 'username' in data and not data.get('username', None).strip():
         message['username'] = 'Please provide a valid username.'
 
     pattern = '^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$'
@@ -127,7 +127,7 @@ def follow(id):
     db.session.commit()
     return jsonify({
         'status': 'success',
-        'message': 'You are now following %d.' % id
+        'message': 'You are now following %s.' % (user.name if user.name else user.username)
     })
 
 
@@ -144,7 +144,7 @@ def unfollow(id):
     db.session.commit()
     return jsonify({
         'status': 'success',
-        'message': 'You are not following %d anymore.' % id
+        'message': 'You are not following %s anymore.' % (user.name if user.name else user.username)
     })
 
 
@@ -203,7 +203,7 @@ def get_followers(id):
 @bp.route('/users/<int:id>/posts/', methods=['GET'])
 @token_auth.login_required
 def get_user_posts(id):
-    '''返回该用户的所有博客文章列表'''
+    '''返回该用户的所有文章列表'''
     user = User.query.get_or_404(id)
     page = request.args.get('page', 1, type=int)
     per_page = min(
@@ -217,13 +217,50 @@ def get_user_posts(id):
 
 @bp.route('/users/<int:id>/followeds-posts/', methods=['GET'])
 @token_auth.login_required
-def get_user_followed_posts(id):
+def get_user_followeds_posts(id):
+    '''返回该用户所关注的大神的所有文章列表'''
     user = User.query.get_or_404(id)
     page = request.args.get('page', 1, type=int)
     per_page = min(
         request.args.get(
             'per_page', current_app.config['POSTS_PER_PAGE'], type=int), 100)
     data = Post.to_collection_dict(
-        user.followed_posts.order_by(Post.timestamp.desc()), page, per_page,
-        'api.get_user_followed_posts', id=id)
+        user.followeds_posts.order_by(Post.timestamp.desc()), page, per_page,
+        'api.get_user_followeds_posts', id=id)
+    return jsonify(data)
+
+
+@bp.route('/users/<int:id>/comments/', methods=['GET'])
+@token_auth.login_required
+def get_user_comments(id):
+    '''返回该用户发表过的所有评论列表'''
+    user = User.query.get_or_404(id)
+    page = request.args.get('page', 1, type=int)
+    per_page = min(
+        request.args.get(
+            'per_page', current_app.config['COMMENTS_PER_PAGE'], type=int), 100)
+    data = Comment.to_collection_dict(
+        user.comments.order_by(Comment.timestamp.desc()), page, per_page,
+        'api.get_user_comments', id=id)
+    return jsonify(data)
+
+
+@bp.route('/users/<int:id>/recived-comments/', methods=['GET'])
+@token_auth.login_required
+def get_user_recived_comments(id):
+    '''返回该用户收到的所有评论'''
+    user = User.query.get_or_404(id)
+    if g.current_user != user:
+        return error_response(403)
+    page = request.args.get('page', 1, type=int)
+    per_page = min(
+        request.args.get(
+            'per_page', current_app.config['COMMENTS_PER_PAGE'], type=int), 100)
+    # 用户发布的所有文章ID集合
+    user_posts_ids = [post.id for post in g.current_user.posts.all()]
+    # 评论的 post_id 在 user_posts_ids 集合中，且评论的 author 不是当前用户（即文章的作者）
+    data = Comment.to_collection_dict(
+        Comment.query.filter(Comment.post_id.in_(user_posts_ids), Comment.author != g.current_user)
+        .order_by(Comment.mark_read, Comment.timestamp.desc()),
+        page, per_page, 'api.get_user_recived_comments', id=id)
     return jsonify(data)
