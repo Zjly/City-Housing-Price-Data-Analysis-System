@@ -88,7 +88,7 @@
       </div>
     </div>
 
-    <!-- 当前登录的用户发表新博客文章 -->
+    <!-- 当前登录的用户发表新文章 -->
     <div class="container">
 
       <div v-if="sharedState.is_authenticated && $route.params.id == sharedState.user_id" class="card border-0 g-mb-15">
@@ -339,8 +339,8 @@ export default {
           this.postForm.title = '',
           this.postForm.summary = '',
           this.postForm.body = ''
-          // 必须加个动态参数，不然路由没变化的话，UserPostsList 组件不会刷新重新加载博客列表
-          this.$router.push({ name: 'UserPostsList', query: { id: response.data.id } })
+          // 必须加个动态参数，不然路由没变化的话，UserPosts 组件不会刷新重新加载列表
+          this.$router.push({ name: 'UserPosts', query: { pid: response.data.id } })
         })
         .catch((error) => {
           // handle error

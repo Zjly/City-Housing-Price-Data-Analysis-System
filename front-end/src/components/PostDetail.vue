@@ -142,7 +142,7 @@
           </ul>
         </div>
 
-        <!-- 博客文章的评论列表 -->
+        <!-- 文章的评论列表 -->
         <div id="comment-list-wrap" class="card border-0 g-mb-15">
           <!-- Panel Header -->
           <div class="card-header d-flex align-items-center justify-content-between g-bg-gray-light-v5 border-0 g-mb-15">
@@ -268,7 +268,7 @@
                 </router-link>
                 <div class="media-body">
                   <div class="g-mb-15">
-                    <h5 v-if="child.author.id == child.post.author_id" class="h5 g-color-gray-dark-v1 mb-0"><router-link v-bind:to="{ path: `/user/${child.author.id}` }" class="comment-author g-text-underline--none--hover">{{ child.author.name || child.author.username }}</router-link> <button class="btn btn-xs u-btn-inset u-btn-outline-red g-mr-5">博文作者</button></h5>
+                    <h5 v-if="child.author.id == child.post.author_id" class="h5 g-color-gray-dark-v1 mb-0"><router-link v-bind:to="{ path: `/user/${child.author.id}` }" class="comment-author g-text-underline--none--hover">{{ child.author.name || child.author.username }}</router-link> <button class="btn btn-xs u-btn-inset u-btn-outline-red g-mr-5">作者</button></h5>
                     <h5 v-else class="h5 g-color-gray-dark-v1 mb-0"><router-link v-bind:to="{ path: `/user/${child.author.id}` }" class="comment-author g-text-underline--none--hover">{{ child.author.name || child.author.username }}</router-link></h5>
                     <span class="g-color-gray-dark-v4 g-font-size-12">{{ $moment(child.timestamp).format('YYYY年MM月DD日 HH:mm:ss') }}</span>
                   </div>
@@ -355,8 +355,7 @@
 import store from '../store'
 // 导入 vue-markdown 组件解析 markdown 原文为　HTML
 import VueMarkdown from 'vue-markdown'
-// 评论子组件和分页子组件
-import Comment from './Base/Comment'
+// 分页子组件
 import Pagination from './Base/Pagination'
 // vue-router 从 Home 页路由到 Post 页后，会重新渲染并且会移除事件，自定义的指令 v-highlight 也不生效了
 // 所以，这个页面，在 mounted() 和 updated() 方法中调用 highlightCode() 可以解决代码不高亮问题
@@ -375,7 +374,6 @@ export default {
   name: 'Post',
   components: {
     VueMarkdown,
-    Comment,
     Pagination
   },
   data() {
@@ -422,8 +420,8 @@ export default {
     },
     onEditPost (post) {
       // 不要使用对象引用赋值： this.editPostForm = post
-      // 这样是同一个 post 对象，用户在 editPostForm 中的操作会双向绑定到该 post 上， 你会看到 modal 下面的博客也在变
-      // 如果用户修改了一些数据，但是点了 cancel，你就必须在 onResetUpdatePost() 中重新加载一次博客列表，不然用户会看到修改后但未提交的不对称信息
+      // 这样是同一个 post 对象，用户在 editPostForm 中的操作会双向绑定到该 post 上， 你会看到 modal 下面的文章也在变
+      // 如果用户修改了一些数据，但是点了 cancel，你就必须在 onResetUpdatePost() 中重新加载一次列表，不然用户会看到修改后但未提交的不对称信息
       this.editPostForm = Object.assign({}, post)
     },
     onSubmitUpdatePost () {
