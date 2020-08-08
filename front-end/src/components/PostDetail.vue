@@ -117,6 +117,26 @@
             
           </div>
 
+          <div id="like-post" class="row">
+            <div class="col-lg-3">
+              <button v-on:click="onLikeOrUnlikePost(post)" v-bind:class="btnOutlineColor" class="btn btn-block g-rounded-50 g-py-12 g-mb-10">
+                <i class="icon-heart g-pos-rel g-top-1 g-mr-5"></i> 喜欢<span v-if="post.likers_id && post.likers_id.length > 0"> | {{ post.likers_id.length }}</span>
+              </button>
+            </div>
+            <div class="col-lg-9">
+              <ul v-if="post.likers" class="list-inline mb-0">
+                <li class="list-inline-item"
+                  v-for="(liker, index) in post.likers" v-bind:key="index">
+                  <router-link
+                    v-bind:to="{ path: `/user/${liker.id}` }"
+                    v-bind:title="liker.name || liker.username">
+                    <img class="g-brd-around g-brd-gray-light-v3 g-pa-2 g-width-40 g-height-40 rounded-circle rounded mCS_img_loaded g-mt-3" v-bind:src="liker.avatar" v-bind:alt="liker.name || liker.username">
+                  </router-link>
+                </li>
+              </ul>
+            </div>
+          </div>
+
         </article>
 
         <!-- Pre / Next -->
@@ -228,7 +248,7 @@
 
                   <ul class="list-inline d-sm-flex my-0">
                     <li v-if="!comment.disabled" class="list-inline-item g-mr-20">
-                      <a v-on:click="onLikeOrUnlike(comment)" class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover" href="javascript:;">
+                      <a v-on:click="onLikeOrUnlikeComment(comment)" class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover" href="javascript:;">
                         <i v-bind:class="{ 'g-color-red': comment.likers_id.indexOf(sharedState.user_id) != -1 }" class="icon-like g-pos-rel g-top-1 g-mr-3"></i>
                         <span v-if="comment.likers_id.length > 0"> {{ comment.likers_id.length }} 人赞</span>
                         <span v-else>赞</span>
@@ -286,7 +306,7 @@
 
                   <ul class="list-inline d-sm-flex my-0">
                     <li v-if="!child.disabled" class="list-inline-item g-mr-20">
-                      <a v-on:click="onLikeOrUnlike(child)" class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover" href="javascript:;">
+                      <a v-on:click="onLikeOrUnlikeComment(child)" class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover" href="javascript:;">
                         <i v-bind:class="{ 'g-color-red': child.likers_id.indexOf(sharedState.user_id) != -1 }" class="icon-like g-pos-rel g-top-1 g-mr-3"></i>
                         <span v-if="child.likers_id.length > 0"> {{ child.likers_id.length }} 人赞</span>
                         <span v-else>赞</span>
@@ -368,8 +388,6 @@ const highlightCode = () => {
 }
 // 固定 TOC
 import '../assets/jquery.sticky'
-
-
 export default {
   name: 'Post',
   components: {
@@ -405,6 +423,19 @@ export default {
       }
     }
   },
+  computed: {
+    btnOutlineColor: function () {
+      if (this.sharedState.is_authenticated) {
+        if (this.post.likers_id && this.post.likers_id.indexOf(this.sharedState.user_id) != -1) {
+          return 'u-btn-outline-red'
+        } else {
+          return 'u-btn-outline-primary'
+        }
+      } else {
+        return 'u-btn-outline-primary'
+      }
+    }
+  },
   methods: {
     getPost (id) {
       const path = `/api/posts/${id}`
@@ -429,7 +460,6 @@ export default {
       // 每次提交前先移除错误，不然错误就会累加
       $('#editPostForm .form-control-feedback').remove()
       $('#editPostForm .form-group.u-has-error-v1').removeClass('u-has-error-v1')
-
       if (!this.editPostForm.title) {
         this.editPostForm.errors++
         this.editPostForm.titleError = 'Title is required.'
@@ -439,7 +469,6 @@ export default {
       } else {
         this.editPostForm.titleError = null
       }
-
       if (!this.editPostForm.body) {
         this.editPostForm.errors++
         this.editPostForm.bodyError = 'Body is required.'
@@ -450,15 +479,12 @@ export default {
       } else {
         this.editPostForm.bodyError = null
       }
-
       if (this.editPostForm.errors > 0) {
         // 表单验证没通过时，不继续往下执行，即不会通过 axios 调用后端API
         return false
       }
-
       // 先隐藏 Modal
       $('#editPostModal').modal('hide')
-
       const path = `/api/posts/${this.editPostForm.id}`
       const payload = {
         title: this.editPostForm.title,
@@ -523,13 +549,40 @@ export default {
         }
       })
     },
+    onLikeOrUnlikePost (post) {
+      // 用户需要先登录
+      if (!this.sharedState.is_authenticated) {
+        this.$toasted.error('您需要先登录才能收藏文章 ...', { icon: 'fingerprint' })
+        this.$router.replace({
+          path: '/login',
+          query: { redirect: this.$route.path + '#like-post' }
+        })
+      }
+      let path = ''
+      if (post.likers_id.indexOf(this.sharedState.user_id) != -1) {
+        // 当前登录用户已收藏过该文章，再次点击则取消收藏
+        path = `/api/posts/${post.id}/unlike`
+      } else {
+        path = `/api/posts/${post.id}/like`
+      }
+      this.$axios.get(path)
+        .then((response) => {
+          // handle success
+          this.getPost(this.$route.params.id)
+          this.$toasted.success(response.data.message, { icon: 'fingerprint' })
+        })
+        .catch((error) => {
+          // handle error
+          console.log(error.response.data)
+          this.$toasted.error(error.response.data.message, { icon: 'fingerprint' })
+        })
+    },
     getPostComments (id) {
       let page = 1
       let per_page = 10
       if (typeof this.$route.query.page != 'undefined') {
         page = this.$route.query.page
       }
-
       if (typeof this.$route.query.per_page != 'undefined') {
         per_page = this.$route.query.per_page
       }
@@ -548,7 +601,7 @@ export default {
           console.error(error)
         })
     },
-    onLikeOrUnlike (comment) {
+    onLikeOrUnlikeComment (comment) {
       // 用户需要先登录
       if (!this.sharedState.is_authenticated) {
         this.$toasted.error('您需要先登录才能点赞 ...', { icon: 'fingerprint' })
@@ -557,7 +610,6 @@ export default {
           query: { redirect: this.$route.path + '#c' + comment.id }
         })
       }
-
       let path = ''
       if (comment.likers_id.indexOf(this.sharedState.user_id) != -1) {
         // 当前登录用户已点过赞，再次点击则取消赞
@@ -586,7 +638,6 @@ export default {
           query: { redirect: this.$route.path + '#c' + comment.id }
         })
       }
-
       this.commentForm.parent_id = comment.id
       this.commentForm.author_id = comment.author.id
       this.commentForm.author_name = comment.author.name || comment.author.username
@@ -605,7 +656,6 @@ export default {
     },
     onSubmitAddComment (e) {
       this.commentForm.errors = 0  // 重置
-
       if (!this.commentForm.body) {
         this.commentForm.errors++
         this.commentForm.bodyError = 'Body is required.'
@@ -615,12 +665,10 @@ export default {
         this.commentForm.bodyError = null
         $('#addCommentForm .md-editor').closest('.form-group').removeClass('u-has-error-v1')
       }
-
       if (this.commentForm.errors > 0) {
         // 表单验证没通过时，不继续往下执行，即不会通过 axios 调用后端API
         return false
       }
-
       const path = '/api/comments/'
       let payload = ''
       if (this.commentForm.parent_id) {
@@ -638,7 +686,6 @@ export default {
           post_id: this.$route.params.id
         }
       }
-
       this.$axios.post(path, payload)
         .then((response) => {
           // handle success
@@ -663,7 +710,6 @@ export default {
       // 每次提交前先移除错误，不然错误就会累加
       $('#editCommentForm .form-control-feedback').remove()
       $('#editCommentForm .form-group.u-has-error-v1').removeClass('u-has-error-v1')
-
       if (!this.editCommentForm.body) {
         this.editCommentForm.errors++
         this.editCommentForm.bodyError = 'Body is required.'
@@ -674,15 +720,12 @@ export default {
       } else {
         this.editCommentForm.bodyError = null
       }
-
       if (this.editCommentForm.errors > 0) {
         // 表单验证没通过时，不继续往下执行，即不会通过 axios 调用后端API
         return false
       }
-
       // 先隐藏 Modal
       $('#editCommentModal').modal('hide')
-
       const path = `/api/comments/${this.editCommentForm.id}`
       const payload = {
         body: this.editCommentForm.body
@@ -821,7 +864,6 @@ export default {
     next()
     this.getPost(to.params.id)
     this.getPostComments(to.params.id)
-
     if (to.params.id != from.params.id) {  // 同一篇文章，点击 TOC 跳转到各级标题时，不要清空 TOC
       $('#toc').html('')  // 切换不同文章（点击上/下一篇），如果文章内容没有 markdown 需要解析，则需要先清除上个路由的文章的 TOC，不然会残留下来
     }

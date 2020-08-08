@@ -9,7 +9,7 @@ from app.models import Post, Comment
 @bp.route('/comments/', methods=['POST'])
 @token_auth.login_required
 def create_comment():
-    '''在某篇文章下面发表新评论'''
+    '''在某篇博客文章下面发表新评论'''
     data = request.get_json()
     if not data:
         return bad_request('You must post JSON data.')
@@ -121,15 +121,15 @@ def like_comment(id):
     comment = Comment.query.get_or_404(id)
     comment.liked_by(g.current_user)
     db.session.add(comment)
-    # 切记要先提交，先添加点赞记录到数据库，因为 new_likes() 会查询 comments_likes 关联表
+    # 切记要先提交，先添加点赞记录到数据库，因为 new_comments_likes() 会查询 comments_likes 关联表
     db.session.commit()
     # 给评论作者发送新点赞通知
-    comment.author.add_notification('unread_likes_count',
-                                    comment.author.new_likes())
+    comment.author.add_notification('unread_comments_likes_count',
+                                    comment.author.new_comments_likes())
     db.session.commit()
     return jsonify({
         'status': 'success',
-        'message': 'You are now liking comment [ id: %d ].' % id
+        'message': 'You are now liking this comment.'
     })
 
 
@@ -140,13 +140,13 @@ def unlike_comment(id):
     comment = Comment.query.get_or_404(id)
     comment.unliked_by(g.current_user)
     db.session.add(comment)
-    # 切记要先提交，先添加点赞记录到数据库，因为 new_likes() 会查询 comments_likes 关联表
+    # 切记要先提交，先添加点赞记录到数据库，因为 new_comments_likes() 会查询 comments_likes 关联表
     db.session.commit()
     # 给评论作者发送新点赞通知(需要自动减1)
-    comment.author.add_notification('unread_likes_count',
-                                    comment.author.new_likes())
+    comment.author.add_notification('unread_comments_likes_count',
+                                    comment.author.new_comments_likes())
     db.session.commit()
     return jsonify({
         'status': 'success',
-        'message': 'You are not liking comment [ id: %d ] anymore.' % id
+        'message': 'You are not liking this comment anymore.'
     })
