@@ -203,7 +203,7 @@ def get_followers(id):
 @bp.route('/users/<int:id>/posts/', methods=['GET'])
 @token_auth.login_required
 def get_user_posts(id):
-    '''返回该用户的所有文章列表'''
+    '''返回该用户的所有博客文章列表'''
     user = User.query.get_or_404(id)
     page = request.args.get('page', 1, type=int)
     per_page = min(
@@ -216,6 +216,7 @@ def get_user_posts(id):
 
 
 @bp.route('/users/<int:id>/followeds-posts/', methods=['GET'])
+@token_auth.login_required
 def get_user_followed_posts(id):
     user = User.query.get_or_404(id)
     page = request.args.get('page', 1, type=int)

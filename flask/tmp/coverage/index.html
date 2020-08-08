@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Coverage report</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="jquery.ba-throttle-debounce.min.js"></script>
+    <script type="text/javascript" src="jquery.tablesorter.min.js"></script>
+    <script type="text/javascript" src="jquery.hotkeys.js"></script>
+    <script type="text/javascript" src="coverage_html.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(coverage.index_ready);
+    </script>
+</head>
+<body class="indexfile">
+<div id="header">
+    <div class="content">
+        <h1>Coverage report:
+            <span class="pc_cov">52%</span>
+        </h1>
+        <img id="keyboard_icon" src="keybd_closed.png" alt="Show keyboard shortcuts" />
+        <form id="filter_container">
+            <input id="filter" type="text" value="" placeholder="filter..." />
+        </form>
+    </div>
+</div>
+<div class="help_panel">
+    <img id="panel_icon" src="keybd_open.png" alt="Hide keyboard shortcuts" />
+    <p class="legend">Hot-keys on this page</p>
+    <div>
+    <p class="keyhelp">
+        <span class="key">n</span>
+        <span class="key">s</span>
+        <span class="key">m</span>
+        <span class="key">x</span>
+        <span class="key">b</span>
+        <span class="key">p</span>
+        <span class="key">c</span> &nbsp; change column sorting
+    </p>
+    </div>
+</div>
+<div id="index">
+    <table class="index">
+        <thead>
+            <tr class="tablehead" title="Click to sort">
+                <th class="name left headerSortDown shortkey_n">Module</th>
+                <th class="shortkey_s">statements</th>
+                <th class="shortkey_m">missing</th>
+                <th class="shortkey_x">excluded</th>
+                <th class="shortkey_b">branches</th>
+                <th class="shortkey_p">partial</th>
+                <th class="right shortkey_c">coverage</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr class="total">
+                <td class="name left">Total</td>
+                <td>371</td>
+                <td>191</td>
+                <td>0</td>
+                <td>92</td>
+                <td>5</td>
+                <td class="right" data-ratio="239 463">52%</td>
+            </tr>
+        </tfoot>
+        <tbody>
+            <tr class="file">
+                <td class="name left"><a href="app___init___py.html">app\__init__.py</a></td>
+                <td>27</td>
+                <td>10</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="right" data-ratio="17 27">63%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="app_api_auth_py.html">app\api\auth.py</a></td>
+                <td>23</td>
+                <td>12</td>
+                <td>0</td>
+                <td>4</td>
+                <td>1</td>
+                <td class="right" data-ratio="14 27">52%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="app_api_errors_py.html">app\api\errors.py</a></td>
+                <td>18</td>
+                <td>10</td>
+                <td>0</td>
+                <td>2</td>
+                <td>0</td>
+                <td class="right" data-ratio="10 20">50%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="app_api_posts_py.html">app\api\posts.py</a></td>
+                <td>68</td>
+                <td>64</td>
+                <td>0</td>
+                <td>24</td>
+                <td>0</td>
+                <td class="right" data-ratio="4 92">4%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="app_api_tokens_py.html">app\api\tokens.py</a></td>
+                <td>10</td>
+                <td>6</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="right" data-ratio="4 10">40%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="app_api_users_py.html">app\api\users.py</a></td>
+                <td>133</td>
+                <td>32</td>
+                <td>0</td>
+                <td>42</td>
+                <td>1</td>
+                <td class="right" data-ratio="142 175">81%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="app_models_py.html">app\models.py</a></td>
+                <td>92</td>
+                <td>57</td>
+                <td>0</td>
+                <td>20</td>
+                <td>3</td>
+                <td class="right" data-ratio="48 112">43%</td>
+            </tr>
+        </tbody>
+    </table>
+    <p id="no_rows">
+        No items found using the specified filter.
+    </p>
+</div>
+<div id="footer">
+    <div class="content">
+        <p>
+            <a class="nav" href="https://coverage.readthedocs.io">coverage.py v5.2.1</a>,
+            created at 2020-08-08 14:26 +0800
+        </p>
+    </div>
+</div>
+</body>
+</html>
