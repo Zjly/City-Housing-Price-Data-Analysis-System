@@ -92,7 +92,7 @@
     </div>
   
     <!-- Pagination #04 -->
-    <div v-if="comments && comments._meta.total_pages > 1">
+    <div v-if="comments">
       <pagination
         v-bind:cur-page="comments._meta.page"
         v-bind:per-page="comments._meta.per_page"
@@ -108,8 +108,6 @@ import store from '../../store'
 // 导入 vue-markdown 组件解析 markdown 原文为　HTML
 import VueMarkdown from 'vue-markdown'
 import Pagination from '../Base/Pagination'
-
-
 export default {
   name: 'CommentsResource',  // this is the name of the component
   components: {
@@ -129,7 +127,6 @@ export default {
       if (typeof this.$route.query.page != 'undefined') {
         page = this.$route.query.page
       }
-
       if (typeof this.$route.query.per_page != 'undefined') {
         per_page = this.$route.query.per_page
       }

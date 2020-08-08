@@ -55,11 +55,20 @@
           </h5>
           <p class="m-0">{{ $moment(message.timestamp).format('YYYY年MM月DD日 HH:mm:ss') }}</p>
         </div>
-        <div class="align-self-center ml-auto">
-          <router-link v-bind:to="{ name: 'MessagesHistory', query: { from: message.sender.id } }">
-            <button class="btn btn-block u-btn-outline-primary g-rounded-20 g-px-10">聊天记录</button>
-          </router-link>
-        </div>
+        <ul class="list-inline mb-0 align-self-center ml-auto">
+          <li v-if="!message.is_blocking" class="list-inline-item g-mr-5">
+            <button v-on:click="onBlock(message.sender.id)" class="btn btn-block u-btn-outline-red g-rounded-20 g-px-10">拉黑</button>
+          </li>
+          <li v-else class="list-inline-item g-mr-5">
+            <button v-on:click="onUnblock(message.sender.id)" class="btn btn-block u-btn-outline-aqua g-rounded-20 g-px-10">取消拉黑</button>
+          </li>
+
+          <li class="list-inline-item">
+            <router-link v-bind:to="{ name: 'MessagesHistory', query: { from: message.sender.id } }">
+              <button class="btn btn-block u-btn-outline-primary g-rounded-20 g-px-10">聊天记录</button>
+            </router-link>
+          </li>
+        </ul> 
       </div>
       <!-- End Panel Body -->
     </div>
@@ -79,7 +88,6 @@
 <script>
 import store from '../../../store'
 import Pagination from '../../Base/Pagination'
-
 export default {
   name: 'List',  // this is the name of the component
   components: {
@@ -98,7 +106,6 @@ export default {
       if (typeof this.$route.query.page != 'undefined') {
         page = this.$route.query.page
       }
-
       if (typeof this.$route.query.per_page != 'undefined') {
         per_page = this.$route.query.per_page
       }
@@ -112,6 +119,48 @@ export default {
         .catch((error) => {
           // handle error
           console.error(error)
+        })
+    },
+    onBlock (id) {
+      this.$swal({
+        title: "Are you sure?",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, block he!',
+        cancelButtonText: 'No, cancel!'
+      }).then((result) => {
+        if(result.value) {
+          const path = `/api/block/${id}`
+          this.$axios.get(path)
+            .then((response) => {
+              // handle success
+              this.$swal('Successed', response.data.message, 'success')
+              this.getUserMessagesSenders(this.sharedState.user_id)
+            })
+            .catch((error) => {
+              // handle error
+              console.log(error.response.data)
+              this.$toasted.error(error.response.data.message, { icon: 'fingerprint' })
+            })
+        } else {
+          this.$swal('Cancelled', 'You are not blocking this user yet :)', 'error')
+        }
+      })
+    },
+    onUnblock (id) {
+      const path = `/api/unblock/${id}`
+      this.$axios.get(path)
+        .then((response) => {
+          // handle success
+          this.$swal('Successed', response.data.message, 'success')
+          this.getUserMessagesSenders(this.sharedState.user_id)
+        })
+        .catch((error) => {
+          // handle error
+          console.log(error.response.data)
+          this.$toasted.error(error.response.data.message, { icon: 'fingerprint' })
         })
     }
   },
