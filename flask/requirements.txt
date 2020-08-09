@@ -5,6 +5,7 @@ Automat==20.2.0
 autopep8==1.4.4
 backcall==0.2.0
 beautifulsoup4==4.9.1
+blinker==1.4
 bs4==0.0.1
 certifi==2019.9.11
 cffi==1.14.0
@@ -22,6 +23,7 @@ filelock==3.0.12
 Flask==1.1.2
 Flask-Cors==3.0.8
 Flask-HTTPAuth==4.1.0
+Flask-Mail==0.9.1
 Flask-Migrate==2.5.3
 Flask-SQLAlchemy==2.4.4
 funcsigs==1.0.2

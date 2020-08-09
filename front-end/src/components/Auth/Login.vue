@@ -22,14 +22,13 @@
     <p>New User? <router-link to="/register">Click to Register!</router-link></p>
     <p>
         Forgot Your Password?
-        <a href="#">Click to Reset It</a>
+        <router-link v-bind:to="{ name: 'ResetPasswordRequest' }">Click to Reset It</router-link>
     </p>
   </div>
 </template>
 
 <script>
 import store from '../../store'
-
 export default {
   name: 'Login',  //this is the name of the component
   data () {
@@ -47,26 +46,22 @@ export default {
   methods: {
     onSubmit (e) {
       this.loginForm.errors = 0  // 重置
-
       if (!this.loginForm.username) {
         this.loginForm.errors++
         this.loginForm.usernameError = 'Username required.'
       } else {
         this.loginForm.usernameError = null
       }
-
       if (!this.loginForm.password) {
         this.loginForm.errors++
         this.loginForm.passwordError = 'Password required.'
       } else {
         this.loginForm.passwordError = null
       }
-
       if (this.loginForm.errors > 0) {
         // 表单验证没通过时，不继续往下执行，即不会通过 axios 调用后端API
         return false
       }
-
       const path = '/api/tokens'
       // axios 实现Basic Auth需要在config中设置 auth 这个属性即可
       this.$axios.post(path, {}, {
@@ -78,9 +73,7 @@ export default {
           // handle success
           window.localStorage.setItem('madblog-token', response.data.token)
           store.loginAction()
-
           this.$toasted.success(`Welcome ${this.sharedState.user_name}!`, { icon: 'fingerprint' })
-
           if (typeof this.$route.query.redirect == 'undefined') {
             this.$router.push('/')
           } else {

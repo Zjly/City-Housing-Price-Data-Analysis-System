@@ -46,14 +46,12 @@ export default {
   methods: {
     onSubmit (e) {
       this.registerForm.errors = 0  // 重置
-
       if (!this.registerForm.username) {
         this.registerForm.errors++
         this.registerForm.usernameError = 'Username required.'
       } else {
         this.registerForm.usernameError = null
       }
-
       if (!this.registerForm.email) {
         this.registerForm.errors++
         this.registerForm.emailError = 'Email required.'
@@ -63,21 +61,19 @@ export default {
       } else {
         this.registerForm.emailError = null
       }
-
       if (!this.registerForm.password) {
         this.registerForm.errors++
         this.registerForm.passwordError = 'Password required.'
       } else {
         this.registerForm.passwordError = null
       }
-
       if (this.registerForm.errors > 0) {
         // 表单验证没通过时，不继续往下执行，即不会通过 axios 调用后端API
         return false
       }
-
       const path = '/api/users'
       const payload = {
+        confirm_email_base_url: window.location.href.split('/', 4).join('/') + '/unconfirmed/?token=',
         username: this.registerForm.username,
         email: this.registerForm.email,
         password: this.registerForm.password
@@ -85,7 +81,7 @@ export default {
       this.$axios.post(path, payload)
         .then((response) => {
           // handle success
-          this.$toasted.success('Congratulations, you are now a registered user !', { icon: 'fingerprint' })
+          this.$toasted.success('A confirmation email has been sent to you by email.', { icon: 'fingerprint' })
           this.$router.push('/login')
         })
         .catch((error) => {
