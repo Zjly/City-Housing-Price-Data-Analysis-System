@@ -18,7 +18,7 @@
           <el-menu-item style="min-inline-size: 0px;margin-left:-20px">|
           </el-menu-item>
           <el-menu-item style="min-inline-size: 100px;margin-left:-10px" index="6" class="el-menu-item-nav"><u><a
-                href="/" v-on:click="quit">注销登入</a></u>
+                href="/" v-on:click="quit">登录</a></u>
           </el-menu-item>
         </el-menu>
       </el-header>
@@ -208,11 +208,7 @@
 </template>
 
 <script>
-  // @ is an alias to /src
-  import {
-    getCookie,
-    delCookie
-  } from '../../assets/js/cookie.js'
+
   // 主页
   export default {
     name: 'Home',
@@ -243,9 +239,6 @@
 
     },
     methods: {
-      quit() {
-        delCookie("username")
-      },
       handleSelect(key, keyPath) {
         console.log(key, keyPath);
         // 跳页面
@@ -273,11 +266,7 @@
     },
     mounted() {
       // aixos 请求数据
-      let uname = getCookie("username")
-      this.name = uname
-      if (uname == "") {
-        this.$router.push("/")
-      }
+
       this.axios.get('http://127.0.0.1:5000/line').then(res => {
         console.log(res)
         var data = res.data.data
