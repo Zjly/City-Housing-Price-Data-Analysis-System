@@ -10,7 +10,6 @@
 
     <span class="d-inline-block g-pos-rel g-mr-20 g-mb-20">
       <span class="u-badge-v2--xs u-badge--top-left g-bg-red g-mt-7 g-ml-7"></span>
-      <img class="media-object g-rounded-50x u-image-icon-size-md" src="http://www.madmalls.com/static/main/images/avatar.jpg" alt="Image Description">
     </span>
   </div>
 </template>

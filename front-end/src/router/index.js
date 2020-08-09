@@ -38,10 +38,18 @@ import MessagesHistory from '@/components/Notifications/Messages/History'
 import PostsLikes from '@/components/Notifications/PostsLikes'
 import CommentsLikes from '@/components/Notifications/CommentsLikes'
 import FollowingPosts from '@/components/Notifications/FollowingPosts'
-// 博客详情页
+// 详情页
 import PostDetail from '@/components/PostDetail'
 // 测试与后端连通性
 import Ping from '@/components/Ping'
+// 管理后台
+import Admin from '@/components/Admin/Admin.vue'
+import AdminRoles from '@/components/Admin/Roles.vue'
+import AdminUsers from '@/components/Admin/Users.vue'
+import AdminPosts from '@/components/Admin/Posts.vue'
+import AdminComments from '@/components/Admin/Comments.vue'
+import AdminAddRole from '@/components/Admin/AddRole.vue'
+import AdminEditRole from '@/components/Admin/EditRole.vue'
 
 
 Vue.use(Router)
@@ -208,7 +216,7 @@ const router = new Router({
       }
     },
     {
-      // 博客文章详情页
+      // 文章详情页
       path: '/post/:id',
       name: 'PostDetail',
       component: PostDetail
@@ -217,7 +225,25 @@ const router = new Router({
       path: '/ping',
       name: 'Ping',
       component: Ping
-    }
+    },
+    {
+      // 管理后台
+      path: '/admin',
+      component: Admin,
+      children: [
+        { path: '', component: AdminRoles },
+        { path: 'roles', name: 'AdminRoles', component: AdminRoles },
+        { path: 'add-role', name: 'AdminAddRole', component: AdminAddRole },
+        { path: 'edit-role/:id', name: 'AdminEditRole', component: AdminEditRole },
+        { path: 'users', name: 'AdminUsers', component: AdminUsers },
+        { path: 'posts', name: 'AdminPosts', component: AdminPosts },
+        { path: 'comments', name: 'AdminComments', component: AdminComments }
+      ],
+      meta: {
+        requiresAuth: true,
+        requiresAdmin: true
+      }
+    },
   ]
 })
 
@@ -225,8 +251,10 @@ router.beforeEach((to, from, next) => {
   const token = window.localStorage.getItem('madblog-token')
   if (token) {
     var payload = JSON.parse(atob(token.split('.')[1]))
+
+    var user_perms = payload.permissions.split(",")
   }
-  
+
   if (to.matched.some(record => record.meta.requiresAuth) && (!token || token === null)) {
     // 1. 用户未登录，但想访问需要认证的相关路由时，跳转到 登录 页
     Vue.toasted.show('Please log in to access this page.', { icon: 'fingerprint' })
@@ -251,8 +279,14 @@ router.beforeEach((to, from, next) => {
     next({
       path: from.fullPath
     })
+  } else if (to.matched.some(record => record.meta.requiresAdmin) && token && !user_perms.includes('admin')) {
+    // 5. 普通用户想在浏览器地址中直接访问 /admin ，提示他没有权限，并跳转到首页
+    Vue.toasted.error('403: Forbidden', { icon: 'fingerprint' })
+    next({
+      path: '/'
+    })
   } else if (to.matched.length === 0) {
-    // 5. 要前往的路由不存在时
+    // 6. 要前往的路由不存在时
     Vue.toasted.error('404: Not Found', { icon: 'fingerprint' })
     if (from.name) {
       next({
@@ -264,9 +298,10 @@ router.beforeEach((to, from, next) => {
       })
     }
   } else {
-    // 6. 正常路由出口
+    // 7. 正常路由出口
     next()
   }
 })
+
 
 export default router

@@ -34,7 +34,7 @@
       </div>
     </div>
 
-    <form id="addPostForm" v-if="sharedState.is_authenticated" @submit.prevent="onSubmitAddPost" class="g-mb-40">
+    <form id="addPostForm" v-if="sharedState.is_authenticated && sharedState.user_perms.includes('write')" @submit.prevent="onSubmitAddPost" class="g-mb-40">
       <div class="form-group" v-bind:class="{'u-has-error-v1': postForm.titleError}">
         <input type="text" v-model="postForm.title" class="form-control" id="postFormTitle" placeholder="标题">
         <small class="form-control-feedback" v-show="postForm.titleError">{{ postForm.titleError }}</small>

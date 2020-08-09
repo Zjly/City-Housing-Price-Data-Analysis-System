@@ -8,6 +8,8 @@ from app.api.errors import bad_request, error_response
 from app.extensions import db
 from app.models import comments_likes, posts_likes, User, Post, Comment, Notification, Message
 from app.utils.email import send_email
+from app.models import Permission
+from app.utils.decorator import permission_required
 
 
 @bp.route('/users/', methods=['POST'])
@@ -163,7 +165,7 @@ def update_user(id):
 def delete_user(id):
     '''删除一个用户'''
     user = User.query.get_or_404(id)
-    if g.current_user != user:
+    if g.current_user != user and not g.current_user.can(Permission.ADMIN):
         return error_response(403)
     db.session.delete(user)
     db.session.commit()
@@ -190,6 +192,7 @@ def get_user_notifications(id):
 ###
 @bp.route('/follow/<int:id>', methods=['GET'])
 @token_auth.login_required
+@permission_required(Permission.FOLLOW)
 def follow(id):
     '''开始关注一个用户'''
     user = User.query.get_or_404(id)
@@ -209,6 +212,7 @@ def follow(id):
 
 @bp.route('/unfollow/<int:id>', methods=['GET'])
 @token_auth.login_required
+@permission_required(Permission.FOLLOW)
 def unfollow(id):
     '''取消关注一个用户'''
     user = User.query.get_or_404(id)
@@ -632,6 +636,7 @@ def get_user_history_messages(id):
 ###
 @bp.route('/block/<int:id>', methods=['GET'])
 @token_auth.login_required
+@permission_required(Permission.FOLLOW)
 def block(id):
     '''开始拉黑一个用户'''
     user = User.query.get_or_404(id)
@@ -649,6 +654,7 @@ def block(id):
 
 @bp.route('/unblock/<int:id>', methods=['GET'])
 @token_auth.login_required
+@permission_required(Permission.FOLLOW)
 def unblock(id):
     '''取消拉黑一个用户'''
     user = User.query.get_or_404(id)

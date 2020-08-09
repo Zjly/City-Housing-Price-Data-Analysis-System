@@ -5,6 +5,7 @@ from app import create_app
 from app.extensions import db
 from app.models import User, Post, Comment, Notification, Message
 from config import Config
+from app.models import Role
 
 app = create_app(Config)
 
@@ -23,7 +24,7 @@ def hello_world():
 
 @app.shell_context_processor
 def make_shell_context():
-    return {'db': db, 'User': User, 'Post': Post, 'Comment': Comment,
+    return {'db': db, 'Role': Role, 'User': User, 'Post': Post, 'Comment': Comment,
             'Notification': Notification, 'Message': Message}
 
 

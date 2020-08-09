@@ -4,10 +4,13 @@ from app.api.auth import token_auth
 from app.api.errors import error_response, bad_request
 from app.extensions import db
 from app.models import Post, Comment
+from app.models import Permission
+from app.utils.decorator import permission_required
 
 
 @bp.route('/posts/', methods=['POST'])
 @token_auth.login_required
+@permission_required(Permission.WRITE)
 def create_post():
     '''添加一篇新文章'''
     data = request.get_json()
@@ -110,7 +113,7 @@ def update_post(id):
 def delete_post(id):
     '''删除一篇文章'''
     post = Post.query.get_or_404(id)
-    if g.current_user != post.author:
+    if g.current_user != post.author and not g.current_user.can(Permission.ADMIN):  # 管理员也可以删除文章
         return error_response(403)
     db.session.delete(post)
     # 给文章作者的所有粉丝发送新文章通知(需要自动减1)
