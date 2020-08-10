@@ -11,7 +11,8 @@ def get_data():
 	cursor = db.cursor()
 
 	# 取出新闻数据
-	sql_content = "SELECT id, content FROM sohu_news_details LIMIT 10"
+	# sql_content = "SELECT id, title, content FROM sohu_news_details ORDER BY RAND() LIMIT 10"
+	sql_content = "SELECT id, title, content FROM sohu_news_details"
 	cursor.execute(sql_content)
 	results = cursor.fetchall()
 

@@ -13,11 +13,19 @@ def participle(data):
 	# 进行分词
 	for news in data:
 		news_id = news[0]
+		# 取得新闻标题
+		title = news[1]
 		# 取得新闻内容
-		news = news[1]
+		news = news[2]
 
 		# 去除标点符号
-		news = re.sub("[\s+\.\!\/_,$%^*(+\"\']+|[+——！，？、~@#￥%……&*（）《》“”:：]+", "", news)
+		pattern = "[\s+\.\!\/_,$%^*(+\"\']+|[+——！，？、~@#￥%……&*（）《》“”:：]+"
+		title = re.sub(pattern, "", title)
+		news = re.sub(pattern, "", news)
+
+		# 对标题进行分词
+		cut = jieba.cut(title)
+		title_cut_list = [i for i in cut]
 
 		# 划分为句子
 		sentence_list = news.split("。")
@@ -31,6 +39,6 @@ def participle(data):
 			cut_list = [i for i in cut]
 			sentence_cut_list.append(cut_list)
 
-		news_cut_list.append([news_id, sentence_cut_list])
+		news_cut_list.append([news_id, title_cut_list, sentence_cut_list])
 
 	return news_cut_list

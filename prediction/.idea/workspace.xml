@@ -1,12 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:develop" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="a8edbcab-f199-4f69-b399-11c7d6b37cd7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/emotion_analysis.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/get_data.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../news_crawler/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../news_crawler/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emotion/emotion_word.py" beforeDir="false" afterPath="$PROJECT_DIR$/emotion/emotion_word.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emotion_analysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/emotion_analysis.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/get_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/get_data.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/participle.py" beforeDir="false" afterPath="$PROJECT_DIR$/participle.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -122,7 +141,8 @@
       <option name="presentableId" value="Default" />
       <updated>1596728777316</updated>
       <workItem from="1596728778707" duration="4479000" />
-      <workItem from="1596762705868" duration="9322000" />
+      <workItem from="1596762705868" duration="9518000" />
+      <workItem from="1597021121098" duration="9489000" />
     </task>
     <task id="LOCAL-00001" summary="完成文章的分词处理">
       <created>1596808709446</created>
@@ -131,77 +151,108 @@
       <option name="project" value="LOCAL" />
       <updated>1596808709446</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="调整结构，读取数据加入文章序号">
+      <created>1596818649846</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1596818649846</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="develop" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="完成文章的分词处理" />
-    <option name="LAST_COMMIT_MESSAGE" value="完成文章的分词处理" />
+    <MESSAGE value="调整结构，读取数据加入文章序号" />
+    <option name="LAST_COMMIT_MESSAGE" value="调整结构，读取数据加入文章序号" />
   </component>
   <component name="WindowStateProjectService">
     <state x="361" y="90" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1596731064071">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="361" y="90" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.864@0.0.1536.864" timestamp="1596731064071" />
-    <state x="382" y="18" key="CommitChangelistDialog2" timestamp="1596808708418">
+    <state x="382" y="18" key="CommitChangelistDialog2" timestamp="1596818649183">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="382" y="18" key="CommitChangelistDialog2/0.0.1536.864@0.0.1536.864" timestamp="1596808708418" />
+    <state x="382" y="18" key="CommitChangelistDialog2/0.0.1536.864@0.0.1536.864" timestamp="1596818649183" />
     <state x="549" y="187" key="FileChooserDialogImpl" timestamp="1596762723227">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="549" y="187" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1596762723227" />
-    <state width="1493" height="277" key="GridCell.Tab.0.bottom" timestamp="1596818421696">
+    <state width="1493" height="223" key="GridCell.Tab.0.bottom" timestamp="1597030674955">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="277" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1596818421696" />
-    <state width="1493" height="277" key="GridCell.Tab.0.center" timestamp="1596818421696">
+    <state width="1493" height="223" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1597030674955" />
+    <state width="1493" height="223" key="GridCell.Tab.0.center" timestamp="1597030674955">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="277" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1596818421696" />
-    <state width="1493" height="277" key="GridCell.Tab.0.left" timestamp="1596818421696">
+    <state width="1493" height="223" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1597030674955" />
+    <state width="1493" height="223" key="GridCell.Tab.0.left" timestamp="1597030674955">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="277" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1596818421696" />
-    <state width="1493" height="277" key="GridCell.Tab.0.right" timestamp="1596818421696">
+    <state width="1493" height="223" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1597030674955" />
+    <state width="1493" height="223" key="GridCell.Tab.0.right" timestamp="1597030674955">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="277" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1596818421696" />
-    <state width="1493" height="277" key="GridCell.Tab.1.bottom" timestamp="1596818425796">
+    <state width="1493" height="223" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1597030674955" />
+    <state width="1493" height="277" key="GridCell.Tab.1.bottom" timestamp="1597030061722">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="277" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1596818425796" />
-    <state width="1493" height="277" key="GridCell.Tab.1.center" timestamp="1596818425796">
+    <state width="1493" height="277" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1597030061722" />
+    <state width="1493" height="277" key="GridCell.Tab.1.center" timestamp="1597030061722">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="277" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1596818425796" />
-    <state width="1493" height="277" key="GridCell.Tab.1.left" timestamp="1596818425796">
+    <state width="1493" height="277" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1597030061722" />
+    <state width="1493" height="277" key="GridCell.Tab.1.left" timestamp="1597030061722">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="277" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1596818425796" />
-    <state width="1493" height="277" key="GridCell.Tab.1.right" timestamp="1596818425796">
+    <state width="1493" height="277" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1597030061722" />
+    <state width="1493" height="277" key="GridCell.Tab.1.right" timestamp="1597030061722">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="277" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1596818425796" />
+    <state width="1493" height="277" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1597030061722" />
     <state width="212" height="477" key="HiddenNamespacesPopup" timestamp="1596731074088">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="212" height="477" key="HiddenNamespacesPopup/0.0.1536.864@0.0.1536.864" timestamp="1596731074088" />
-    <state x="361" y="151" key="Vcs.Push.Dialog.v2" timestamp="1596808711872">
+    <state x="361" y="151" key="Vcs.Push.Dialog.v2" timestamp="1596818651116">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="361" y="151" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1596808711872" />
-    <state width="648" height="440" key="XDebugger.FullValuePopup" timestamp="1596807613171">
+    <state x="361" y="151" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1596818651116" />
+    <state width="648" height="440" key="XDebugger.FullValuePopup" timestamp="1597028785464">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="648" height="440" key="XDebugger.FullValuePopup/0.0.1536.864@0.0.1536.864" timestamp="1596807613171" />
+    <state width="648" height="440" key="XDebugger.FullValuePopup/0.0.1536.864@0.0.1536.864" timestamp="1597028785464" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/prediction$participle.coverage" NAME="participle Coverage Results" MODIFIED="1596807565229" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/prediction$test.coverage" NAME="test Coverage Results" MODIFIED="1596818421584" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/prediction$test.coverage" NAME="test Coverage Results" MODIFIED="1597030674947" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
