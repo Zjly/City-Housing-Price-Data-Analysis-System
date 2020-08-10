@@ -19,13 +19,13 @@
           <router-link v-bind:to="{ path: $route.path, query: { page: 1, per_page: 10 }}" class="dropdown-item g-px-10">
             <i class="icon-wallet g-font-size-12 g-color-gray-dark-v5 g-mr-5"></i> 每页 10 个
           </router-link>
-
+          
           <div class="dropdown-divider"></div>
 
           <router-link v-bind:to="{ path: $route.path, query: { page: 1, per_page: 20 }}" class="dropdown-item g-px-10">
             <i class="icon-fire g-font-size-12 g-color-gray-dark-v5 g-mr-5"></i> 每页 20 个
           </router-link>
-
+          
         </div>
       </div>
     </div>
@@ -33,7 +33,7 @@
 
     <!-- Striped Rows -->
     <div v-if="users" class="card g-brd-teal rounded-0 g-mb-30">
-
+      
       <div class="table-responsive">
         <table class="table table-striped u-table--v1 mb-0">
           <thead>
@@ -50,7 +50,9 @@
 
             <tr v-for="(user, index) in users.items" v-bind:key="index">
               <th scope="row">{{ index+1 }}</th>
-              <td>{{ user.name || user.username }}</td>
+              <td>
+                <router-link v-bind:to="{ path: `/user/${user.id}` }" class="g-text-underline--none--hover">{{ user.name || user.username }}</router-link>
+              </td>
               <td class="hidden-sm">{{ user.role_name }}</td>
               <td>
                 <i v-if="user.confirmed" class="fa fa-check-circle g-color-aqua"></i>
@@ -61,7 +63,7 @@
                 <button v-on:click="onDeleteUser(user)" class="btn btn-xs u-btn-outline-red">删除</button>
               </td>
             </tr>
-
+          
           </tbody>
         </table>
       </div>
@@ -104,12 +106,14 @@ export default {
       if (typeof this.$route.query.per_page != 'undefined') {
         per_page = this.$route.query.per_page
       }
-
+      
       const path = `/api/users/?page=${page}&per_page=${per_page}`
       this.$axios.get(path)
         .then((response) => {
           // handle success
           this.users = response.data
+          var user_role = response.data
+          console.log(user_role)
         })
         .catch((error) => {
           // handle error

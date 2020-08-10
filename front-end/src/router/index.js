@@ -49,6 +49,7 @@ import AdminUsers from '@/components/Admin/Users.vue'
 import AdminPosts from '@/components/Admin/Posts.vue'
 import AdminComments from '@/components/Admin/Comments.vue'
 import AdminAddRole from '@/components/Admin/AddRole.vue'
+import AdminEditUser from '@/components/Admin/EditUser.vue'
 import AdminEditRole from '@/components/Admin/EditRole.vue'
 
 
@@ -234,6 +235,7 @@ const router = new Router({
         { path: '', component: AdminRoles },
         { path: 'roles', name: 'AdminRoles', component: AdminRoles },
         { path: 'add-role', name: 'AdminAddRole', component: AdminAddRole },
+        { path: 'edit-user/:id', name: 'AdminEditUser', component: AdminEditUser },
         { path: 'edit-role/:id', name: 'AdminEditRole', component: AdminEditRole },
         { path: 'users', name: 'AdminUsers', component: AdminUsers },
         { path: 'posts', name: 'AdminPosts', component: AdminPosts },

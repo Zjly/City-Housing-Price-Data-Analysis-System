@@ -8,27 +8,6 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask import url_for, current_app
 from app.extensions import db
 
-class Permission:
-    '''权限认证中的各种操作，对应二进制的位，比如
-    FOLLOW: 0b00000001，转换为十六进制为 0x01
-    COMMENT: 0b00000010，转换为十六进制为 0x02
-    WRITE: 0b00000100，转换为十六进制为 0x04
-    ...
-    ADMIN: 0b10000000，转换为十六进制为 0x80
-
-    中间还预留了第 4、5、6、7 共4位二进制位，以备后续增加操作权限
-    '''
-    # 关注其它用户的权限
-    FOLLOW = 0x01
-    # 发表评论、评论点赞与踩的权限
-    COMMENT = 0x02
-    # 撰写文章的权限
-    WRITE = 0x04
-    # 管理网站的权限(对应管理员角色)
-    ADMIN = 0x80
-
-
-        
 
 class PaginatedAPIMixin(object):
     @staticmethod
@@ -54,6 +33,8 @@ class PaginatedAPIMixin(object):
             }
         }
         return data
+
+
 
 
 # 粉丝关注他人
@@ -87,6 +68,26 @@ posts_likes = db.Table(
     db.Column('post_id', db.Integer, db.ForeignKey('posts.id')),
     db.Column('timestamp', db.DateTime, default=datetime.utcnow)
 )
+
+class Permission:
+    '''权限认证中的各种操作，对应二进制的位，比如
+    FOLLOW: 0b00000001，转换为十六进制为 0x01
+    COMMENT: 0b00000010，转换为十六进制为 0x02
+    WRITE: 0b00000100，转换为十六进制为 0x04
+    ...
+    ADMIN: 0b10000000，转换为十六进制为 0x80
+
+    中间还预留了第 4、5、6、7 共4位二进制位，以备后续增加操作权限
+    '''
+    # 关注其它用户的权限
+    FOLLOW = 0x01
+    # 发表评论、评论点赞与踩的权限
+    COMMENT = 0x02
+    # 撰写文章的权限
+    WRITE = 0x04
+    # 管理网站的权限(对应管理员角色)
+    ADMIN = 0x80
+
 
 class Role(PaginatedAPIMixin, db.Model):
     __tablename__ = 'roles'
@@ -175,6 +176,7 @@ class Role(PaginatedAPIMixin, db.Model):
 
     def __repr__(self):
         return '<Role {}>'.format(self.name)
+
 
 class User(PaginatedAPIMixin, db.Model):
     # 设置数据库表名，Post模型中的外键 user_id 会引用 users.id
@@ -284,7 +286,7 @@ class User(PaginatedAPIMixin, db.Model):
         return data
 
     def from_dict(self, data, new_user=False):
-        for field in ['username', 'email', 'name', 'location', 'about_me']:
+        for field in ['username', 'email', 'name', 'location', 'about_me', 'confirmed', 'role_id']:
             if field in data:
                 setattr(self, field, data[field])
         if new_user and 'password' in data:
@@ -333,6 +335,14 @@ class User(PaginatedAPIMixin, db.Model):
             # Token过期，或被人修改，那么签名验证也会失败
             return None
         return User.query.get(payload.get('user_id'))
+
+    def can(self, perm):
+        '''检查用户是否有指定的权限'''
+        return self.role is not None and self.role.has_permission(perm)
+
+    def is_administrator(self):
+        '''检查用户是否为管理员'''
+        return self.can(Permission.ADMIN)
 
     def is_following(self, user):
         '''判断当前用户是否已经关注了 user 这个用户对象，如果关注了，下面表达式左边是1，否则是0'''
@@ -597,14 +607,6 @@ class Post(PaginatedAPIMixin, db.Model):
         '''取消收藏'''
         if self.is_liked_by(user):
             self.likers.remove(user)
-
-    def can(self, perm):
-        '''检查用户是否有指定的权限'''
-        return self.role is not None and self.role.has_permission(perm)
-
-    def is_administrator(self):
-        '''检查用户是否为管理员'''
-        return self.can(Permission.ADMIN)
 
 
 db.event.listen(Post.body, 'set', Post.on_changed_body)  # body 字段有变化时，执行 on_changed_body() 方法

@@ -11,7 +11,7 @@ class Config(object):
         'sqlite:///' + os.path.join(basedir, 'app.db')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     # 邮件配置
-    ADMINS = ['1185956753@qq.com']  # 管理员的邮箱地址
+    ADMINS = ['1185956753@163.com']  # 管理员的邮箱地址
     MAIL_SERVER = os.environ.get('MAIL_SERVER')
     MAIL_PORT = int(os.environ.get('MAIL_PORT') or 25)
     MAIL_USE_SSL = os.environ.get('MAIL_USE_SSL', 'false').lower() in ['true', 'on', '1']
