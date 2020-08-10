@@ -257,12 +257,20 @@ class User(PaginatedAPIMixin, db.Model):
         return 'https://www.gravatar.com/avatar/{}?d=identicon&s={}'.format(digest, size)
 
     def to_dict(self, include_email=False):
+        roles = {
+            '1': '小黑屋',
+            '2': '读者',
+            '3': '作者',
+            '4': '管理员'
+        }
         data = {
             'id': self.id,
             'username': self.username,
             'name': self.name,
             'location': self.location,
             'about_me': self.about_me,
+            'role_id': self.role_id,
+            'role_name': roles[str(self.role_id)],
             'member_since': self.member_since.isoformat() + 'Z',
             'last_seen': self.last_seen.isoformat() + 'Z',
             'followeds_count': self.followeds.count(),

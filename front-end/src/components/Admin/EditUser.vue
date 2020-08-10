@@ -16,7 +16,7 @@
         <div class="d-block my-3">
         <div class="custom-control custom-radio">
             <input id="confirmed" name="confirmed" type="checkbox" class="custom-control-input" v-model="checked">
-            <label class="custom-control-label" for="confirmed">Credit card</label>
+            <label class="custom-control-label" for="confirmed">邮箱认证</label>
         </div>
         </div>
 

@@ -41,6 +41,7 @@
               <th>#</th>
               <th>Username</th>
               <th class="hidden-sm">Role</th>
+              <th class="hidden-sm">Role_name</th>
               <th>Confirmed</th>
               <th>Action</th>
             </tr>
@@ -53,7 +54,12 @@
               <td>
                 <router-link v-bind:to="{ path: `/user/${user.id}` }" class="g-text-underline--none--hover">{{ user.name || user.username }}</router-link>
               </td>
-              <td class="hidden-sm">{{ user.role_name }}</td>
+              <td class="hidden-sm">
+                {{ user.role_id }}
+              </td>
+              <td class="hidden-sm">
+                {{ user.role_name }}
+              </td>
               <td>
                 <i v-if="user.confirmed" class="fa fa-check-circle g-color-aqua"></i>
                 <i v-else class="fa fa-times-circle g-color-deeporange"></i>
@@ -112,8 +118,11 @@ export default {
         .then((response) => {
           // handle success
           this.users = response.data
-          var user_role = response.data
-          console.log(user_role)
+          var users_role = response.data
+          for(var user_1 in users_role){
+            console.log(user_1)
+          }
+          console.log(users_role.items)
         })
         .catch((error) => {
           // handle error
