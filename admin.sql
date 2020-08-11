@@ -208,8 +208,8 @@ CREATE TABLE `posts` (
   `summary` text,
   `body` text,
   `timestamp` datetime DEFAULT NULL,
-  `views` int(11) DEFAULT NULL,
-  `author_id` int(11) DEFAULT NULL,
+  `views` int(11) DEFAULT 0,
+  `author_id` int(11) DEFAULT 1,
   PRIMARY KEY (`id`),
   KEY `author_id` (`author_id`),
   KEY `ix_posts_timestamp` (`timestamp`),
@@ -308,6 +308,7 @@ CREATE TABLE `users` (
 -- ----------------------------
 -- Records of users
 -- ----------------------------
+INSERT INTO `users` VALUES ('1', 'superadmin', 'superadmin@superadmin.com', 'pbkdf2:sha256:150000$Kx9O0VNW$fca54e29dfb528905bc2296921b7ce25c67b4bbdb942464de65e16c75b508969', '房价资讯机器人\r\n', null, null, '2020-08-11 15:25:24', '2020-08-11 15:28:52', null, null, null, null, null, null, '1', '4');
 INSERT INTO `users` VALUES ('2', 'wangliang', 'shiqinze7@163.com', 'pbkdf2:sha256:150000$bm2Yv2fc$1249148a958cc7ed77c246b7d4b17ec41b1e74482f5f0518ab167bcf493f9683', '王亮', 'whu', 'madman', '2020-08-07 15:10:32', '2020-08-11 07:01:02', null, '2020-08-08 14:31:20', '2020-08-09 15:29:23', '2020-08-09 14:53:25', null, '2020-08-09 15:29:29', '1', '3');
 INSERT INTO `users` VALUES ('3', 'zhanglei', 'xuanlvyin79@163.com', 'pbkdf2:sha256:150000$fcqwt1gN$baa3e43b64d367b2133515558e18e28bce77aaa30b77e6628a43ba4b8ba607b9', '张雷', 'whu', 'man with logic', '2020-08-07 15:18:57', '2020-08-10 01:50:47', null, null, '2020-08-08 08:29:39', null, null, null, '1', '3');
 INSERT INTO `users` VALUES ('4', 'test', 'test@test.com', 'pbkdf2:sha256:150000$WZczh21U$d7759c702b02e8eafc9c0b01d6cfea8ddf569f2950e351fea2a9a9d88c63845b', '测试初号机', 'unknown', 'test man', '2020-08-08 14:27:57', '2020-08-11 13:03:35', '2020-08-08 14:56:10', '2020-08-10 12:13:16', '2020-08-10 14:30:36', '2020-08-08 14:32:07', '2020-08-08 14:56:11', '2020-08-08 14:56:14', '1', '2');
