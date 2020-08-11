@@ -7,8 +7,7 @@ load_dotenv(os.path.join(basedir, '.env'))
 
 class Config(object):
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'you-will-never-guess'
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
-        'sqlite:///' + os.path.join(basedir, 'app.db')
+    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:root@121.36.253.244:3306/houseprice'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     # 邮件配置
     ADMINS = ['1185956753@163.com']  # 管理员的邮箱地址

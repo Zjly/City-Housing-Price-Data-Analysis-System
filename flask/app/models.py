@@ -425,7 +425,7 @@ class User(PaginatedAPIMixin, db.Model):
             for u in c.likers:
                 if u != self:  # 用户自己点赞自己的评论不需要被通知
                     res = db.engine.execute("select * from comments_likes where user_id={} and comment_id={}".format(u.id, c.id))
-                    timestamp = datetime.strptime(list(res)[0][2], '%Y-%m-%d %H:%M:%S.%f')
+                    timestamp = datetime.strptime(str(list(res)[0][2]), '%Y-%m-%d %H:%M:%S')
                     # 判断本条点赞记录是否为新的
                     if timestamp > last_read_time:
                         new_likes_count += 1
@@ -469,7 +469,7 @@ class User(PaginatedAPIMixin, db.Model):
             for u in p.likers:
                 if u != self:  # 用户自己喜欢自己的文章不需要被通知
                     res = db.engine.execute("select * from posts_likes where user_id={} and post_id={}".format(u.id, p.id))
-                    timestamp = datetime.strptime(list(res)[0][2], '%Y-%m-%d %H:%M:%S.%f')
+                    timestamp = datetime.strptime(str(list(res)[0][2]), '%Y-%m-%d %H:%M:%S')
                     # 判断本条喜欢记录是否为新的
                     if timestamp > last_read_time:
                         new_likes_count += 1
