@@ -20,8 +20,8 @@ def get_perms():
 
 
 @bp.route('/roles', methods=['POST'])
-# @token_auth.login_required
-# @admin_required
+@token_auth.login_required
+@admin_required
 def create_role():
     '''注册一个新角色'''
     data = request.get_json()
@@ -57,8 +57,8 @@ def create_role():
 
 
 @bp.route('/roles', methods=['GET'])
-# @token_auth.login_required
-# @admin_required
+@token_auth.login_required
+@admin_required
 def get_roles():
     '''返回所有角色的集合'''
     page = request.args.get('page', 1, type=int)
@@ -68,8 +68,8 @@ def get_roles():
 
 
 @bp.route('/roles/<int:id>', methods=['GET'])
-# @token_auth.login_required
-# @admin_required
+@token_auth.login_required
+@admin_required
 def get_role(id):
     '''返回一个角色'''
     role = Role.query.get_or_404(id)
@@ -88,8 +88,8 @@ def get_role(id):
 
 
 @bp.route('/roles/<int:id>', methods=['PUT'])
-# @token_auth.login_required
-# @admin_required
+@token_auth.login_required
+@admin_required
 def update_role(id):
     '''修改一个角色'''
     role = Role.query.get_or_404(id)
@@ -120,8 +120,8 @@ def update_role(id):
 
 
 @bp.route('/roles/<int:id>', methods=['DELETE'])
-# @token_auth.login_required
-# @admin_required
+@token_auth.login_required
+@admin_required
 def delete_role(id):
     '''删除一个角色'''
     role = Role.query.get_or_404(id)

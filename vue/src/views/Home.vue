@@ -392,7 +392,6 @@
   .introduce .title {
     text-align: left;
     font-size: 28px;
-
   }
 
   .introduce {

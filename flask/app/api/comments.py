@@ -3,8 +3,7 @@ from app.api import bp
 from app.api.auth import token_auth
 from app.api.errors import error_response, bad_request
 from app.extensions import db
-from app.models import Post, Comment
-from app.models import Permission
+from app.models import Post, Comment, Permission
 from app.utils.decorator import permission_required
 
 

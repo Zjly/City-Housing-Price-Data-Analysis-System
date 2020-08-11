@@ -4,6 +4,7 @@ import Router from 'vue-router'
 import VueScrollTo from 'vue-scrollto'
 // 首页
 import Home from '@/components/Home'
+import News from '@/components/News'
 // 用户认证：注册、登录、验证账户、重置密码请求、重置密码
 import Register from '@/components/Auth/Register'
 import Login from '@/components/Auth/Login'
@@ -49,6 +50,7 @@ import AdminUsers from '@/components/Admin/Users.vue'
 import AdminPosts from '@/components/Admin/Posts.vue'
 import AdminComments from '@/components/Admin/Comments.vue'
 import AdminAddRole from '@/components/Admin/AddRole.vue'
+import AdminEditUser from '@/components/Admin/EditUser.vue'
 import AdminEditRole from '@/components/Admin/EditRole.vue'
 
 
@@ -227,6 +229,11 @@ const router = new Router({
       component: Ping
     },
     {
+      path: '/news',
+      name: 'News',
+      component: News
+    },
+    {
       // 管理后台
       path: '/admin',
       component: Admin,
@@ -234,6 +241,7 @@ const router = new Router({
         { path: '', component: AdminRoles },
         { path: 'roles', name: 'AdminRoles', component: AdminRoles },
         { path: 'add-role', name: 'AdminAddRole', component: AdminAddRole },
+        { path: 'edit-user/:id', name: 'AdminEditUser', component: AdminEditUser },
         { path: 'edit-role/:id', name: 'AdminEditRole', component: AdminEditRole },
         { path: 'users', name: 'AdminUsers', component: AdminUsers },
         { path: 'posts', name: 'AdminPosts', component: AdminPosts },

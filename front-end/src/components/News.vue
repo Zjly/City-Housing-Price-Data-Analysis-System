@@ -56,130 +56,8 @@
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 
-    <template>
-      <el-carousel :interval="5000" height="300px" wight="1000px" arrow="always" style="margin-top:-20px">
-        <!-- v-for="(item, index) in news" :key="item.id" title="" -->
-        <el-carousel-item v-for="item in imgList" :key="item.id">
-          <el-row>
-            <el-col :span="24"><img ref="imgHeight" :src="item.idView" class="banner_img" />
 
-              <div v-if="item.id == 0 " class="introduce"
-                style="position:absolute;width:450px;height:100px;z-indent:2;left:0;top:0;">
-
-                <p class="title">
-                  房产介绍
-                </p>
-
-                <p>
-                  房价网走势频道提供城市精准及时、权威全面的房价行情走势
-                </p>
-                <p>
-                  为各城市随时免费提供查询最新季度房价、最近半年房价走势。
-                </p>
-                <p>
-                  希望每周的房价走势数据，能让你更好的判断当前房价形势和更好的预计的房价走向。
-                </p>
-
-              </div>
-              <div v-if="item.id == 1 " class="introduce"
-                style="position:absolute;width:450px;height:100px;z-indent:2;left:0;top:0;">
-
-                <p class="title">
-                  大数据预测
-                </p>
-
-                <p>
-                  房价网预测频道提供城市精准及时、权威全面的房价预测数据
-                </p>
-                <p>
-                  结合基于地址的大数据，更进一步精准营销，发现地址价值
-                </p>
-                <p>
-                  我们会对每一个地址、以及每一个地理空间位置，赋予地址背后的更多维度画像，助力更加精准的地理位置营销。
-                </p>
-
-              </div>
-              <div v-if="item.id == 2 " class="introduce"
-                style="position:absolute;width:450px;height:100px;z-indent:2;left:0;top:0;">
-
-                <p class="title">
-                  房价查询
-                </p>
-
-                <p>
-                  房价云频道提供城市精准及时、权威全面的房价行情数据
-                </p>
-                <p>
-                  高效率、高智能的批量地址标准化分析与处理
-                </p>
-                <p>
-                  房价网基于强大的CPDB数据库和人机技术，为各行业提供高效智能的地址标准化服务。
-                </p>
-
-              </div>
-
-            </el-col>
-
-          </el-row>
-        </el-carousel-item>
-      </el-carousel>
-    </template>
-    <template>
-      <p></p>
-      <div class="que">
-        <p>
-          为什么选择我们
-          <br>
-        </p>
-        <p></p>
-
-      </div>
-      <el-collapse v-model="activeName" accordion>
-        <el-collapse-item name="1">
-          <template slot="title">
-            <p class="item-title">一致性 Consistency</p><i class="header-icon el-icon-info"></i>
-          </template>
-          <br>
-          <div class="item-content">与现实生活一致：与现实生活的流程、逻辑保持一致，遵循用户习惯的语言和概念；</div>
-          <div class="item-content">在界面中一致：所有的元素和结构需保持一致，比如：设计样式、图标和文本、元素的位置等。</div>
-        </el-collapse-item>
-        <el-collapse-item name="2">
-          <template slot="title">
-            <p class="item-title">反馈 Feedback</p><i class="header-icon el-icon-info"></i>
-          </template>
-          <br>
-          <div class="item-content">控制反馈：通过界面样式和交互动效让用户可以清晰的感知自己的操作；</div>
-          <div class="item-content">页面反馈：操作后，通过页面元素的变化清晰地展现当前状态。</div>
-        </el-collapse-item>
-        <el-collapse-item name="3">
-          <template slot="title">
-            <p class="item-title">效率 Efficiency</p><i class="header-icon el-icon-info"></i>
-          </template>
-          <br>
-          <div class="item-content">简化流程：设计简洁直观的操作流程；</div>
-          <div class="item-content">清晰明确：语言表达清晰且表意明确，让用户快速理解进而作出决策；</div>
-          <div class="item-content">帮助用户识别：界面简单直白，让用户快速识别而非回忆，减少用户记忆负担。</div>
-        </el-collapse-item>
-        <el-collapse-item name="4">
-          <template slot="title">
-            <p class="item-title">可控 Controllability</p><i class="header-icon el-icon-info"></i>
-          </template>
-          <br>
-          <div class="item-content">用户决策：根据场景可给予用户操作建议或安全提示，但不能代替用户进行决策；</div>
-          <div class="item-content">结果可控：用户可以自由的进行操作，包括撤销、回退和终止当前操作等。</div>
-        </el-collapse-item>
-        <el-collapse-item name="5">
-          <template slot="title">
-            <p class="item-title">其他 Others</p><i class="header-icon el-icon-info"></i>
-          </template>
-          <br>
-          <div class="item-content">用户决策：根据场景可给予用户操作建议或安全提示，但不能代替用户进行决策；</div>
-          <div class="item-content">结果可控：用户可以自由的进行操作，包括撤销、回退和终止当前操作等。</div>
-        </el-collapse-item>
-
-      </el-collapse>
-    </template>
-    <div class="que">
+    <!-- <div class="que">
       <p>
         最新行情
       </p>
@@ -187,7 +65,7 @@
     </div>
     <div id="container">
     </div>
-    <br>
+    <br> -->
 
     <div class="card border-0 g-mb-15">
       <!-- Panel Header -->
@@ -337,7 +215,7 @@
 
 
   export default {
-    name: 'Home', //this is the name of the component
+    name: 'News', //this is the name of the component
     components: {
       Post,
       Pagination
@@ -363,22 +241,22 @@
           titleError: null,
           bodyError: null
         },
-        imgList: [{
-            id: 0,
-            name: '介绍',
-            idView: require('../assets/images/introduce_banner2.jpg')
-          },
-          {
-            id: 1,
-            name: '详情',
-            idView: require('../assets/images/dmp_banner2.jpg')
-          },
-          {
-            id: 2,
-            name: '推荐',
-            idView: require('../assets/images/standardization_banner3.jpg')
-          }
-        ]
+        // imgList: [{
+        //     id: 0,
+        //     name: '介绍',
+        //     idView: require('../assets/images/introduce_banner2.jpg')
+        //   },
+        //   {
+        //     id: 1,
+        //     name: '详情',
+        //     idView: require('../assets/images/dmp_banner2.jpg')
+        //   },
+        //   {
+        //     id: 2,
+        //     name: '推荐',
+        //     idView: require('../assets/images/standardization_banner3.jpg')
+        //   }
+        // ]
       }
     },
     methods: {
@@ -590,41 +468,41 @@
     mounted() {
       // aixos 请求数据
 
-      this.axios.get('http://127.0.0.1:5000/line').then(res => {
-        console.log(res)
-        var data = res.data.data
-        var city = new Array()
-        var money = new Array()
-        for (var i = 0; i < data.length; i++) {
-          city.push(data[i].name)
-          money.push(data[i].money)
-        }
-        var Highcharts = require('highcharts');
-        // 在 Highcharts 加载之后加载功能模块
-        require('highcharts/modules/exporting')(Highcharts);
-        Highcharts.chart('container', {
-            title: {
-              text: '一线城市平均房价'
-            },
-            yAxis: {
-              title: {
-                text: '房价'
-              }
-            },
-            xAxis: {
-              title: {
-                text: '城市'
-              },
-              categories: city
-            },
-            series: [{
-              name: '平均房价',
-              data: money
-            }]
-          }
-
-        )
-      })
+        this.axios.get('http://127.0.0.1:5000/news').then(res => {
+            console.log(res)
+            var data = res.data.data
+            var id = new Array()
+            var title = new Array()
+            var time = new Array()
+            var content = new Array()
+            for (var i = 0; i < data.length; i++) {
+            city.push(data[i].name)
+            money.push(data[i].money)
+            }
+            // var Highcharts = require('highcharts');
+            // // 在 Highcharts 加载之后加载功能模块
+            // require('highcharts/modules/exporting')(Highcharts);
+            // Highcharts.chart('container', {
+            //     title: {
+            //     text: '一线城市平均房价'
+            //     },
+            //     yAxis: {
+            //     title: {
+            //         text: '房价'
+            //     }
+            //     },
+            //     xAxis: {
+            //     title: {
+            //         text: '城市'
+            //     },
+            //     categories: city
+            //     },
+            //     series: [{
+            //     name: '平均房价',
+            //     data: money
+            //     }]
+            // })
+        })
     },
   }
 </script>
