@@ -4,6 +4,7 @@ import Router from 'vue-router'
 import VueScrollTo from 'vue-scrollto'
 // 首页
 import Home from '@/components/Home'
+import News from '@/components/News'
 // 用户认证：注册、登录、验证账户、重置密码请求、重置密码
 import Register from '@/components/Auth/Register'
 import Login from '@/components/Auth/Login'
@@ -226,6 +227,11 @@ const router = new Router({
       path: '/ping',
       name: 'Ping',
       component: Ping
+    },
+    {
+      path: '/news',
+      name: 'News',
+      component: News
     },
     {
       // 管理后台
