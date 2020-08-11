@@ -16,34 +16,58 @@ class LocationItem(scrapy.Item):
 
 
 class InfoItem(scrapy.Item):
+    # 新房价
     areaPrice = scrapy.Field()
+    # 二手房价
     esfareaPrice = scrapy.Field()
+    # 月份
     compareDate = scrapy.Field()
+    # 年份
     compareYear = scrapy.Field()
+    # 最低价
     minPrice = scrapy.Field()
+    # 最高价
     maxPrice = scrapy.Field()
 
+    # 三年新房价
     threeAreaPrice = scrapy.Field()
+    # 三年二手房价
     threeEsfareaPrice = scrapy.Field()
+    # 三年月份
     threeCompareDate = scrapy.Field()
+    # 三年年份
     threeCompareYear = scrapy.Field()
+    # 三年最低价
     threeminPrice = scrapy.Field()
+    # 三年最高价
     threemaxPrice = scrapy.Field()
 
+    # 新房价格区间
     buildPriceNameList = scrapy.Field()
+    # 新房区间数量
     buildPriceCount = scrapy.Field()
+    # 二手房价格区间
     esfPriceNameList = scrapy.Field()
+    # 二手房区间数量
     esfPriceCount = scrapy.Field()
 
+    # 域名
     domain = scrapy.Field()
 
+    # 新房平均价
     new_avg = scrapy.Field()
+    # 二手房均价
     esf_avg = scrapy.Field()
+    # 新房销售变化
     new_cgreen = scrapy.Field()
+    # 二手房销售变化
     esf_cgreen = scrapy.Field()
 
+    # 城市id
     cid = scrapy.Field()
+    # 省份
     province = scrapy.Field()
+    # 城市
     city = scrapy.Field()
 
 

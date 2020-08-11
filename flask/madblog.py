@@ -1,6 +1,7 @@
 import click
 import os
 import sys
+import json
 from app import create_app
 from app.extensions import db
 from app.models import User, Post, Comment, Notification, Message
@@ -20,6 +21,14 @@ if os.environ.get('FLASK_COVERAGE'):
 @app.route('/')
 def hello_world():
     return 'Hello, World!'
+
+# 为折线图 平均房价 无参数 get
+@app.route('/line')
+def line():
+    with open('./json/average.json','r') as f:
+        # content = f.read() # 字符串不能直接返回给前端，前端不好处理
+        content = json.load(f)
+        return json.dumps({"status":200,"data":content})
 
 
 @app.shell_context_processor

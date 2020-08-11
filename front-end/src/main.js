@@ -23,6 +23,16 @@ import './assets/markdown-styles/github-markdown.css'
 // 自定义 css 文件
 import './assets/core.css'
 import './assets/custom.css'
+// 引入element
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+
+Vue.use(ElementUI);
+
+// 数据请求
+//import axios from 'axios';
+import vueAxios from 'vue-axios';
+Vue.use(vueAxios, axios)
 
 // register the vue-toasted plugin on vue
 import VueToasted  from 'vue-toasted'
