@@ -2,9 +2,12 @@ import Vue from 'vue'
 import Router from 'vue-router'
 // 导入 vue-scrollto，跳转到锚点时支持平滑过渡
 import VueScrollTo from 'vue-scrollto'
-// 首页
+// 导航页
 import Home from '@/components/Home'
 import News from '@/components/News'
+import HouseData from '@/components/HouseData/HouseData'
+import HouseDiji from '@/components/HouseData/HouseDiji'
+import HouseXianji from '@/components/HouseData/HouseXianji'
 // 用户认证：注册、登录、验证账户、重置密码请求、重置密码
 import Register from '@/components/Auth/Register'
 import Login from '@/components/Auth/Login'
@@ -227,6 +230,15 @@ const router = new Router({
       path: '/ping',
       name: 'Ping',
       component: Ping
+    },
+    {
+      path: '/housedata',
+      component: HouseData,
+      children: [
+        { path: '', component: HouseData },
+        { path: 'housediji', name: 'HouseDiji', component: HouseDiji},
+        { path: 'housexianji', name: 'HouseXianji', component: HouseXianji},
+      ],
     },
     {
       path: '/news',
