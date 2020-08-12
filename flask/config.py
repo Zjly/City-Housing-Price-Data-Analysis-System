@@ -12,7 +12,7 @@ class Config(object):
     # # 本地数据库
     # SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
     #     'sqlite:///' + os.path.join(basedir, 'app.db')
-    # SQLALCHEMY_TRACK_MODIFICATIONS = False
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
     # 邮件配置
     ADMINS = ['1185956753@qq.com']  # 管理员的邮箱地址
     MAIL_SERVER = os.environ.get('MAIL_SERVER')

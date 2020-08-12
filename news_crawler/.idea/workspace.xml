@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="80512063-f8a3-4d1c-8ad3-e2873d8ed138" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/news_crawler/save/save_list_to_database.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/news_crawler/links_sohu_news_details.json" beforeDir="false" afterPath="$PROJECT_DIR$/news_crawler/links_sohu_news_details.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/news_crawler/links_sohu_news_list.json" beforeDir="false" afterPath="$PROJECT_DIR$/news_crawler/links_sohu_news_list.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/news_crawler/save_details_to_database.py" beforeDir="false" afterPath="$PROJECT_DIR$/news_crawler/save/save_details_to_database.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/news_crawler/sohu_news_details_items.py" beforeDir="false" afterPath="$PROJECT_DIR$/news_crawler/items/sohu_news_details_items.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/news_crawler/sohu_news_list_items.py" beforeDir="false" afterPath="$PROJECT_DIR$/news_crawler/items/sohu_news_list_items.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/news_crawler/spiders/sohu_news_details.py" beforeDir="false" afterPath="$PROJECT_DIR$/news_crawler/spiders/sohu_news_details.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/news_crawler/spiders/sohu_news_list.py" beforeDir="false" afterPath="$PROJECT_DIR$/news_crawler/spiders/sohu_news_list.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/news_crawler/start.py" beforeDir="false" afterPath="$PROJECT_DIR$/news_crawler/start.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1fa7oorO9RJvtCt1nzKOOg0e3v4" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/news_crawler" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Study\大三下\实训\program\news_crawler\news_crawler\save" />
+      <recent name="E:\Study\大三下\实训\program\news_crawler\news_crawler\items" />
+      <recent name="E:\Study\大三下\实训\program\news_crawler\news_crawler" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Study\大三下\实训\program\news_crawler\news_crawler" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="start" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="news_crawler" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/news_crawler" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/news_crawler/start.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.start" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="80512063-f8a3-4d1c-8ad3-e2873d8ed138" name="Default Changelist" comment="" />
+      <created>1596444526256</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1596444526256</updated>
+      <workItem from="1596444528538" duration="1028000" />
+      <workItem from="1596446490705" duration="5732000" />
+      <workItem from="1596452700570" duration="7097000" />
+      <workItem from="1596521541440" duration="24192000" />
+    </task>
+    <task id="LOCAL-00001" summary="初步构建新闻爬虫框架">
+      <created>1596453018514</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1596453018514</updated>
+    </task>
+    <task id="LOCAL-00002" summary="完成news_list内的文章标题、时间以及详细内容的爬取">
+      <created>1596539992710</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1596539992710</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="初步构建新闻爬虫框架" />
+    <MESSAGE value="完成news_list内的文章标题、时间以及详细内容的爬取" />
+    <option name="LAST_COMMIT_MESSAGE" value="完成news_list内的文章标题、时间以及详细内容的爬取" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="223" y="87" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1596556891430">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="223" y="87" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.864@0.0.1536.864" timestamp="1596556891430" />
+    <state x="499" y="178" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1596555547311">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="499" y="178" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.864@0.0.1536.864" timestamp="1596555547311" />
+    <state x="367" y="0" key="CommitChangelistDialog2" timestamp="1596555157347">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="367" y="0" key="CommitChangelistDialog2/0.0.1536.864@0.0.1536.864" timestamp="1596555157347" />
+    <state x="549" y="187" key="FileChooserDialogImpl" timestamp="1596450098943">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="549" y="187" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1596450098943" />
+    <state width="1493" height="223" key="GridCell.Tab.0.bottom" timestamp="1596556646195">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="223" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1596556646195" />
+    <state width="1493" height="223" key="GridCell.Tab.0.center" timestamp="1596556646195">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="223" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1596556646195" />
+    <state width="1493" height="223" key="GridCell.Tab.0.left" timestamp="1596556646195">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="223" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1596556646195" />
+    <state width="1493" height="223" key="GridCell.Tab.0.right" timestamp="1596556646195">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="223" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1596556646195" />
+    <state width="1493" height="277" key="GridCell.Tab.1.bottom" timestamp="1596555501004">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="277" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1596555501004" />
+    <state width="1493" height="277" key="GridCell.Tab.1.center" timestamp="1596555501004">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="277" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1596555501004" />
+    <state width="1493" height="277" key="GridCell.Tab.1.left" timestamp="1596555501004">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="277" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1596555501004" />
+    <state width="1493" height="277" key="GridCell.Tab.1.right" timestamp="1596555501004">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="277" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1596555501004" />
+    <state width="212" height="477" key="HiddenNamespacesPopup" timestamp="1596549746470">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="212" height="477" key="HiddenNamespacesPopup/0.0.1536.864@0.0.1536.864" timestamp="1596549746470" />
+    <state x="361" y="151" key="Vcs.Push.Dialog.v2" timestamp="1596539994819">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="361" y="151" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1596539994819" />
+    <state width="648" height="440" key="XDebugger.FullValuePopup" timestamp="1596554546331">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="648" height="440" key="XDebugger.FullValuePopup/0.0.1536.864@0.0.1536.864" timestamp="1596554546331" />
+    <state x="552" y="331" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1596555096456">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="552" y="331" key="git4idea.remote.GitConfigureRemotesDialog/0.0.1536.864@0.0.1536.864" timestamp="1596555096456" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/news_crawler$test.coverage" NAME="save_details_to_database Coverage Results" MODIFIED="1596549947901" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/news_crawler" />
+    <SUITE FILE_PATH="coverage/news_crawler$save_details_to_database.coverage" NAME="save_details_to_database Coverage Results" MODIFIED="1596554866306" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/news_crawler" />
+    <SUITE FILE_PATH="coverage/news_crawler$start.coverage" NAME="start Coverage Results" MODIFIED="1596556482938" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/news_crawler" />
+    <SUITE FILE_PATH="coverage/news_crawler$aaa.coverage" NAME="aaa Coverage Results" MODIFIED="1596452449909" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/news_crawler/spiders" />
+    <SUITE FILE_PATH="coverage/news_crawler$save_details_to_database__1_.coverage" NAME="save_details_to_database (1) Coverage Results" MODIFIED="1596556646187" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/news_crawler/save" />
+    <SUITE FILE_PATH="coverage/news_crawler$save_details_to_database1.coverage" NAME="save_details_to_database1 Coverage Results" MODIFIED="1596550119677" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/news_crawler" />
+    <SUITE FILE_PATH="coverage/news_crawler$test__1_.coverage" NAME="test (1) Coverage Results" MODIFIED="1596536421725" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/news_crawler" />
+    <SUITE FILE_PATH="coverage/news_crawler$save_list_to_database.coverage" NAME="save_list_to_database Coverage Results" MODIFIED="1596556362098" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/news_crawler/save" />
+  </component>
+</project>
