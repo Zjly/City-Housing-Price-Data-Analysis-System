@@ -31,11 +31,11 @@
                 </router-link>
                 <el-dropdown-menu slot="dropdown">
                   <el-dropdown-item>
-                    <router-link to="/housedata/housexianji" class="nav-link">县级城市
+                    <router-link to="/housedata/newhouse" class="nav-link">新房
                     </router-link>
                   </el-dropdown-item>
                   <el-dropdown-item>
-                    <router-link to="/housedata/housediji" class="nav-link">地级城市
+                    <router-link to="/housedata/secondhand" class="nav-link">二手房
                     </router-link>
                   </el-dropdown-item>
                 </el-dropdown-menu>

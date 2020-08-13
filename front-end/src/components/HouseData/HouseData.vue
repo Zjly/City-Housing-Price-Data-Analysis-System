@@ -1,239 +1,193 @@
 <template>
-  <div class="container">
-    <div class="container recommend">
-      <div class="expertcatlist">
-        <div class="tabs-wrapper">
-          <div class="tabs-mark-group plm ptm">
-            <div class="tabs-group">
-              <ul class="content clearfix">
-                <li v-for="(province, index) in provincedata" v-bind:key="index">
-                  <!-- <a class="nav-link" href="housedata/housediji">{{province}}</a> -->
-                  <router-link v-bind:to="{ path: `/housedata/housediji` }"
-                    v-bind:active-class="'active g-color-primary--active g-bg-gray-light-v5--active'"
-                    class="d-block align-middle u-link-v5 g-color-text g-color-primary--hover g-bg-gray-light-v5--hover rounded g-pa-3">
-                    <!-- `/housedata/${sharedState.user_id}` -->
-                    {{province}}
-                  </router-link>
-                </li>
+  <!-- <div class="container">
+    <div class="container recommend"> -->
 
-              </ul>
-            </div>
-            <div class="tabs-group">
-              <ul class="content clearfix" >
-                <!-- <li class="active" v-for="(city, index) in city" v-bind:key="index"> -->
-                
-                <li><a class="nav-link" href="">北京</a></li>
-                <li><a class="nav-link" href="">上海</a></li>
-                <li><a class="nav-link" href="">天津</a></li>
-                <li><a class="nav-link" href="">重庆</a></li>
-              </ul>
-            </div>
-            <div class="tabs-group">
-              <ul class="content clearfix">
-                <li><a class="nav-link" href="">宣武区</a></li>
-                <li><a class="nav-link" href="">西城区</a></li>
-                <li><a class="nav-link" href="">通州区</a></li>
-                <li><a class="nav-link" href="">顺义区</a></li>
-                <li><a class="nav-link" href="">石景山区</a></li>
-                <li><a class="nav-link" href="">平谷区</a></li>
-                <li><a class="nav-link" href="">门头沟区</a></li>
-                <li><a class="nav-link" href="">怀柔区</a></li>
-                <li><a class="nav-link" href="">海淀区</a></li>
-                <li><a class="nav-link" href="">丰台区</a></li>
-                <li><a class="nav-link" href="">房山区</a></li>
-                <li><a class="nav-link" href="">大兴区</a></li>
-                <li><a class="nav-link" href="">东城区</a></li>
-                <li><a class="nav-link" href="">朝阳区</a></li>
-                <li><a class="nav-link" href="">崇文区</a></li>
-                <li><a class="nav-link" href="">昌平区</a></li>
-                <li><a class="nav-link" href="">延庆区</a></li>
-                <li><a class="nav-link" href="">密云区</a></li>
-                <li><a class="nav-link" href="">市区</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="listcontent">
-          <div>
-            <h1 class="zsbt zsbtb mart0b10">北京房价排行榜</h1>
-          </div>
-          <ul class="toplist w600 ablue">
-            <li class="ws_text huise"><span class="txuh">排名</span><b class="diqu">地区</b><b class="btm">单价<span
-                  style="font-weight: 500;">(元/㎡)</span></b><b class="bv">环比</b><b class="blm">同比</b></li>
-            <li class="ws_art_text "><span class="xuh">1</span><span class="citysy"><a target="_blank"
-                  href="">西城区</a></span><span class="tmonthsy">120,182</span><span class="bil green">-2.49%</span><span
-                class="lmonthsy green">-6.28%</span></li>
-            <li class="ws_art_text huise"><span class="xuh">2</span><span class="citysy"><a target="_blank"
-                  href="">宣武区</a></span><span class="tmonthsy">100,807</span><span class="bil green">--</span><span
-                class="lmonthsy green">--</span></li>
-            <li class="ws_art_text "><span class="xuh">3</span><span class="citysy"><a target="_blank"
-                  href="">东城区</a></span><span class="tmonthsy">96,691</span><span class="bil red ">+1.16%</span><span
-                class="lmonthsy green">-9.55%</span></li>
-            <li class="ws_art_text huise"><span class="xuh">4</span><span class="citysy"><a target="_blank"
-                  href="">海淀区</a></span><span class="tmonthsy">88,951</span><span class="bil green">-2.36%</span><span
-                class="lmonthsy red ">+1.59%</span></li>
-            <li class="ws_art_text "><span class="xuh">5</span><span class="citysy"><a target="_blank"
-                  href="">崇文区</a></span><span class="tmonthsy">87,934</span><span class="bil green">--</span><span
-                class="lmonthsy green">--</span></li>
-            <li class="ws_art_text huise"><span class="xuh">6</span><span class="citysy"><a target="_blank"
-                  href="">朝阳区</a></span><span class="tmonthsy">71,186</span><span class="bil red ">+0.24%</span><span
-                class="lmonthsy green">-1.06%</span></li>
-            <li class="ws_art_text "><span class="xuh">7</span><span class="citysy"><a target="_blank"
-                  href="">丰台区</a></span><span class="tmonthsy">58,771</span><span class="bil green">-2.23%</span><span
-                class="lmonthsy red ">+1.33%</span></li>
-            <li class="ws_art_text huise"><span class="xuh">8</span><span class="citysy"><a target="_blank"
-                  href="">石景山区</a></span><span class="tmonthsy">51,471</span><span class="bil green">-1.41%</span><span
-                class="lmonthsy green">-6.25%</span></li>
-            <li class="ws_art_text "><span class="xuh">9</span><span class="citysy"><a target="_blank"
-                  href="">通州区</a></span><span class="tmonthsy">44,594</span><span class="bil green">-0.63%</span><span
-                class="lmonthsy green">-2.08%</span></li>
-            <li class="ws_art_text huise"><span class="xuh">10</span><span class="citysy"><a target="_blank"
-                  href="">大兴区</a></span><span class="tmonthsy">40,453</span><span class="bil green">-0.47%</span><span
-                class="lmonthsy green">-6.71%</span></li>
-            <li class="ws_art_text "><span class="xuh">11</span><span class="citysy"><a target="_blank"
-                  href="">顺义区</a></span><span class="tmonthsy">40,358</span><span class="bil red ">+2.88%</span><span
-                class="lmonthsy green">-3.48%</span></li>
-            <li class="ws_art_text huise"><span class="xuh">12</span><span class="citysy"><a target="_blank"
-                  href="">昌平区</a></span><span class="tmonthsy">39,000</span><span class="bil red ">+1.67%</span><span
-                class="lmonthsy green">-3.49%</span></li>
-            <li class="ws_art_text "><span class="xuh">13</span><span class="citysy"><a target="_blank"
-                  href="">门头沟区</a></span><span class="tmonthsy">36,620</span><span class="bil red ">+1.1%</span><span
-                class="lmonthsy green">-9.07%</span></li>
-            <li class="ws_art_text huise"><span class="xuh">14</span><span class="citysy"><a target="_blank"
-                  href="">怀柔区</a></span><span class="tmonthsy">31,063</span><span class="bil green">-4.58%</span><span
-                class="lmonthsy red ">+1%</span></li>
-            <li class="ws_art_text "><span class="xuh">15</span><span class="citysy"><a target="_blank"
-                  href="">房山区</a></span><span class="tmonthsy">29,092</span><span class="bil green">-1.09%</span><span
-                class="lmonthsy green">-3.93%</span></li>
-            <li class="ws_art_text huise"><span class="xuh">16</span><span class="citysy"><a target="_blank"
-                  href="">平谷区</a></span><span class="tmonthsy">23,344</span><span class="bil green">-2.02%</span><span
-                class="lmonthsy green">-2.49%</span></li>
-            <li class="ws_art_text "><span class="xuh">17</span><span class="citysy"><a target="_blank"
-                  href="">密云区</a></span><span class="tmonthsy">22,725</span><span class="bil green">-1.54%</span><span
-                class="lmonthsy green">-2.55%</span></li>
-            <li class="ws_art_text huise"><span class="xuh">18</span><span class="citysy"><a target="_blank"
-                  href="">延庆区</a></span><span class="tmonthsy">22,030</span><span class="bil red ">+1.97%</span><span
-                class="lmonthsy green">-13.07%</span></li>
+  <!-- 右边子路由匹配后，显示对应的组件 -->
+
+  <!-- <li v-for="(province, index) in provincedata" v-bind:key="index">
+        <a class="nav-link" href="housedata/SecondHand">{{province}}</a>
+        <router-link v-bind:to="{ path: `/housedata/SecondHand` }"
+          v-bind:active-class="'active g-color-primary--active g-bg-gray-light-v5--active'"
+          class="d-block align-middle u-link-v5 g-color-text g-color-primary--hover g-bg-gray-light-v5--hover rounded g-pa-3">
+          `/housedata/${sharedState.user_id}`
+          {{province}}
+        </router-link>
+      </li> -->
+
+  <div class="container g-pt-20">
+    <div class="row">
+      <!-- 左边菜单栏 -->
+      <div class="col-lg-4 g-mb-50">
+        <aside class="g-brd-around g-brd-gray-light-v4 rounded g-px-20 g-py-30">
+
+          <h2 class="text-center g-color-primary g-font-weight-600 g-line-height-1 g-font-size-60 g-pos-rel g-mb-30">
+            HouseData</h2>
+
+          <hr class="g-brd-gray-light-v4 g-my-30">
+          <hr class="g-brd-gray-light-v4 g-my-30">
+
+          <!-- 菜单列表 -->
+          <ul class="list-unstyled mb-0">
+            <li class="g-pb-3">
+              <router-link v-bind:to="{ name: 'NewHouse' }"
+                v-bind:active-class="'active g-color-primary--active g-bg-gray-light-v5--active'"
+                v-bind:class="isNewHouse"
+                class="d-block align-middle u-link-v5 g-color-text g-color-primary--hover g-bg-gray-light-v5--hover rounded g-pa-3">
+                <span class="u-icon-v1 g-color-gray-dark-v5 mr-2">
+                  <i class="icon-media-024 u-line-icon-pro"></i></span>
+                新房查询
+              </router-link>
+            </li>
+            <li class="g-pb-3">
+              <router-link v-bind:to="{ name: 'SecondHand' }"
+                v-bind:active-class="'active g-color-primary--active g-bg-gray-light-v5--active'"
+                class="d-block align-middle u-link-v5 g-color-text g-color-primary--hover g-bg-gray-light-v5--hover rounded g-pa-3">
+                <span class="u-icon-v1 g-color-gray-dark-v5 mr-2"><i
+                    class="icon-media-022 u-line-icon-pro"></i></span>
+                二手房查询
+              </router-link>
+            </li>
           </ul>
+          <!-- End 菜单列表 -->
+           <hr class="g-brd-gray-light-v4 g-my-30">
+
+
+
+          <hr class="g-brd-gray-light-v4 g-my-30">
+          <div class="recommend" v-show="isShow"  >
+            <h4><span style="font-size:17px">热门城市房价排行</span>
+              <div  style="font-size:14px" class="inline-block small_text">（2020年7月）</div>
+            </h4>
+
+            <table class="table table-striped ablue">
+              <thead>
+                <tr>
+                  <th width="80" class="tcenter">城市</th>
+                  <th width="100" class="tcenter">单价(元/㎡)</th>
+                  <th width="100" class="tcenter">同比</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td width="80" class="tcenter"><a href="">深圳</a></td>
+                  <td width="100" class="tcenter">73,129</td>
+                  <td width="100" class="tcenter red ">+18.67%</td>
+                </tr>
+
+                <tr>
+                  <td width="80" class="tcenter"><a href="">北京</a></td>
+                  <td width="100" class="tcenter">62,212</td>
+                  <td width="100" class="tcenter green">-1.88%</td>
+                </tr>
+
+                <tr>
+                  <td width="80" class="tcenter"><a href="">上海</a></td>
+                  <td width="100" class="tcenter">55,256</td>
+                  <td width="100" class="tcenter red ">+5.65%</td>
+                </tr>
+
+                <tr>
+                  <td width="80" class="tcenter"><a href="">厦门</a></td>
+                  <td width="100" class="tcenter">45,583</td>
+                  <td width="100" class="tcenter red ">+3.94%</td>
+                </tr>
+
+                <tr>
+                  <td width="80" class="tcenter"><a href="">广州</a></td>
+                  <td width="100" class="tcenter">37,729</td>
+                  <td width="100" class="tcenter red ">+12.95%</td>
+                </tr>
+
+                <tr>
+                  <td width="80" class="tcenter"><a href="">三亚</a></td>
+                  <td width="100" class="tcenter">37,075</td>
+                  <td width="100" class="tcenter red ">+13.83%</td>
+                </tr>
+
+                <tr>
+                  <td width="80" class="tcenter"><a href="">南京</a></td>
+                  <td width="100" class="tcenter">30,947</td>
+                  <td width="100" class="tcenter red ">+0.76%</td>
+                </tr>
+
+                <tr>
+                  <td width="80" class="tcenter"><a href="">杭州</a></td>
+                  <td width="100" class="tcenter">29,524</td>
+                  <td width="100" class="tcenter green">-3.71%</td>
+                </tr>
+
+                <tr>
+                  <td width="80" class="tcenter"><a href="">福州</a></td>
+                  <td width="100" class="tcenter">25,838</td>
+                  <td width="100" class="tcenter green">-2.54%</td>
+                </tr>
+
+
+              </tbody>
+            </table>
+          </div>
+        </aside>
+      </div>
+      <!-- End 左边菜单栏 -->
+
+      <!-- 右边子路由匹配后，显示对应的组件 -->
+      <div class="col-lg-8 g-mb-50">
+
+        <div class="rounded g-brd-around g-brd-gray-light-v4 g-overflow-x-scroll g-overflow-x-visible--lg g-pa-30">
+          <router-view></router-view>
+
         </div>
       </div>
+      <!-- End 嵌套路由 -->
     </div>
-    <!-- <button type="button" class="btn btn-primary">{{ msg }}</button> -->
-
-
   </div>
+
 </template>
 
 <script>
-  // import Alert from './Base/Alert'
-
+  import store from '../../store'
   export default {
-    name: 'HouseData',
-    components: {
-      // alert: Alert
-    },
+    name: 'HouseData', // this is the name of the component
     data() {
       return {
-        provincedata: [],
-        data: '',
-        housedata:'',
-        //   msg: '',
-        //   alerts: [
-        //     {
-        //       variant: 'info',
-        //       message: 'Hi'
-        //     },
-        //     {
-        //       variant: 'danger',
-        //       message: 'Oops..'
-        //     },
-        //     {
-        //       variant: 'success',
-        //       message: 'OK'
-        //     },
-        //     {
-        //        province: '安徽',
-        //        city:[
-        //           'xx',
-        //           'xx',
-        //           'xx'      
-        //        ]  
-        //     }
-        //   ]
+        sharedState: store.state,
+        isShow: true,
       }
+    },
+    computed: {
+      isNewHouse: function () {
+        const tabs = ['SecondHand', 'NewHouse']
+        if (tabs.indexOf(this.$route.name) == -1) {
+          return 'active g-color-primary--active g-bg-gray-light-v5--active'
+        } else {
+          return ''
+        }
+      },
     },
     methods: {
-      getMessage() {
-        const path = '/api/houseaddress'
+      getUser(id) {
+        const path = `/api/users/${id}`
         this.$axios.get(path)
-          .then((res) => {
-            var data = res.data.data
-            this.data = data
-            var metadata = {
-              province: '',
-              city: []
-            }
-            console.log(metadata)
-            var housedata = [
-            ]
-            var city = new Array()
-            var province = new Array()
-            var province2 = new Array()
-            for (var i = 0; i < data.length; i++) {
-              
-              if (i > 0) {
-                if (data[i].province != data[i - 1].province) {
-                  metadata.province = data[i - 1].province
-                  metadata.city = city
-                  console.log(metadata.province)
-                  console.log(metadata.city)
-                  housedata.push({province: metadata.province,city:metadata.city})
-                  city = []
-                  metadata.province = ''
-                  metadata.city = []
-                }
-              }
-              city.push(data[i].city)
-              province.push(data[i].province)
-              province2.push(data[i].province)
-              if (i == data.length - 1) {
-                metadata.province = data[i].province
-                metadata.city = city
-                housedata.push({province: metadata.province,city:metadata.city})
-                city = []
-                metadata.province = ''
-                metadata.city = []
-              }
-
-            }
-            console.log(housedata)
-            this.housedata = housedata
-
-            function newData(data) {
-              var nData = new Array();
-              for (var i = 0; i < data.length; i++) {
-                if (nData.indexOf(data[i]) == -1) {
-                  nData.push(data[i]);
-                }
-              }
-              return nData;
-            }
-            var provincedata = newData(province2)
-            this.provincedata = provincedata
-
-            this.$toasted.info('Success connect to Flask API', {
-              icon: 'fingerprint'
-            })
+          .then((response) => {
+            // handle success
+            this.user = response.data
           })
           .catch((error) => {
-            // eslint-disable-next-line
+            // handle error
             console.error(error)
           })
-      }
+      },
     },
     created() {
-      this.getMessage()
-    }
+      const user_id = this.sharedState.user_id
+      this.getUser(user_id)
+      // tooltip
+      $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+      })
+    },
+    mounted() {
+    },
   }
 </script>
 <style scoped>
