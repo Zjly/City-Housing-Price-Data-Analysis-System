@@ -19,7 +19,7 @@
         <div class="form-group" style="margin-left:10px">
           <label for="exampleInputEmail2">城市：</label>
           <div class="col-sm-2">
-            <select class='form-control' style="width:200px;" size="1" data-live-search="true" id='city' name='city'>
+            <select class='form-control' v-model="city" style="width:200px;" size="1" data-live-search="true" id='city' name='city'>
               <option v-for="(item, index) in choosecity" v-bind:key="index">{{item}}</option>
             </select>
           </div>
@@ -72,26 +72,23 @@
         <table class="table table-striped u-table--v1 mb-0">
           <thead>
             <tr>
-              <th>#楼盘序号</th>
-              <th>地区</th>
-              <th class="hidden-sm">楼盘名</th>
-              <th>面积</th>
-              <th>价格</th>
+              <th>#</th>
+              <th>地址</th>
+              <th>楼盘名</th>
+              <th>面积(㎡)</th>
+              <th>总价(万元)</th>
             </tr>
           </thead>
 
           <tbody>
-            <!-- 
-            <tr v-for="(role, index) in roles.items" v-bind:key="index">
+
+            <tr v-for="(item, index) in esfdatas" v-bind:key="index">
               <th scope="row">{{ index+1 }}</th>
-              <td>{{ role.slug }}</td>
-              <td class="hidden-sm">{{ role.name }}</td>
-              <td>{{ role.permissions }}</td>
-              <td>
-                <router-link v-bind:to="{ name: 'AdminEditRole', params: { id: role.id } }" class="btn btn-xs u-btn-outline-purple">编辑</router-link>
-                <button v-on:click="onDeleteRole(role)" class="btn btn-xs u-btn-outline-red">删除</button>
-              </td>
-            </tr> -->
+              <td>{{ item[1] }}</td>
+              <td>{{ item[2] }}</td>
+              <td>{{ item[3] }}</td>
+              <td>{{ item[4] }}</td>
+            </tr>
 
           </tbody>
         </table>
@@ -127,7 +124,7 @@
         provincedata: [],
         choosecity: [],
         housedata: [],
-
+        esfdatas: '',
 
       }
     },
@@ -229,35 +226,21 @@
 
       },
       onSubmit(e) {
-        const path = `/api/housedata/?province=${province}&city=${city}`
+        const path = `/api/esfs/${this.proval}/${this.city}`
         const payload = {
-          province: this.province,
+          province: this.proval,
           city: this.city,
         }
 
-        this.$axios.put(path, payload)
+        this.$axios.post(path, payload)
           .then((response) => {
-            // handle success
-            this.$toasted.success('Successed query.', {
-              icon: 'fingerprint'
-            })
-            this.$router.push({
-            })
-          })
-          .catch((error) => {
-            // handle error
-            for (var field in error.response.data.message) {
-              if (field == 'slug') {
-                this.roleForm.slugError = error.response.data.message[field]
-              } else if (field == 'name') {
-                this.roleForm.nameError = error.response.data.message[field]
-              } else {
-                this.$toasted.error(error.response.data.message[field], {
-                  icon: 'fingerprint'
-                })
-              }
-            }
-          })
+          // handle success
+          this.esfdatas = response.data
+        })
+        .catch((error) => {
+          // handle error
+          console.error(error)
+        })
        }
 
     },

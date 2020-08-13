@@ -246,7 +246,7 @@ const router = new Router({
           }
         },
         { 
-          path: 'SecondHand', 
+          path: 'esf',
           name: 'SecondHand', 
           component: SecondHand,
           meta: {

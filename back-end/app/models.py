@@ -784,3 +784,33 @@ class Message(PaginatedAPIMixin, db.Model):
         for field in ['body', 'timestamp']:
             if field in data:
                 setattr(self, field, data[field])
+
+
+class Newhouse(PaginatedAPIMixin, db.Model):
+    __tablename__ = 'newhouse'
+    id = db.Column(db.Integer, primary_key=True)
+    province = db.Column(db.String(64))
+    city = db.Column(db.String(64))
+    district = db.Column(db.String(64))
+    name = db.Column(db.String(128))
+    address = db.Column(db.String(128))
+    origin_url = db.Column(db.String(64))
+    area = db.Column(db.String(32))
+    price = db.Column(db.Integer)
+    sale = db.Column(db.String(32))
+
+
+class Esf(PaginatedAPIMixin, db.Model):
+    __tablename__ = 'esf'
+    id = db.Column(db.Integer, primary_key=True)
+    province = db.Column(db.String(64))
+    city = db.Column(db.String(64))
+    name = db.Column(db.String(128))
+    rooms = db.Column(db.String(64))
+    floor = db.Column(db.String(64))
+    toward = db.Column(db.String(64))
+    address = db.Column(db.String(128))
+    origin_url = db.Column(db.String(64))
+    area = db.Column(db.Float)
+    price = db.Column(db.Integer)
+    unit = db.Column(db.Integer)
