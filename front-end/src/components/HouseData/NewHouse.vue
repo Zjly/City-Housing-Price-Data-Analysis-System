@@ -19,7 +19,8 @@
         <div class="form-group" style="margin-left:10px">
           <label for="exampleInputEmail2">城市：</label>
           <div class="col-sm-2">
-            <select class='form-control' v-model="city" style="width:200px;" size="1" data-live-search="true" id='city' name='city'>
+            <select class='form-control' v-model="city" style="width:200px;" size="1" data-live-search="true" id='city'
+              name='city'>
               <option v-for="(item, index) in choosecity" v-bind:key="index">{{item}}</option>
             </select>
           </div>
@@ -76,13 +77,13 @@
               <th>地区</th>
               <th>楼盘名</th>
               <th>面积</th>
-              <th>单价(元/㎡)	</th>
+              <th>单价(元/㎡) </th>
             </tr>
           </thead>
 
           <tbody>
 
-            <tr v-for="(item, index) in newhousedatas" v-bind:key="index">
+            <tr v-for="(item, index) in currentPageData" v-bind:key="index">
               <th scope="row">{{ index+1 }}</th>
               <td>{{ item[1] }}</td>
               <td>{{ item[2] }}</td>
@@ -96,13 +97,14 @@
     </div>
     <!-- End Striped Rows -->
 
+
     <!-- Pagination #04 -->
-    <div v-if="newhouse">
-      <pagination v-bind:cur-page="newhouse._meta.page" v-bind:per-page="newhouse._meta.per_page"
-        v-bind:total-pages="newhouse._meta.total_pages">
-      </pagination>
-    </div>
+    <!-- element风格按钮 -->
+    <el-button type="success" icon="el-icon-arrow-left" @click="prevPage()">上一页</el-button>
+    <span>第{{currentPage}}页/共{{totalPage}}页</span>
+    <el-button type="success" @click="nextPage()">下一页<i class="el-icon-arrow-right el-icon--right"></i></el-button>
     <!-- End Pagination #04 -->
+
   </div>
 </template>
 
@@ -124,9 +126,18 @@
         provincedata: [],
         choosecity: [],
         housedata: [],
-        province:'',
-        city:'',
-        newhousedatas:'',
+        province: '',
+        city: '',
+        // 新房所有数据
+        newhousedatas: '',
+        // 统共页数，默认为1
+        totalPage: 1,
+        //当前页数 ，默认为1
+        currentPage: 1,
+        // 每页显示数量
+        pageSize: 8,
+        //当前页显示内容
+        currentPageData: []
 
       }
     },
@@ -228,6 +239,35 @@
           })
 
       },
+      // 设置当前页面数据，对数组操作的截取规则为[0~9],[10~20]...,
+      // 当currentPage为1时，我们显示(0*pageSize+1)-1*pageSize，当currentPage为2时，我们显示(1*pageSize+1)-2*pageSize...
+      getCurrentPageData() {
+        let begin = (this.currentPage - 1) * this.pageSize;
+        let end = this.currentPage * this.pageSize;
+        this.currentPageData = this.newhousedatas.slice(
+          begin,
+          end
+        );
+      },
+      //上一页
+      prevPage() {
+        console.log(this.currentPage);
+        if (this.currentPage == 1) {
+          return false;
+        } else {
+          this.currentPage--;
+          this.getCurrentPageData();
+        }
+      },
+      // 下一页
+      nextPage() {
+        if (this.currentPage == this.totalPage) {
+          return false;
+        } else {
+          this.currentPage++;
+          this.getCurrentPageData();
+        }
+      },
       onSubmit(e) {
         const path = `/api/newhouses/${this.proval}/${this.city}`
         const payload = {
@@ -237,14 +277,25 @@
 
         this.$axios.post(path, payload)
           .then((response) => {
-          // handle success
-          this.newhousedatas = response.data
-        })
-        .catch((error) => {
-          // handle error
-          console.error(error)
-        })
-       }
+            // handle success
+            this.newhousedatas = response.data
+          })
+          //获取数据完成后进行页数计算
+          .finally(() => {
+            // 计算一共有几页
+            this.totalPage = Math.ceil(this.newhousedatas.length / this.pageSize);
+            console.log(this.totalPage)
+            // 计算得0时设置为1
+            this.totalPage = this.totalPage == 0 ? 1 : this.totalPage;
+            this.getCurrentPageData();
+
+          })
+          .catch((error) => {
+            // handle error
+            console.error(error)
+          })
+          
+      }
 
     },
     watch: {
@@ -252,6 +303,7 @@
         console.log(val, oldval)
         this.chooseprovince = val
         var newhousedata = this.newhousedata
+        this.currentPage = 1
         for (var i in newhousedata) {
           if (newhousedata[i].province == this.chooseprovince) {
             var choosecity = newhousedata[i].city

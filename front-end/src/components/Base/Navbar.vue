@@ -35,7 +35,7 @@
                     </router-link>
                   </el-dropdown-item>
                   <el-dropdown-item>
-                    <router-link to="/housedata/secondhand" class="nav-link">二手房
+                    <router-link to="/housedata/esf" class="nav-link">二手房
                     </router-link>
                   </el-dropdown-item>
                 </el-dropdown-menu>

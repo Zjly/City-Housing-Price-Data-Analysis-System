@@ -104,7 +104,7 @@ export default {
   methods: {
     getUsers () {
       let page = 1
-      let per_page = 10
+      let per_page = 5
       if (typeof this.$route.query.page != 'undefined') {
         page = this.$route.query.page
       }
