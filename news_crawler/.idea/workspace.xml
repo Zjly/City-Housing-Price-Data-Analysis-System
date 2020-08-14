@@ -2,16 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="80512063-f8a3-4d1c-8ad3-e2873d8ed138" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/news_crawler/save/save_list_to_database.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/news_crawler/links_sohu_news_details.json" beforeDir="false" afterPath="$PROJECT_DIR$/news_crawler/links_sohu_news_details.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/news_crawler/links_sohu_news_list.json" beforeDir="false" afterPath="$PROJECT_DIR$/news_crawler/links_sohu_news_list.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/news_crawler/save_details_to_database.py" beforeDir="false" afterPath="$PROJECT_DIR$/news_crawler/save/save_details_to_database.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/news_crawler/sohu_news_details_items.py" beforeDir="false" afterPath="$PROJECT_DIR$/news_crawler/items/sohu_news_details_items.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/news_crawler/sohu_news_list_items.py" beforeDir="false" afterPath="$PROJECT_DIR$/news_crawler/items/sohu_news_list_items.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/news_crawler/spiders/sohu_news_details.py" beforeDir="false" afterPath="$PROJECT_DIR$/news_crawler/spiders/sohu_news_details.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/news_crawler/spiders/sohu_news_list.py" beforeDir="false" afterPath="$PROJECT_DIR$/news_crawler/spiders/sohu_news_list.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/news_crawler/start.py" beforeDir="false" afterPath="$PROJECT_DIR$/news_crawler/start.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../prediction/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../prediction/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,6 +98,7 @@
       <workItem from="1596446490705" duration="5732000" />
       <workItem from="1596452700570" duration="7097000" />
       <workItem from="1596521541440" duration="24192000" />
+      <workItem from="1597065848929" duration="86000" />
     </task>
     <task id="LOCAL-00001" summary="初步构建新闻爬虫框架">
       <created>1596453018514</created>
