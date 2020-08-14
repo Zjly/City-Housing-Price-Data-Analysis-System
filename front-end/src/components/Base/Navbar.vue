@@ -17,17 +17,15 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item active">
-              <router-link to="/" class="nav-link">Home <span class="sr-only">(current)</span></router-link>
+              <router-link to="/" class="nav-link">主页 <span class="sr-only">(current)</span></router-link>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <router-link to="/ping" class="nav-link">Ping</router-link>
-            </li>
-            <li class="nav-item" v-if="sharedState.is_authenticated && sharedState.user_perms.includes('admin')">
-              <router-link to="/admin" class="nav-link">Admin</router-link>
-            </li>
+            </li> -->
+            
             <el-dropdown>
               <li class="nav-item">
-                <router-link to="/housedata" class="nav-link">Housedata
+                <router-link to="/housedata" class="nav-link">数据查询
                 </router-link>
                 <el-dropdown-menu slot="dropdown">
                   <el-dropdown-item>
@@ -48,21 +46,24 @@
 
 
             <li class="nav-item">
-              <router-link to="/News" class="nav-link">News</router-link>
+              <router-link to="/News" class="nav-link">资讯</router-link>
+            </li>
+            <li class="nav-item" v-if="sharedState.is_authenticated && sharedState.user_perms.includes('admin')">
+              <router-link to="/admin" class="nav-link">用户管理</router-link>
             </li>
           </ul>
 
-          <form v-if="sharedState.is_authenticated" class="form-inline navbar-left mr-auto">
+          <!-- <form v-if="sharedState.is_authenticated" class="form-inline navbar-left mr-auto">
             <input class="form-control mr-sm-2" type="search" placeholder="Search">
-            <!-- 暂时先禁止提交，后续实现搜索再改回 type="submit" -->
+            <!-- 暂时先禁止提交，后续实现搜索再改回 type="submit" 
             <button class="btn btn-outline-success my-2 my-sm-0" type="button">Search</button>
-          </form>
+          </form> -->
 
           <ul v-if="sharedState.is_authenticated" class="nav navbar-nav navbar-right">
             <li class="nav-item g-mr-20">
               <router-link v-bind:to="{ path: '/notifications/comments' }" class="nav-link"><i
                   class="icon-education-033 u-line-icon-pro g-color-red g-font-size-16 g-pos-rel g-top-2 g-mr-3"></i>
-                Notifications <span id="new_notifications_count" style="visibility: hidden;"
+                消息提醒 <span id="new_notifications_count" style="visibility: hidden;"
                   class="u-label g-font-size-11 g-bg-aqua g-rounded-20 g-px-10">0</span></router-link>
             </li>
             <li class="nav-item dropdown">
@@ -74,20 +75,20 @@
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <router-link v-bind:to="{ path: `/user/${sharedState.user_id}` }" class="dropdown-item"><i
-                    class="icon-star g-pos-rel g-top-1 g-mr-5"></i> Your profile</router-link>
+                    class="icon-star g-pos-rel g-top-1 g-mr-5"></i> 个人主页</router-link>
                 <router-link v-bind:to="{ name: 'PostsResource' }" class="dropdown-item"><i
-                    class="icon-share g-pos-rel g-top-1 g-mr-5"></i> Your resource</router-link>
+                    class="icon-share g-pos-rel g-top-1 g-mr-5"></i> 用户资源</router-link>
                 <router-link v-bind:to="{ name: 'SettingProfile' }" class="dropdown-item"><i
-                    class="icon-settings g-pos-rel g-top-1 g-mr-5"></i> Settings</router-link>
+                    class="icon-settings g-pos-rel g-top-1 g-mr-5"></i> 用户设置</router-link>
                 <div class="dropdown-divider"></div>
                 <a v-on:click="handlerLogout" class="dropdown-item" href="#"><i
-                    class="icon-logout g-pos-rel g-top-1 g-mr-5"></i> Sign out</a>
+                    class="icon-logout g-pos-rel g-top-1 g-mr-5"></i> 登录注销</a>
               </div>
             </li>
           </ul>
           <ul v-else class="nav navbar-nav navbar-right">
             <li class="nav-item">
-              <router-link to="/login" class="nav-link"><i class="icon-login g-pos-rel g-top-1 g-mr-5"></i> Sign in
+              <router-link to="/login" class="nav-link"><i class="icon-login g-pos-rel g-top-1 g-mr-5"></i> 登录
               </router-link>
             </li>
           </ul>
@@ -111,7 +112,7 @@
     methods: {
       handlerLogout(e) {
         store.logoutAction()
-        this.$toasted.show('You have been logged out.', {
+        this.$toasted.show('你已经成功登出了.', {
           icon: 'fingerprint'
         })
         this.$router.push('/login')

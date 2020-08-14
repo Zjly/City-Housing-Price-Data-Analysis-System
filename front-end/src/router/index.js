@@ -5,6 +5,7 @@ import VueScrollTo from 'vue-scrollto'
 // 导航页
 import Home from '@/components/Home'
 import News from '@/components/News'
+import Agreement from '@/components/Introduce/Agreement'
 import HouseData from '@/components/HouseData/HouseData'
 import HouseDiji from '@/components/HouseData/HouseDiji'
 import SecondHand from '@/components/HouseData/SecondHand'
@@ -100,6 +101,11 @@ const router = new Router({
       path: '/',
       name: 'Home',
       component: Home
+    },
+    {
+      path: '/agreement',
+      name: 'Agreement',
+      component: Agreement
     },
     {
       path: '/login',
