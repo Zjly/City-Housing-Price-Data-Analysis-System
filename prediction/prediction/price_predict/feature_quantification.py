@@ -6,11 +6,11 @@ def feature_quantification(price_data):
 	"""
 	对特征进行处理
 	:param price_data: 房价数据
-	:return: 特征x以及标签y
+	:return: 特征x
 	"""
 	x = price_data[["room", "hall", "area", "towards", "floor", "address", "year"]]
-	y = price_data[["total_price"]]
 
+	# 取各个列
 	towards = x["towards"]
 	floor = x["floor"]
 	address = x["address"]
@@ -34,17 +34,26 @@ def feature_quantification(price_data):
 
 	# 对数值特征进行均值化
 	for line in x:
-		line[0] = (line[0] - room_min) / (room_max - room_min)
-		line[1] = (line[1] - hall_min) / (hall_max - hall_min)
-		line[2] = (line[2] - area_min) / (area_max - area_min)
-		line[3] = (line[3] - year_min) / (year_max - year_min)
+		line[0] = (int(line[0]) - room_min) / (room_max - room_min)
+		line[1] = (int(line[1]) - hall_min) / (hall_max - hall_min)
+		line[2] = (float(line[2]) - area_min) / (area_max - area_min)
+		line[3] = (int(line[3]) - year_min) / (year_max - year_min)
 
 	# 合并数值特征和标签特征
 	x = np.hstack((x, towards_result, floor_result, address_result))
 
-	y = y.values
+	return x
 
-	return x, y
+
+def label_quantification(price_data):
+	"""
+	对房价结果（标签）进行处理
+	:param price_data: 房价数据
+	:return: 标签y
+	"""
+	y = price_data[["total_price"]]
+	y = y.values
+	return y
 
 
 def load_tokenizer(data, name):
