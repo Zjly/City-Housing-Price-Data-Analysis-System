@@ -21,7 +21,7 @@
         <aside class="g-brd-around g-brd-gray-light-v4 rounded g-px-20 g-py-30">
 
           <h2 class="text-center g-color-primary g-font-weight-600 g-line-height-1 g-font-size-60 g-pos-rel g-mb-30">
-            HouseData</h2>
+            HouseTrend</h2>
 
           <hr class="g-brd-gray-light-v4 g-my-30">
           <hr class="g-brd-gray-light-v4 g-my-30">

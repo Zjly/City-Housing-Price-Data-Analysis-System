@@ -144,5 +144,15 @@ def query_esf(province, city):
 def query_trendinfo(province, city):
     print(province, city)
     trendinfo = Info.query.filter(Info.province == province, Info.city == city). \
-        with_entities(Info.id, Info.areaPrice, Info.esfareaPrice, Info.compareDate, Info.compareYear).all()
+        with_entities(Info.id, Info.areaPrice, Info.esfareaPrice, Info.compareDate, Info.compareYear,Info.new_avg,Info.esf_avg,Info.new_cgreen,Info.esf_cgreen,Info.city).all()
     return jsonify(trendinfo)
+
+# 房价对比
+@bp.route('/trendinfo2/<string:province>/<string:city>/<string:province2>/<string:city2>', methods=['POST'])
+def query_trendinfo2(province, city, province2, city2):
+    print(province, city)
+    trendinfo = Info.query.filter(Info.province == province, Info.city == city). \
+        with_entities(Info.id, Info.areaPrice, Info.esfareaPrice, Info.compareDate, Info.compareYear,Info.new_avg,Info.esf_avg,Info.new_cgreen,Info.esf_cgreen,Info.city).all()
+    trendinfo2 = Info.query.filter(Info.province == province2, Info.city == city2). \
+        with_entities(Info.id, Info.areaPrice, Info.esfareaPrice, Info.compareDate, Info.compareYear,Info.new_avg,Info.esf_avg,Info.new_cgreen,Info.esf_cgreen,Info.city).all()    
+    return jsonify([trendinfo,trendinfo2])   

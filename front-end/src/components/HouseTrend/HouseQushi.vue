@@ -49,11 +49,43 @@
     <!-- Striped Rows -->
     <div class="card g-brd-teal rounded-0 g-mb-30">
 
-   
+
       <div id="container">
+
       </div>
-    
+        
+
     </div>
+    
+    <div class="card g-brd-teal rounded-0 g-mb-30">
+      <div class="recommend" v-show="isShow">
+        <h4><span style="font-size:17px">{{trenddatas[0][9]}}房价走势表</span>
+          <div style="font-size:14px" class="inline-block small_text">（2020年7月）</div>
+        </h4>
+        <table class="table table-striped ablue">
+          <thead>
+            <tr>
+              <th width="80" class="tcenter">城市</th>
+              <th width="100" class="tcenter">新房单价(元/㎡)</th>
+              <th width="100" class="tcenter">新房同比</th>
+              <th width="100" class="tcenter">二手房单价(元/㎡)</th>
+              <th width="100" class="tcenter">二手同比</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td width="80" class="tcenter"><a href="">{{trenddatas[0][9]}}</a></td>
+              <td width="100" class="tcenter">{{trenddatas[0][5]}}</td>
+              <td width="100" class="tcenter">{{trenddatas[0][7]}}</td>
+              <td width="100" class="tcenter">{{trenddatas[0][6]}}</td>
+              <td width="100" class="tcenter">{{trenddatas[0][8]}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
     <!-- End Striped Rows -->
 
 
@@ -76,6 +108,7 @@
     },
     data() {
       return {
+        isShow: true,
         proval: '',
         data: '',
         chooseprovince: '',
@@ -86,7 +119,11 @@
         province: '',
         city: '',
         // 趋势数据
-        trenddatas: '',
+        trenddatas: [
+            [
+                '暂无'
+            ],
+        ],
 
       }
     },
@@ -202,7 +239,8 @@
             var price = trenddatas[0][1]
             var month = trenddatas[0][3]
             var year = trenddatas[0][4]
-            
+            var esf = trenddatas[0][2]
+
             //var year = trenddatas[0][]
             // 去除冒号
             var month = month.replace(/[&\|\\\*'^%$#@\-]/g, "");
@@ -211,11 +249,18 @@
             var price_price = price.split(",");
             var price_month = month.split(",");
             var price_year = year.split(",");
+            var price_esf = esf.split(",");
             // 房价数据转化为整数
             var price_int = new Array();
             for (var i = 0; i < price_price.length; i++) {
               var temp = parseInt(price_price[i])
               price_int.push(temp)
+            }
+            // 二手房房价数据转化为整数
+            var esf_int = new Array();
+            for (var i = 0; i < price_esf.length; i++) {
+              var temp = parseInt(price_esf[i])
+              esf_int.push(temp)
             }
             // date year合并
             var price_date = new Array()
@@ -237,21 +282,35 @@
                 title: {
                   text: title
                 },
+                subtitle: {
+                  text: '二手房可能未显示部分原因为暂且没有数据',
+                },
                 yAxis: {
                   title: {
-                    text: '房价'
-                  }
+                    text: '房价（元/平方米）'
+                  },
+                  plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                  }]
                 },
                 xAxis: {
                   title: {
-                    text: '月份'
+                    text: '年月份'
                   },
                   categories: price_date
                 },
                 series: [{
-                  name: '房产价格',
-                  data: price_int
-                }]
+                    name: '新房价格',
+                    data: price_int
+                  },
+                  {
+                    name: '二手房价格',
+                    data: esf_int
+                  }
+                ],
+
               }
 
             )
@@ -288,5 +347,375 @@
 <style scoped>
   .bootstrap-select {
     width: 100% !important;
+  }
+
+  .recommend {
+    text-align: center;
+  }
+
+  .container {
+    width: 1100px;
+    padding: 0px;
+    position: relative;
+    background-color: #ffffff;
+  }
+
+  .expertcatlist {
+    width: 100%;
+  }
+
+  *,
+  :after,
+  :before {
+    box-sizing: border-box;
+  }
+
+  .tabs-wrapper {
+    border: 1px solid #e4ecf3;
+    background-color: #ffffff;
+    font-size: 13px;
+    width: 100%;
+  }
+
+  .tabs-wrapper .tabs-mark-group {
+    border-bottom: 1px dashed #e4ecf3;
+  }
+
+  .tabs-wrapper .tabs-group {
+    position: relative;
+    overflow-y: hidden;
+  }
+
+  .tabs-wrapper .tabs-group .content {
+    list-style: none;
+    padding: 10px 20px;
+    margin: 0;
+  }
+
+  .tabs-wrapper .tabs-group .content>li {
+    float: left;
+    padding: 5px;
+  }
+
+  li {
+    list-style-type: none;
+  }
+
+  li {
+    line-height: 20px;
+  }
+
+  .tabs-wrapper .tabs-group .content>li:hover>a,
+  .tabs-wrapper .tabs-group .content>li:focus>a,
+  .tabs-wrapper .tabs-group .content>li.active>a {
+    color: red;
+  }
+
+  .tabs-wrapper .tabs-group .content>li>a {
+    display: block;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    color: #919191;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+  }
+
+  .tabs-wrapper .tabs-group+.tabs-group {
+    border-top: 1px dashed #e4ecf3;
+  }
+
+  .tabs-wrapper .tabs-group {
+    position: relative;
+    overflow-y: hidden;
+  }
+
+  /* 房价排行榜 */
+  .listcontent {
+    padding: 20px;
+    background: #ffffff;
+    border: 2px solid #e4ecf3;
+    margin-top: 15px;
+    min-height: 360px;
+  }
+
+  .zsbt {
+    font-weight: bold;
+    color: #333;
+    margin-top: 20px;
+    display: inline-block;
+    font-size: 20px;
+  }
+
+  .zsbtb {
+    margin-bottom: 20px;
+  }
+
+  .mart0b10 {
+    margin-top: 0 !important;
+    margin-bottom: 10px !important;
+  }
+
+  .w600 {
+    width: 800px;
+    margin: 0 auto;
+    overflow: hidden;
+    display: inline-block;
+  }
+
+  ul {
+    padding-left: 0;
+  }
+
+  .toplist li {
+    height: 45px;
+    line-height: 45px;
+  }
+
+  .ws_text {
+    font-weight: 700;
+    padding-left: 0px !important;
+  }
+
+  .ws_text {
+    font-weight: 700;
+  }
+
+  .huise {
+    background-color: #f9f9f9;
+  }
+
+  li {
+    list-style-type: none;
+  }
+
+  /* 排名 */
+  .toplist span {
+    font-size: 14px;
+    color: #000;
+  }
+
+  .txuh {
+    float: left;
+    width: 10%;
+  }
+
+  .txuh,
+  .xuh {
+    float: left;
+    width: 10%;
+    text-align: center;
+  }
+
+  /* 地区 */
+  .toplist b {
+    font-size: 14px;
+    color: #000;
+  }
+
+  .limagesy,
+  .diqu,
+  .citysy {
+    width: 30%;
+    float: left;
+    height: 45px;
+    overflow: hidden;
+  }
+
+  .diqu {
+    width: 24%;
+    float: left;
+    height: 42px;
+    overflow: hidden;
+    color: #333 !important;
+  }
+
+  /* 单元 */
+  .toplist b {
+    font-size: 14px;
+    color: #000;
+  }
+
+  .blm,
+  .btm,
+  .tmonthsy,
+  .lmonthsy,
+  .lbil,
+  .lcity,
+  .ltmonthsy {
+    width: 20%;
+    float: left;
+    height: 45px;
+    overflow: hidden;
+  }
+
+  /* 单位 */
+  .toplist span {
+    font-size: 14px;
+    color: #000;
+  }
+
+  /* 环比 */
+  .toplist b {
+    font-size: 14px;
+    color: #000;
+  }
+
+  b,
+  strong {
+    font-weight: 700;
+  }
+
+  /* 同比 */
+  .toplist b {
+    font-size: 14px;
+    color: #000;
+  }
+
+  .blm {
+    padding-right: 0px;
+  }
+
+  .blm,
+  .btm,
+  .tmonthsy,
+  .lmonthsy,
+  .lbil,
+  .lcity,
+  .ltmonthsy {
+    width: 20%;
+    float: left;
+    height: 45px;
+    overflow: hidden;
+  }
+
+  /* 行 */
+  .toplist li {
+    height: 45px;
+    line-height: 45px;
+  }
+
+  li {
+    list-style-type: none;
+  }
+
+  /* 第一项 */
+
+  .toplist span {
+    font-size: 14px;
+    color: #000;
+  }
+
+  .xuh {
+    float: left;
+    width: 10%;
+  }
+
+  .txuh,
+  .xuh {
+    float: left;
+    width: 10%;
+    text-align: center;
+  }
+
+  /* 第二项 */
+  .toplist span {
+    font-size: 14px;
+    color: #000;
+  }
+
+  .limagesy,
+  .diqu,
+  .citysy {
+    width: 30%;
+    float: left;
+    height: 45px;
+    overflow: hidden;
+  }
+
+  /* 第三项 */
+  .toplist span {
+    font-size: 14px;
+    color: #000;
+  }
+
+  .blm,
+  .btm,
+  .tmonthsy,
+  .lmonthsy,
+  .lbil,
+  .lcity,
+  .ltmonthsy {
+    width: 20%;
+    float: left;
+    height: 45px;
+    overflow: hidden;
+  }
+
+  .toplist span {
+    font-size: 14px;
+    color: #000;
+  }
+
+  /* 第四项 */
+  .bil {
+    width: 20%;
+    float: left;
+  }
+
+  .green {
+    color: #55a500 !important;
+    font-family: arial;
+  }
+
+  /* 第五项 */
+  .toplist span {
+    font-size: 14px;
+    color: #000;
+  }
+
+  .blm,
+  .btm,
+  .tmonthsy,
+  .lmonthsy,
+  .lbil,
+  .lcity,
+  .ltmonthsy {
+    width: 20%;
+    float: left;
+    height: 45px;
+    overflow: hidden;
+  }
+
+  /* 灰格子 */
+  .toplist li {
+    height: 45px;
+    line-height: 45px;
+  }
+
+  .huise {
+    background-color: #f9f9f9;
+  }
+
+  li {
+    list-style-type: none;
+  }
+
+  /* 增长 */
+  .toplist span {
+    font-size: 14px;
+    color: #000;
+  }
+
+  .bil {
+    width: 20%;
+    float: left;
+  }
+
+  .red {
+    font-family: arial;
+    color: #ff5256 !important;
   }
 </style>
