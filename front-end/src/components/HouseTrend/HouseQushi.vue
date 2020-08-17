@@ -50,7 +50,7 @@
     <div class="card g-brd-teal rounded-0 g-mb-30">
 
 
-      <div id="container" style="border: solid grey 1px">
+      <div id="container2">
 
       </div>
         
@@ -76,9 +76,9 @@
             <tr>
               <td width="80" class="tcenter"><a href="">{{trenddatas[0][9]}}</a></td>
               <td width="100" class="tcenter">{{trenddatas[0][5]}}</td>
-              <td width="100" class="tcenter">{{trenddatas[0][7]}}</td>
+              <td width="100" :class="tdclass1">{{trenddatas[0][7]}}</td>
               <td width="100" class="tcenter">{{trenddatas[0][6]}}</td>
-              <td width="100" class="tcenter">{{trenddatas[0][8]}}</td>
+              <td width="100" :class="tdclass2">{{trenddatas[0][8]}}</td>
             </tr>
           </tbody>
         </table>
@@ -124,7 +124,17 @@
                 '暂无'
             ],
         ],
-
+        // 动态改变数字颜色
+        tdclass1:{
+          'tcenter':true,
+          'red':false,
+          'green':false
+        },
+        tdclass2:{
+          'tcenter':true,
+          'red':false,
+          'green':false
+        }
       }
     },
     methods: {
@@ -240,7 +250,25 @@
             var month = trenddatas[0][3]
             var year = trenddatas[0][4]
             var esf = trenddatas[0][2]
-
+            var new_cgreen = trenddatas[0][7]
+            var esf_cgreen = trenddatas[0][8]
+            // 首先确保tdclass为tcenter
+            this.tdclass1.red = false
+            this.tdclass1.green = false
+            this.tdclass2.red = false
+            this.tdclass2.green = false
+            // 改变数字颜色
+            if(new_cgreen[0] == '↑'){
+              this.tdclass1.red = true;
+            }else{
+              this.tdclass1.green = true;
+            }
+            // 改变数字颜色
+            if(esf_cgreen[0] == '↑'){
+              this.tdclass2.red = true;
+            }else{
+              this.tdclass2.green = true;
+            }
             //var year = trenddatas[0][]
             // 去除冒号
             var month = month.replace(/[&\|\\\*'^%$#@\-]/g, "");
@@ -278,7 +306,7 @@
             var title = this.city + '市房价走势图'
             var Highcharts = require('highcharts');
             require('highcharts/modules/exporting')(Highcharts);
-            Highcharts.chart('container', {
+            Highcharts.chart('container2', {
                 title: {
                   text: title
                 },
