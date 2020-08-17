@@ -10,6 +10,10 @@ import HouseData from '@/components/HouseData/HouseData'
 import HouseDiji from '@/components/HouseData/HouseDiji'
 import SecondHand from '@/components/HouseData/SecondHand'
 import NewHouse from '@/components/HouseData/NewHouse'
+import HouseTrend from '@/components/HouseTrend/HouseTrend'
+import HouseQushi from '@/components/HouseTrend/HouseQushi'
+import HouseDuibi from '@/components/HouseTrend/HouseDuibi'
+
 // 用户认证：注册、登录、验证账户、重置密码请求、重置密码
 import Register from '@/components/Auth/Register'
 import Login from '@/components/Auth/Login'
@@ -265,6 +269,32 @@ const router = new Router({
           component: NewHouse,
           meta: {
             unitType: 3
+          }
+        },
+      ],
+      meta: {
+        unitType: 0
+      }
+    },
+    {
+      path: '/housetrend',
+      component: HouseTrend,
+      children: [
+        { path: '', component: HouseQushi },
+        { 
+          path: 'qushi', 
+          name: 'HouseQushi', 
+          component: HouseQushi,
+          meta: {
+            unitType: 1
+          }
+        },
+        { 
+          path: 'duibi',
+          name: 'HouseDuibi', 
+          component: HouseDuibi,
+          meta: {
+            unitType: 2
           }
         },
       ],

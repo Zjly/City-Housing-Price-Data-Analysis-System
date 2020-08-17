@@ -595,10 +595,12 @@
         var data = res.data.data
         var city = new Array()
         var money = new Array()
+        
         for (var i = 0; i < data.length; i++) {
           city.push(data[i].name)
           money.push(data[i].money)
         }
+        console.log(money)
         var Highcharts = require('highcharts');
         // 在 Highcharts 加载之后加载功能模块
         require('highcharts/modules/exporting')(Highcharts);
@@ -629,7 +631,9 @@
   }
 </script>
 
-<style>
+
+
+<style scoped>
   .container {
     font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
   }
