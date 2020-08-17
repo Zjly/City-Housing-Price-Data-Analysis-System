@@ -126,7 +126,7 @@ def delete_post(id):
 
 
 ###
-# 与博客文章资源相关的资源
+# 与文章资源相关的资源
 ##
 @bp.route('/posts/<int:id>/comments/', methods=['GET'])
 def get_post_comments(id):
