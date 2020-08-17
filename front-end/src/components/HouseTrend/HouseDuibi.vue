@@ -70,7 +70,7 @@
     <div class="card g-brd-teal rounded-0 g-mb-30">
 
 
-      <div id="container">
+      <div id="container" style="border: solid grey 1px">
       </div>
 
     </div>

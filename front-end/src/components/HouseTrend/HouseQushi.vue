@@ -26,7 +26,7 @@
           </div>
         </div>
         <div>
-          <button type="submit" style="margin-left:20px" class="btn btn-primary">Submit</button>
+          <button type="submit" style="margin-left:20px" class="btn btn-primary">提交</button>
         </div>
       </form>
       <hr class="g-brd-gray-light-v4 g-my-30">
@@ -50,7 +50,7 @@
     <div class="card g-brd-teal rounded-0 g-mb-30">
 
 
-      <div id="container">
+      <div id="container" style="border: solid grey 1px">
 
       </div>
         
@@ -270,7 +270,7 @@
             }
             // console.log(price_int)
             console.log(trenddatas)
-            // console.log(price)
+            // console.log(price)   
             // console.log(date)
             //console.log(price_price)
             // console.log(price_date)
@@ -288,7 +288,7 @@
                 yAxis: {
                   title: {
                     text: '房价（元/平方米）'
-                  },
+                  },  
                   plotLines: [{
                     value: 0,
                     width: 1,

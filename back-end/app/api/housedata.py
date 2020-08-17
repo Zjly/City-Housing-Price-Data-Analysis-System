@@ -96,7 +96,7 @@ def address_All_City2():
         "data": house_location
     })
 
-# 查询二手房省市
+# 查询房价走势的省市
 @bp.route('/houseaddress3', methods=['GET'])
 def address_All_City3():
     '''选择查询内容'''
