@@ -6,7 +6,7 @@
         <aside class="g-brd-around g-brd-gray-light-v4 rounded g-px-20 g-py-30">
 
           <h2 class="text-center g-color-primary g-font-weight-600 g-line-height-1 g-font-size-60 g-pos-rel g-mb-30">
-            HouseTrend</h2>
+            HouseForecast</h2>
 
           <hr class="g-brd-gray-light-v4 g-my-30">
           <hr class="g-brd-gray-light-v4 g-my-30">
@@ -14,22 +14,13 @@
           <!-- 菜单列表 -->
           <ul class="list-unstyled mb-0">
             <li class="g-pb-3">
-              <router-link v-bind:to="{ name: 'HouseQushi' }"
+              <router-link v-bind:to="{ name: 'HouseYuce' }"
                 v-bind:active-class="'active g-color-primary--active g-bg-gray-light-v5--active'"
-                v-bind:class="isHouseQushi"
+                v-bind:class="isHouseYuce"
                 class="d-block align-middle u-link-v5 g-color-text g-color-primary--hover g-bg-gray-light-v5--hover rounded g-pa-3">
                 <span class="u-icon-v1 g-color-gray-dark-v5 mr-2">
                   <i class="icon-media-024 u-line-icon-pro"></i></span>
-                房价趋势查询
-              </router-link>
-            </li>
-            <li class="g-pb-3">
-              <router-link v-bind:to="{ name: 'HouseDuibi' }"
-                v-bind:active-class="'active g-color-primary--active g-bg-gray-light-v5--active'"
-                class="d-block align-middle u-link-v5 g-color-text g-color-primary--hover g-bg-gray-light-v5--hover rounded g-pa-3">
-                <span class="u-icon-v1 g-color-gray-dark-v5 mr-2"><i
-                    class="icon-media-022 u-line-icon-pro"></i></span>
-                房价对比图表
+                房价预测
               </router-link>
             </li>
           </ul>
@@ -126,7 +117,7 @@
 <script>
   import store from '../../store'
   export default {
-    name: 'HouseTrend', // this is the name of the component
+    name: 'HouseForecast', // this is the name of the component
     data() {
       return {
         sharedState: store.state,
@@ -134,8 +125,8 @@
       }
     },
     computed: {
-      isHouseQushi: function () {
-        const tabs = ['HouseDuibi', 'HouseQushi']
+      isHouseYuce: function () {
+        const tabs = ['HouseDuibi', 'HouseYuce']
         if (tabs.indexOf(this.$route.name) == -1) {
           return 'active g-color-primary--active g-bg-gray-light-v5--active'
         } else {

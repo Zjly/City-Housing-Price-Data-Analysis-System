@@ -55,7 +55,7 @@
       <div>
       </div>
       <h3 class="h6 mb-0">
-        <i class="icon-media-043  g-pos-rel g-top-2 g-mr-5"></i> 房价走势图 <small v-if="newhouse">(共
+        <i class="icon-media-043  g-pos-rel g-top-2 g-mr-5"></i> 房价对比图 <small v-if="newhouse">(共
           {{ newhouse._meta.total_items }} 个, {{ newhouse._meta.total_pages }} 页)</small>
       </h3>
       <div class="dropdown g-mb-10 g-mb-0--md">

@@ -93,6 +93,14 @@ def line():
         content = json.load(f)
         return json.dumps({"status":200,"data":content})
 
+# 为折线图 平均房价 无参数 get
+@app.route('/forecastdata')
+def forecastdata():
+    with open('./json/forecastdata.json','rb') as f:
+        # content = f.read() # 字符串不能直接返回给前端，前端不好处理
+        content = json.load(f)
+        return json.dumps({"status":200,"data":content})
+
 
 @app.shell_context_processor
 def make_shell_context():
