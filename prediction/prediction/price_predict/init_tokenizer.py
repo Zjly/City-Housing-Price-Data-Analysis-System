@@ -30,4 +30,4 @@ def save_tokenizer(data, name):
 	path = "./tokenizer/" + name + ".pickle"
 	# 保存
 	with open(path, 'wb') as handle:
-		pickle.dump(tokenizer, handle, protocol=pickle.HIGHEST_PROTOCOL)
+		pickle.dump(tokenizer, handle, protocol=3)
