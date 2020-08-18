@@ -1,18 +1,18 @@
 <template>
   <div class="container">
-    <h1>Change Your Password</h1>
+    <h1>修改你的密码</h1>
     <form @submit.prevent="onSubmit">
       <div class="form-group" v-bind:class="{'u-has-error-v1': changePasswordForm.oldPasswordError}">
-        <label for="oldPassword">Old Password</label>
+        <label for="oldPassword">输入旧密码</label>
         <input type="password" v-model="changePasswordForm.oldPassword" class="form-control" id="oldPassword" placeholder="">
         <small class="form-control-feedback" v-show="changePasswordForm.oldPasswordError">{{ changePasswordForm.oldPasswordError }}</small>
       </div>
       <div class="form-group" v-bind:class="{'u-has-error-v1': changePasswordForm.newPasswordError}">
-        <label for="newPassword">New Password</label>
+        <label for="newPassword">输入新密码</label>
         <input type="password" v-model="changePasswordForm.newPassword" class="form-control" id="newPassword" placeholder="">
         <small class="form-control-feedback" v-show="changePasswordForm.newPasswordError">{{ changePasswordForm.newPasswordError }}</small>
       </div>
-      <button type="submit" class="btn btn-primary">Update Password</button>
+      <button type="submit" class="btn btn-primary">更新你的密码</button>
     </form>
   </div>
 </template>

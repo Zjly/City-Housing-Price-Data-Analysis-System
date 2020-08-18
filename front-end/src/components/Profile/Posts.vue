@@ -38,7 +38,7 @@
       <!-- Panel Header -->
       <div class="card-header d-flex align-items-center justify-content-between g-bg-gray-light-v5 border-0 g-mb-15">
         <h3 class="h6 mb-0">
-          <i class="icon-bubbles g-pos-rel g-top-1 g-mr-5"></i> User Posts <small v-if="posts">(共 {{ posts._meta.total_items }} 篇, {{ posts._meta.total_pages }} 页)</small>
+          <i class="icon-bubbles g-pos-rel g-top-1 g-mr-5"></i> 资讯投稿 <small v-if="posts">(共 {{ posts._meta.total_items }} 篇, {{ posts._meta.total_pages }} 页)</small>
         </h3>
         <div class="dropdown g-mb-10 g-mb-0--md">
           <span class="d-block g-color-primary--hover g-cursor-pointer g-mr-minus-5 g-pa-5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

@@ -1,6 +1,6 @@
 <template>
   <div>
-    Email: 修改用户邮箱地址(敬请期待)
+    账号邮箱: 修改用户邮箱地址(敬请期待)
   </div>
 </template>
 

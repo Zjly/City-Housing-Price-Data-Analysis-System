@@ -15,6 +15,7 @@ import HouseQushi from '@/components/HouseTrend/HouseQushi'
 import HouseDuibi from '@/components/HouseTrend/HouseDuibi'
 import HouseForecast from '@/components/HouseForecast/HouseForecast'
 import HouseYuce from '@/components/HouseForecast/HouseYuce'
+import HouseFuture from '@/components/HouseForecast/HouseFuture'
 
 // 用户认证：注册、登录、验证账户、重置密码请求、重置密码
 import Register from '@/components/Auth/Register'
@@ -315,6 +316,14 @@ const router = new Router({
           component: HouseYuce,
           meta: {
             unitType: 1
+          }
+        },
+        { 
+          path: 'future', 
+          name: 'HouseFuture', 
+          component: HouseFuture,
+          meta: {
+            unitType: 2
           }
         },
       ],

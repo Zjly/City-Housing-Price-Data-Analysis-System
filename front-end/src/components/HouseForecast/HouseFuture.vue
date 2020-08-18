@@ -4,75 +4,7 @@
 
     <!-- Panel Header -->
     <div class="card-block g-pa-0">
-      <form class="form-inline" @submit.prevent="onSubmit">
-        <div class="form-group">
-          <label for="Room">房间数量</label>
-          <div class="col-sm-2">
-            <select id="citySel" v-model="Room" @change="pr_onchange($this.options[this.options.selectedIndex].text)"
-              placeholder="请选择房间数量" class='form-control' style="width:150px;" data-live-search="true" name='sitting'>
-              <option v-for="(item, index) in room" v-bind:key="index">{{item}}</option>
-            </select>
-          </div>
-        </div>
-        <div class="form-group" style="margin-left:10px">
-          <label for="Sitting">客厅数量</label>
-          <div class="col-sm-2">
-            <select class='form-control' v-model="Sitting" style="width:150px;" size="1" data-live-search="true"
-              id='room' name='room'>
-              <option v-for="(item, index) in sitting" v-bind:key="index">{{item}}</option>
-            </select>
-          </div>
-        </div>
-        <div><br><br><br></div>
-        <div class="form-group">
-          <label for="Area">房屋面积</label>
-          <div class="col-sm-2">
-            <input class='form-control' v-model="Area" style="width:150px;" size="1" data-live-search="true" id='area'
-              name='area'>
-          </div>
-        </div>
-        <div class="form-group" style="margin-left:10px">
-          <label for="toward">房屋朝向 </label>
-          <div class="col-sm-2">
-            <select class='form-control' v-model="Toward" style="width:100px;" size="1" data-live-search="true"
-              id='toward' name='city'>
-              <option v-for="(item, index) in toward" v-bind:key="index">{{item}}</option>
-            </select>
-          </div>
-        </div>
-        <div class="form-group" style="margin-left:10px">
-          <label for="floor">房屋楼层</label>
-          <div class="col-sm-2">
-            <select class='form-control' v-model="Floor" style="width:100px;" size="1" data-live-search="true"
-              id='Floor' name='Floor'>
-              <option v-for="(item, index) in floor" v-bind:key="index">{{item}}</option>
-            </select>
-          </div>
-        </div>
-        <div><br><br><br></div>
-        <div class="form-group">
-          <label for="Address">房屋地址</label>
-          <div class="col-sm-2">
-            <select class='form-control' v-model="Address" style="width:150px;" size="1" data-live-search="true"
-              id='Address' name='Address'>
-              <option v-for="(item, index) in address" v-bind:key="index">{{item}}</option>
-            </select>
-          </div>
-        </div>
-        <div class="form-group" style="margin-left:10px">
-          <label for="Buildyear">建造年份</label>
-          <div class="col-sm-2">
-            <select class='form-control' v-model="Buildyear" style="width:100px;" size="1" data-live-search="true"
-              id='Buildyear' name='Buildyear'>
-              <option v-for="(item, index) in buildyear" v-bind:key="index">{{item}}</option>
-            </select>
-          </div>
-        </div>
-        <div><br><br><br></div>
-        <div>
-          <button type="submit" style="margin-left:20px" class="btn btn-primary">提交</button>
-        </div>
-      </form>
+      
       <hr class="g-brd-gray-light-v4 g-my-30">
     </div>
     
@@ -97,7 +29,7 @@
             <tr>
               <td width="80" class="tcenter"><a href="">{{forecastdatas[0]}}</a></td>
               <td width="100" class="tcenter">{{forecastdatas[1]}}</td>
-              <td width="100" class="tecenter">{{forecastdatas[2]}}</td>
+              <td width="100" class="tcenter">{{forecastdatas[2]}}</td>
             </tr>
           </tbody>
         </table>
@@ -114,7 +46,7 @@
 
 <script>
   export default {
-    name: 'HouseYuce',
+    name: 'HouseFuture',
     components: {
 
     },
@@ -122,23 +54,10 @@
       return {
         isShow: true,
         data: '',
-        room: '',
-        sitting: '',
-        area: '',
-        toward: '',
-        address: '',
-        floor: '',
-        buildyear: '',
-        Room: '',
-        Sitting: '',
-        Area: '',
-        Toward: '',
-        Address: '',
-        Floor: '',
-        Buildyear: '',
         forecastdata: [],
         // 预测数据
         forecastdatas: [],
+        // 动态改变数字颜色
       }
     },
     methods: {
@@ -150,20 +69,7 @@
             var data = res.data.data
             console.log(data)
             this.data = data
-            // 传入数据
-            var sitting = data[0].Sitting
-            this.sitting = sitting
-            var room = data[0].Room
-            this.room = room
-            var toward = data[0].toward
-            this.toward = toward
-            var floor = data[0].floor
-            this.floor = floor
-            var address = data[0].address
-            this.address = address
-            var buildyear = data[0].buildyear
-            this.buildyear = buildyear
-            //console.log(sitting)
+
 
 
             this.$toasted.info('Success connect to Flask API', {
@@ -176,33 +82,6 @@
           })
 
       },
-      onSubmit(e) {
-        var forecastdata = []
-        forecastdata.push(this.Room)
-        forecastdata.push(this.Sitting)
-        forecastdata.push(this.Area)
-        forecastdata.push(this.Toward)
-        forecastdata.push(this.Floor)
-        forecastdata.push(this.Address)
-        forecastdata.push(this.Buildyear)
-        this.forecastdata = forecastdata
-        const path =
-          `/api/forecast/${this.forecastdata}`
-        const payload = {
-          forecastdata: this.forecastdata
-        }
-        this.$axios.post(path, payload)
-          .then((response) => {
-              var forecastdatas = response.data
-              console.log(forecastdatas)
-              this.forecastdatas = response.data
-          })
-          .catch((error) => {
-            // handle error
-            console.error(error)
-          })
-
-      }
 
     },
     created() {
