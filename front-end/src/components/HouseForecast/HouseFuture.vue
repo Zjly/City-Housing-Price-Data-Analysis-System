@@ -4,36 +4,170 @@
 
     <!-- Panel Header -->
     <div class="card-block g-pa-0">
-      
+      <h2>北京市未来房价预测</h2>
+      <template>
+        <el-tabs v-model="activeName">
+          <el-tab-pane label="2019-2020" name="first">
+            <template>
+              <el-tabs v-model="activeName1">
+                <el-tab-pane label="折线图" name="first">
+                  <div id="line_container1" style="height:500px">
+                  </div>
+                </el-tab-pane>
+                <el-tab-pane label="柱状图" name="second">
+                  <div id="columnar_container1" style="height:500px">
+                  </div>
+                </el-tab-pane>
+                <el-tab-pane label="预测对比表" name="third">
+                  <div class="recommend" v-show="isShow">
+                    <table class="table table-striped ablue">
+                      <thead>
+                        <tr>
+                          <th width="80" class="tcenter">房屋地址</th>
+                          <th width="80" class="tcenter">年份</th>
+                          <th width="80" class="tcenter">情感分析值</th>
+                          <th width="120" class="tcenter">实际房价(元/㎡)</th>
+                          <th width="100" class="tcenter">预测房价(元/㎡)</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr v-for="(item, index) in divid_data[3]" v-bind:key="index">
+                          <td width="80" class="tcenter"><a href="">北京</a></td>
+                          <td width="80" class="tcenter">{{item[0]}}</td>
+                          <td width="80" class="tcenter">{{item[1]}}</td>
+                          <td width="120" class="tcenter">{{item[2]}}</td>
+                          <td width="100" class="tcenter red">{{item[3]}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </el-tab-pane>
+              </el-tabs>
+            </template>
+          </el-tab-pane>
+          <el-tab-pane label="2018-2019" name="second"><template>
+              <el-tabs v-model="activeName2">
+                <el-tab-pane label="折线图" name="first">
+                  <div id="line_container2" style="height:500px">
+                  </div>
+                </el-tab-pane>
+                <el-tab-pane label="柱状图" name="second">
+                  <div id="columnar_container2" style="height:500px">
+                  </div>
+                </el-tab-pane>
+                <el-tab-pane label="预测对比表" name="third">
+                  <div class="recommend" v-show="isShow">
+                    <table class="table table-striped ablue">
+                      <thead>
+                        <tr>
+                          <th width="80" class="tcenter">房屋地址</th>
+                          <th width="80" class="tcenter">年份</th>
+                          <th width="80" class="tcenter">情感分析值</th>
+                          <th width="120" class="tcenter">实际房价(元/㎡)</th>
+                          <th width="100" class="tcenter">预测房价(元/㎡)</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr v-for="(item, index) in divid_data[2]" v-bind:key="index">
+                          <td width="80" class="tcenter"><a href="">北京</a></td>
+                          <td width="80" class="tcenter">{{item[0]}}</td>
+                          <td width="80" class="tcenter">{{item[1]}}</td>
+                          <td width="120" class="tcenter">{{item[2]}}</td>
+                          <td width="100" class="tcenter red">{{item[3]}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </el-tab-pane>
+              </el-tabs>
+            </template></el-tab-pane>
+          <el-tab-pane label="2017-2018" name="third"><template>
+              <el-tabs v-model="activeName3">
+                <el-tab-pane label="折线图" name="first">
+                  <div id="line_container3" style="height:500px">
+                  </div>
+                </el-tab-pane>
+                <el-tab-pane label="柱状图" name="second">
+                  <div id="columnar_container3" style="height:500px">
+                  </div>
+                </el-tab-pane>
+                <el-tab-pane label="预测对比表" name="third">
+                  <div class="recommend" v-show="isShow">
+                    <table class="table table-striped ablue">
+                      <thead>
+                        <tr>
+                          <th width="80" class="tcenter">房屋地址</th>
+                          <th width="80" class="tcenter">年份</th>
+                          <th width="80" class="tcenter">情感分析值</th>
+                          <th width="120" class="tcenter">实际房价(元/㎡)</th>
+                          <th width="100" class="tcenter">预测房价(元/㎡)</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr v-for="(item, index) in divid_data[1]" v-bind:key="index">
+                          <td width="80" class="tcenter"><a href="">北京</a></td>
+                          <td width="80" class="tcenter">{{item[0]}}</td>
+                          <td width="80" class="tcenter">{{item[1]}}</td>
+                          <td width="120" class="tcenter">{{item[2]}}</td>
+                          <td width="100" class="tcenter red">{{item[3]}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </el-tab-pane>
+              </el-tabs>
+            </template></el-tab-pane>
+          <el-tab-pane label="2016-2017" name="fourth">
+            <template>
+              <el-tabs v-model="activeName4">
+                <el-tab-pane label="折线图" name="first">
+                  <div id="line_container4" style="height:500px">
+                  </div>
+                </el-tab-pane>
+                <el-tab-pane label="柱状图" name="second">
+                  <div id="columnar_container4" style="height:500px">
+                  </div>
+                </el-tab-pane>
+                <el-tab-pane label="预测对比表" name="third">
+                  <div class="recommend" v-show="isShow">
+                    <table class="table table-striped ablue">
+                      <thead>
+                        <tr>
+                          <th width="80" class="tcenter">房屋地址</th>
+                          <th width="80" class="tcenter">年份</th>
+                          <th width="80" class="tcenter">情感分析值</th>
+                          <th width="120" class="tcenter">实际房价(元/㎡)</th>
+                          <th width="100" class="tcenter">预测房价(元/㎡)</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr v-for="(item, index) in divid_data[0]" v-bind:key="index">
+                          <td width="80" class="tcenter"><a href="">北京</a></td>
+                          <td width="80" class="tcenter">{{item[0]}}</td>
+                          <td width="80" class="tcenter">{{item[1]}}</td>
+                          <td width="120" class="tcenter">{{item[2]}}</td>
+                          <td width="100" class="tcenter red">{{item[3]}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </el-tab-pane>
+              </el-tabs>
+            </template>
+
+          </el-tab-pane>
+        </el-tabs>
+      </template>
+
       <hr class="g-brd-gray-light-v4 g-my-30">
     </div>
-    
+
     <!-- End Panel Header -->
 
     <!-- Striped Rows -->
 
     <div class="card g-brd-teal rounded-0 g-mb-30">
-      <div class="recommend" v-show="isShow">
-        <h4><span style="font-size:17px">房价预测表</span>
-          <div style="font-size:14px" class="inline-block small_text"></div>
-        </h4>
-        <table class="table table-striped ablue">
-          <thead>
-            <tr>
-              <th width="80" class="tcenter">房屋地址</th>
-              <th width="100" class="tcenter">房屋单价(元/㎡)</th>
-              <th width="100" class="tcenter">房屋总价（万元）</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td width="80" class="tcenter"><a href="">{{forecastdatas[0]}}</a></td>
-              <td width="100" class="tcenter">{{forecastdatas[1]}}</td>
-              <td width="100" class="tcenter">{{forecastdatas[2]}}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+
     </div>
 
 
@@ -45,6 +179,8 @@
 
 
 <script>
+  import * as GridLight from 'highcharts/themes/grid-light';
+
   export default {
     name: 'HouseFuture',
     components: {
@@ -53,24 +189,332 @@
     data() {
       return {
         isShow: true,
+        activeName: 'first',
+        activeName1: 'first',
+        activeName2: 'first',
+        activeName3: 'first',
+        activeName4: 'first',
         data: '',
-        forecastdata: [],
-        // 预测数据
-        forecastdatas: [],
-        // 动态改变数字颜色
+        divid_data:'',
+        date: [],
+        emotion: [],
+        factprice: [],
+        predictprice: [],
+
       }
     },
     methods: {
 
       getMessage() {
-        const path = '/forecastdata'
+        const path = '/forecastdatas'
+
+        function arr(arr, num) {
+          var newArr = [];
+          for (var i = 0; i < arr.length; i += num) {
+            newArr.push(arr.slice(i, i + num));
+          }
+          return newArr;
+        }
         this.$axios.get(path)
           .then((res) => {
             var data = res.data.data
             console.log(data)
             this.data = data
+            var divid_data = arr(data,12)
+            
+            divid_data[3].push(divid_data[4][0])
+            divid_data[3].push(divid_data[4][1])
+            this.divid_data = divid_data
+            console.log(divid_data)
+            var date = new Array()
+            var emotion = new Array()
+            var factprice = new Array()
+            var predictprice = new Array()
+            for (var i = 0; i < data.length; i++) {
+              date.push(data[i][0])
+              emotion.push(data[i][1])
+              factprice.push(data[i][2])
+              predictprice.push(data[i][3])
+            }
+            this.date = date
+            this.emotion = emotion
+            this.factprice = factprice
+            this.predictprice = predictprice
+            var divid_date = arr(date, 12)
+            var divid_emotion = arr(emotion, 12)
+            var divid_factprice = arr(factprice, 12)
+            var divid_predictprice = arr(predictprice, 12)
+            divid_date[3].push(divid_date[4][0])
+            divid_date[3].push(divid_date[4][1])
+            divid_emotion[3].push(divid_emotion[4][0])
+            divid_emotion[3].push(divid_emotion[4][1])
+            divid_factprice[3].push(divid_factprice[4][0])
+            divid_factprice[3].push(divid_factprice[4][1])
+            divid_predictprice[3].push(divid_predictprice[4][1])
+            divid_predictprice[3].push(divid_predictprice[4][0])
+
+            console.log(divid_date[0])
 
 
+            var Highcharts = require('highcharts');
+            // 在 Highcharts 加载之后加载功能模块
+            //require('highcharts/modules/exporting')(Highcharts);
+            GridLight(Highcharts);
+            Highcharts.chart('columnar_container4', {
+              chart: {
+                type: 'bar'
+              },
+              title: {
+                text: '北京市历史平均房价'
+              },
+              yAxis: {
+                title: {
+                  text: '房价'
+                }
+              },
+              xAxis: {
+                title: {
+                  text: '年月份'
+                },
+                categories: divid_date[0]
+              },
+
+              series: [{
+                  name: '平均房价',
+                  data: divid_factprice[0]
+                },
+                {
+                  name: '预测平均房价',
+                  data: divid_predictprice[0]
+                }
+              ]
+            })
+
+            var Highcharts2 = require('highcharts');
+            // 在 Highcharts 加载之后加载功能模块
+            //require('highcharts/modules/exporting')(Highcharts);
+            GridLight(Highcharts2);
+            Highcharts2.chart('line_container4', {
+              title: {
+                text: '北京市历史平均房价'
+              },
+              yAxis: {
+                title: {
+                  text: '房价'
+                }
+              },
+              xAxis: {
+                title: {
+                  text: '年月份'
+                },
+                categories: divid_date[0]
+              },
+
+              series: [{
+                  name: '平均房价',
+                  data: divid_factprice[0]
+                },
+                {
+                  name: '预测平均房价',
+                  data: divid_predictprice[0]
+                }
+              ]
+            })
+
+            var Highcharts3 = require('highcharts');
+            // 在 Highcharts 加载之后加载功能模块
+            //require('highcharts/modules/exporting')(Highcharts);
+            GridLight(Highcharts3);
+            Highcharts3.chart('columnar_container3', {
+              chart: {
+                type: 'bar'
+              },
+              title: {
+                text: '北京市历史平均房价'
+              },
+              yAxis: {
+                title: {
+                  text: '房价'
+                }
+              },
+              xAxis: {
+                title: {
+                  text: '年月份'
+                },
+                categories: divid_date[1]
+              },
+
+              series: [{
+                  name: '平均房价',
+                  data: divid_factprice[1]
+                },
+                {
+                  name: '预测平均房价',
+                  data: divid_predictprice[1]
+                }
+              ]
+            })
+
+            var Highcharts4 = require('highcharts');
+            // 在 Highcharts 加载之后加载功能模块
+            //require('highcharts/modules/exporting')(Highcharts);
+            GridLight(Highcharts4);
+            Highcharts4.chart('line_container3', {
+              title: {
+                text: '北京市历史平均房价'
+              },
+              yAxis: {
+                title: {
+                  text: '房价'
+                }
+              },
+              xAxis: {
+                title: {
+                  text: '年月份'
+                },
+                categories: divid_date[1]
+              },
+
+              series: [{
+                  name: '平均房价',
+                  data: divid_factprice[1]
+                },
+                {
+                  name: '预测平均房价',
+                  data: divid_predictprice[1]
+                }
+              ]
+            })
+
+            var Highcharts5 = require('highcharts');
+            // 在 Highcharts 加载之后加载功能模块
+            //require('highcharts/modules/exporting')(Highcharts);
+            GridLight(Highcharts);
+            Highcharts5.chart('columnar_container2', {
+              chart: {
+                type: 'bar'
+              },
+              title: {
+                text: '北京市历史平均房价'
+              },
+              yAxis: {
+                title: {
+                  text: '房价'
+                }
+              },
+              xAxis: {
+                title: {
+                  text: '年月份'
+                },
+                categories: divid_date[2]
+              },
+
+              series: [{
+                  name: '平均房价',
+                  data: divid_factprice[2]
+                },
+                {
+                  name: '预测平均房价',
+                  data: divid_predictprice[2]
+                }
+              ]
+            })
+
+            var Highcharts6 = require('highcharts');
+            // 在 Highcharts 加载之后加载功能模块
+            //require('highcharts/modules/exporting')(Highcharts);
+            GridLight(Highcharts6);
+            Highcharts6.chart('line_container2', {
+              title: {
+                text: '北京市历史平均房价'
+              },
+              yAxis: {
+                title: {
+                  text: '房价'
+                }
+              },
+              xAxis: {
+                title: {
+                  text: '年月份'
+                },
+                categories: divid_date[2]
+              },
+
+              series: [{
+                  name: '平均房价',
+                  data: divid_factprice[2]
+                },
+                {
+                  name: '预测平均房价',
+                  data: divid_predictprice[2]
+                }
+              ]
+            })
+
+            var Highcharts7 = require('highcharts');
+            // 在 Highcharts 加载之后加载功能模块
+            //require('highcharts/modules/exporting')(Highcharts);
+            GridLight(Highcharts7);
+            Highcharts7.chart('columnar_container1', {
+              chart: {
+                type: 'bar'
+              },
+              title: {
+                text: '北京市平均房价'
+              },
+              yAxis: {
+                title: {
+                  text: '房价'
+                }
+              },
+              xAxis: {
+                title: {
+                  text: '年月份'
+                },
+                categories: divid_date[3]
+              },
+
+              series: [{
+                  name: '平均房价',
+                  data: divid_factprice[3]
+                },
+                {
+                  name: '预测平均房价',
+                  data: divid_predictprice[3]
+                }
+              ]
+            })
+
+            var Highcharts8 = require('highcharts');
+            // 在 Highcharts 加载之后加载功能模块
+            //require('highcharts/modules/exporting')(Highcharts);
+            GridLight(Highcharts8);
+            Highcharts8.chart('line_container1', {
+              title: {
+                text: '北京市平均房价'
+              },
+              yAxis: {
+                title: {
+                  text: '房价'
+                }
+              },
+              xAxis: {
+                title: {
+                  text: '年月份'
+                },
+                categories: divid_date[3]
+              },
+
+              series: [{
+                  name: '平均房价',
+                  data: divid_factprice[3]
+                },
+                {
+                  name: '预测平均房价',
+                  data: divid_predictprice[3]
+                }
+              ]
+            })
 
             this.$toasted.info('Success connect to Flask API', {
               icon: 'fingerprint'
