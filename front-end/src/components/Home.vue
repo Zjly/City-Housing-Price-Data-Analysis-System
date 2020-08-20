@@ -40,8 +40,9 @@
       </div>
     </div>
 
-    <form id="addPostForm" v-if="sharedState.is_authenticated && sharedState.user_perms.includes('write')"
-      @submit.prevent="onSubmitAddPost" class="g-mb-40">
+    <form v-show="isShow" id="addPostForm"
+      v-if="sharedState.is_authenticated && sharedState.user_perms.includes('write')" @submit.prevent="onSubmitAddPost"
+      class="g-mb-40">
       <div class="form-group" v-bind:class="{'u-has-error-v1': postForm.titleError}">
         <input type="text" v-model="postForm.title" class="form-control" id="postFormTitle" placeholder="标题">
         <small class="form-control-feedback" v-show="postForm.titleError">{{ postForm.titleError }}</small>
@@ -124,61 +125,7 @@
         </el-carousel-item>
       </el-carousel>
     </template>
-    <template>
-      <p></p>
-      <div class="que">
-        <p>
-          为什么选择我们
-          <br>
-        </p>
-        <p></p>
-
-      </div>
-      <el-collapse v-model="activeName" accordion>
-        <el-collapse-item name="1">
-          <template slot="title">
-            <p class="item-title">一致性 Consistency</p><i class="header-icon el-icon-info"></i>
-          </template>
-          <br>
-          <div class="item-content">与现实生活一致：与现实生活的流程、逻辑保持一致，遵循用户习惯的语言和概念；</div>
-          <div class="item-content">在界面中一致：所有的元素和结构需保持一致，比如：设计样式、图标和文本、元素的位置等。</div>
-        </el-collapse-item>
-        <el-collapse-item name="2">
-          <template slot="title">
-            <p class="item-title">反馈 Feedback</p><i class="header-icon el-icon-info"></i>
-          </template>
-          <br>
-          <div class="item-content">控制反馈：通过界面样式和交互动效让用户可以清晰的感知自己的操作；</div>
-          <div class="item-content">页面反馈：操作后，通过页面元素的变化清晰地展现当前状态。</div>
-        </el-collapse-item>
-        <el-collapse-item name="3">
-          <template slot="title">
-            <p class="item-title">效率 Efficiency</p><i class="header-icon el-icon-info"></i>
-          </template>
-          <br>
-          <div class="item-content">简化流程：设计简洁直观的操作流程；</div>
-          <div class="item-content">清晰明确：语言表达清晰且表意明确，让用户快速理解进而作出决策；</div>
-          <div class="item-content">帮助用户识别：界面简单直白，让用户快速识别而非回忆，减少用户记忆负担。</div>
-        </el-collapse-item>
-        <el-collapse-item name="4">
-          <template slot="title">
-            <p class="item-title">可控 Controllability</p><i class="header-icon el-icon-info"></i>
-          </template>
-          <br>
-          <div class="item-content">用户决策：根据场景可给予用户操作建议或安全提示，但不能代替用户进行决策；</div>
-          <div class="item-content">结果可控：用户可以自由的进行操作，包括撤销、回退和终止当前操作等。</div>
-        </el-collapse-item>
-        <el-collapse-item name="5">
-          <template slot="title">
-            <p class="item-title">其他 Others</p><i class="header-icon el-icon-info"></i>
-          </template>
-          <br>
-          <div class="item-content">用户决策：根据场景可给予用户操作建议或安全提示，但不能代替用户进行决策；</div>
-          <div class="item-content">结果可控：用户可以自由的进行操作，包括撤销、回退和终止当前操作等。</div>
-        </el-collapse-item>
-
-      </el-collapse>
-    </template>
+    <hr>
     <div class="que">
       <p>
         最新行情
@@ -246,6 +193,61 @@
       </pagination>
     </div>
     <!-- End Pagination #04 -->
+    <template>
+      <p></p>
+      <div class="que">
+        <p>
+          为什么选择我们
+          <br>
+        </p>
+        <p></p>
+
+      </div>
+      <el-collapse v-model="activeName" accordion>
+        <el-collapse-item name="1">
+          <template slot="title">
+            <p class="item-title">一致性 Consistency</p><i class="header-icon el-icon-info"></i>
+          </template>
+          <br>
+          <div class="item-content">与现实生活一致：与现实生活的流程、逻辑保持一致，遵循用户习惯的语言和概念；</div>
+          <div class="item-content">在界面中一致：所有的元素和结构需保持一致，比如：设计样式、图标和文本、元素的位置等。</div>
+        </el-collapse-item>
+        <el-collapse-item name="2">
+          <template slot="title">
+            <p class="item-title">反馈 Feedback</p><i class="header-icon el-icon-info"></i>
+          </template>
+          <br>
+          <div class="item-content">控制反馈：通过界面样式和交互动效让用户可以清晰的感知自己的操作；</div>
+          <div class="item-content">页面反馈：操作后，通过页面元素的变化清晰地展现当前状态。</div>
+        </el-collapse-item>
+        <el-collapse-item name="3">
+          <template slot="title">
+            <p class="item-title">效率 Efficiency</p><i class="header-icon el-icon-info"></i>
+          </template>
+          <br>
+          <div class="item-content">简化流程：设计简洁直观的操作流程；</div>
+          <div class="item-content">清晰明确：语言表达清晰且表意明确，让用户快速理解进而作出决策；</div>
+          <div class="item-content">帮助用户识别：界面简单直白，让用户快速识别而非回忆，减少用户记忆负担。</div>
+        </el-collapse-item>
+        <el-collapse-item name="4">
+          <template slot="title">
+            <p class="item-title">可控 Controllability</p><i class="header-icon el-icon-info"></i>
+          </template>
+          <br>
+          <div class="item-content">用户决策：根据场景可给予用户操作建议或安全提示，但不能代替用户进行决策；</div>
+          <div class="item-content">结果可控：用户可以自由的进行操作，包括撤销、回退和终止当前操作等。</div>
+        </el-collapse-item>
+        <el-collapse-item name="5">
+          <template slot="title">
+            <p class="item-title">其他 Others</p><i class="header-icon el-icon-info"></i>
+          </template>
+          <br>
+          <div class="item-content">用户决策：根据场景可给予用户操作建议或安全提示，但不能代替用户进行决策；</div>
+          <div class="item-content">结果可控：用户可以自由的进行操作，包括撤销、回退和终止当前操作等。</div>
+        </el-collapse-item>
+
+      </el-collapse>
+    </template>
     <el-footer>
       <div class="footer">
         <template>
@@ -317,7 +319,8 @@
           </div>
         </template>
       </div>
-      <span style="text-align: center;margin-left:350px;font-size:20px">©<label>2020</label> 武汉大学 28组 房价云 版权所有</span><br>
+      <span style="text-align: center;margin-left:350px;font-size:20px">©<label>2020</label> 武汉大学 28组 房价云
+        版权所有</span><br>
 
     </el-footer>
 
@@ -345,6 +348,7 @@
     data() {
       return {
         activeName: '1',
+        isShow: false,
         sharedState: store.state,
         posts: '',
         postForm: {
@@ -595,7 +599,7 @@
         var data = res.data.data
         var city = new Array()
         var money = new Array()
-        
+
         for (var i = 0; i < data.length; i++) {
           city.push(data[i].name)
           money.push(data[i].money)
@@ -612,6 +616,11 @@
               title: {
                 text: '房价'
               }
+            },
+            legend: {
+              layout: 'vertical',
+              align: 'right',
+              verticalAlign: 'middle'
             },
             xAxis: {
               title: {
@@ -669,7 +678,7 @@
   }
 
   .que {
-    text-align: left;
+    text-align: center;
     font-size: 20px;
   }
 
@@ -687,7 +696,7 @@
     font-size: 15px;
   }
 
-    /* 卡片 */
+  /* 卡片 */
   .text {
     font-size: 16px;
     text-align: left;
@@ -717,14 +726,14 @@
 
   .box-card {
     margin-left: -20px;
-    width: 390px; 
+    width: 390px;
     height: 280px;
     background-color: #eeeeee;
 
   }
 
   #container {
-    max-width: 800px;
+    max-width: 1100px;
     height: 400px;
     margin: 0 auto;
     border: solid orange 1px;

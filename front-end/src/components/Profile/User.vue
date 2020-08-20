@@ -13,23 +13,23 @@
 
             <!-- Actions -->
             <button v-if="!user.is_following && $route.params.id != sharedState.user_id" v-on:click="onFollowUser($route.params.id)" class="btn btn-block u-btn-outline-primary g-rounded-50 g-py-12 g-mb-10">
-              <i class="icon-user-follow g-pos-rel g-top-1 g-mr-5"></i> Follow
+              <i class="icon-user-follow g-pos-rel g-top-1 g-mr-5"></i> 关注ta
             </button>
 
             <button v-if="user.is_following && $route.params.id != sharedState.user_id" v-on:click="onUnfollowUser($route.params.id)" class="btn btn-block u-btn-outline-red g-rounded-50 g-py-12 g-mb-10">
-              <i class="icon-user-unfollow g-pos-rel g-top-1 g-mr-5"></i> Unfollow
+              <i class="icon-user-unfollow g-pos-rel g-top-1 g-mr-5"></i> 取消关注
             </button>
 
             <router-link v-if="$route.params.id != sharedState.user_id" v-bind:to="{ name: 'MessagesHistoryResource', query: { from: $route.params.id } }" class="btn btn-block u-btn-outline-purple g-rounded-50 g-py-12 g-mb-10">
-              <i class="icon-bubble g-pos-rel g-top-1 g-mr-5"></i> Send private message
+              <i class="icon-bubble g-pos-rel g-top-1 g-mr-5"></i> 给ta发送私信
             </router-link>
 
             <router-link v-if="$route.params.id == sharedState.user_id" v-bind:to="{ name: 'SettingProfile' }" class="btn btn-block u-btn-outline-primary g-rounded-50 g-py-12 g-mb-10">
-              <i class="icon-settings g-pos-rel g-top-1 g-mr-5"></i> Settings
+              <i class="icon-settings g-pos-rel g-top-1 g-mr-5"></i> 用户设置
             </router-link>
 
             <button v-if="$route.params.id == sharedState.user_id" v-on:click="onDeleteUser($route.params.id)" class="btn btn-block u-btn-outline-red g-rounded-50 g-py-12 g-mb-10">
-              <i class="icon-ban g-pos-rel g-top-1 g-mr-5"></i> Delete Your Account
+              <i class="icon-ban g-pos-rel g-top-1 g-mr-5"></i> 删除账号
             </button>
             <!-- End Actions -->
            
@@ -40,16 +40,16 @@
             <!-- Tab Nav -->
             <ul class="nav nav-tabs g-mb-20">
               <li class="nav-item">
-                <router-link v-bind:to="{ name: 'UserOverview' }" v-bind:active-class="'active'" class="nav-link" v-bind:class="isUserOverView">Overview <span class="u-label g-font-size-11 g-bg-primary g-rounded-20 g-px-10"><i class="icon-layers g-pos-rel g-top-1 g-mr-8"></i></span></router-link>
+                <router-link v-bind:to="{ name: 'UserOverview' }" v-bind:active-class="'active'" class="nav-link" v-bind:class="isUserOverView">个人介绍 <span class="u-label g-font-size-11 g-bg-primary g-rounded-20 g-px-10"><i class="icon-layers g-pos-rel g-top-1 g-mr-8"></i></span></router-link>
               </li>
               <li class="nav-item">
-                <router-link v-bind:to="{ name: 'UserFollowers' }" v-bind:active-class="'active'" class="nav-link">Followers <span class="u-label g-font-size-11 g-bg-deeporange g-rounded-20 g-px-10">{{ user.followers_count }}</span></router-link>
+                <router-link v-bind:to="{ name: 'UserFollowers' }" v-bind:active-class="'active'" class="nav-link">粉丝 <span class="u-label g-font-size-11 g-bg-deeporange g-rounded-20 g-px-10">{{ user.followers_count }}</span></router-link>
               </li>
               <li class="nav-item">
-                <router-link v-bind:to="{ name: 'UserFollowing' }" v-bind:active-class="'active'" class="nav-link">Following <span class="u-label g-font-size-11 g-bg-aqua g-rounded-20 g-px-10">{{ user.followeds_count }}</span></router-link>
+                <router-link v-bind:to="{ name: 'UserFollowing' }" v-bind:active-class="'active'" class="nav-link">关注 <span class="u-label g-font-size-11 g-bg-aqua g-rounded-20 g-px-10">{{ user.followeds_count }}</span></router-link>
               </li>
               <li class="nav-item">
-                <router-link v-bind:to="{ name: 'UserPosts' }" v-bind:active-class="'active'" class="nav-link" v-bind:class="{'active': $route.name == 'UserFollowingPosts'}">Posts <span class="u-label g-font-size-11 g-bg-purple g-rounded-20 g-px-10">{{ user.posts_count }}</span></router-link>
+                <router-link v-bind:to="{ name: 'UserPosts' }" v-bind:active-class="'active'" class="nav-link" v-bind:class="{'active': $route.name == 'UserFollowingPosts'}">资讯投稿 <span class="u-label g-font-size-11 g-bg-purple g-rounded-20 g-px-10">{{ user.posts_count }}</span></router-link>
               </li>
             </ul>
 
@@ -68,7 +68,7 @@
         <!-- Panel Header -->
         <div class="card-header d-flex align-items-center justify-content-between g-bg-gray-light-v5 border-0 g-mb-15">
           <h3 class="h6 mb-0">
-            <i class="icon-fire g-pos-rel g-top-1 g-mr-5"></i> Publish New Post
+            <i class="icon-fire g-pos-rel g-top-1 g-mr-5"></i> 投稿新资讯
           </h3>
           <div class="dropdown g-mb-10 g-mb-0--md">
             <span class="d-block g-mr-minus-5 g-pa-5">
@@ -91,7 +91,7 @@
           <textarea v-model="postForm.body" class="form-control" id="postFormBody" rows="5" placeholder=" 内容"></textarea>
           <small class="form-control-feedback" v-show="postForm.bodyError">{{ postForm.bodyError }}</small>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">提交</button>
       </form>
 
     </div>

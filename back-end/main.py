@@ -12,65 +12,7 @@ from flask_sqlalchemy import SQLAlchemy
 app = create_app(Config)
 
 
-DB = SQLAlchemy(app)
-# 构建数据模型
-class News(DB.Model):
-    __tablename__ = 'sohu_news_details'
-    id = DB.Column(DB.Integer,primary_key=True)
-    title = DB.Column(DB.String,unique=True)
-    time = DB.Column(DB.String,unique=True)
-    content = DB.Column(DB.String,unique=True)
-    def __init__(self,title,time,content,score):
-        self.title = title
-        self.time = time
-        self.content = content
-    
-    # 重写
-    def __repr__(self):
-        return self.title
 
-# 数据库操作模型
-class NewsInfo():
-    def __init__(self):
-        self.__fields__ = ['id','title','time','content']
-
-    def findALL(self):
-        return News.query.all()
-    def find_by_id(self,find_id):
-        # 根据条件筛选
-        return News.query.filter_by(id = find_id).all()
-
-# newInfo = NewsInfo()
-# data = newInfo.findALL()
-# print(data)
-# 数据处理方法
-def Class_to_data(data_list,fields,type=0):
-    # 数组
-    if not type:
-        list = []
-        for item in data_list:
-            temp = {}
-            for f in fields:
-                temp[f] = getattr(item,f)
-            list.append(temp)
-    else:
-        list = {}
-        for f in fields:
-            list[f] = getattr(data_list,f)
-    
-    return list
-
-
-@app.route('/news')
-def all():
-    newInfo = NewsInfo()
-    data = newInfo.findALL()
-    # 处理data，json可以解析的
-    result = Class_to_data(data,newInfo.__fields__)
-    return Response(json.dumps({
-        'status':200,
-        'data':result
-    }))
     
 
 # 创建 coverage 实例
@@ -81,17 +23,6 @@ if os.environ.get('FLASK_COVERAGE'):
     COV.start()
 
 
-@app.route('/')
-def hello_world():
-    return 'Hello, World!'
-
-# 为折线图 平均房价 无参数 get
-@app.route('/line')
-def line():
-    with open('./json/average.json','r') as f:
-        # content = f.read() # 字符串不能直接返回给前端，前端不好处理
-        content = json.load(f)
-        return json.dumps({"status":200,"data":content})
 
 
 @app.shell_context_processor
@@ -125,3 +56,31 @@ def test(coverage):
         print('')
         print('HTML report be stored in: %s' % os.path.join(covdir, 'index.html'))
         COV.erase()
+
+@app.route('/')
+def hello_world():
+    return 'Hello, World!'
+
+# 为折线图 平均房价 无参数 get
+@app.route('/line')
+def line():
+    with open('./json/average.json','r') as f:
+        # content = f.read() # 字符串不能直接返回给前端，前端不好处理
+        content = json.load(f)
+        return json.dumps({"status":200,"data":content})
+
+# 房价预测基本条件数据 无参数 get
+@app.route('/forecastdata')
+def forecastdata():
+    with open('./json/forecastdata.json','rb') as f:
+        # content = f.read() # 字符串不能直接返回给前端，前端不好处理
+        content = json.load(f)
+        return json.dumps({"status":200,"data":content})
+
+# 房价预测基本条件数据 无参数 get
+@app.route('/forecastdatas')
+def forecastdatas():
+    with open('./json/input.json','rb') as f:
+        # content = f.read() # 字符串不能直接返回给前端，前端不好处理
+        content = json.load(f)
+        return json.dumps({"status":200,"data":content})

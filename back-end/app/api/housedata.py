@@ -3,6 +3,8 @@ from app.api import bp
 import pymysql
 from app.api.errors import bad_request
 from app.models import Newhouse, Esf,Info
+from app.api.predict import predict
+
 
 # newInfo = NewsInfo()
 # data = newInfo.findALL()
@@ -156,3 +158,22 @@ def query_trendinfo2(province, city, province2, city2):
     trendinfo2 = Info.query.filter(Info.province == province2, Info.city == city2). \
         with_entities(Info.id, Info.areaPrice, Info.esfareaPrice, Info.compareDate, Info.compareYear,Info.new_avg,Info.esf_avg,Info.new_cgreen,Info.esf_cgreen,Info.city).all()    
     return jsonify([trendinfo,trendinfo2])   
+
+# 房价预测
+@bp.route('/forecast/<string:forecastdata>', methods=['POST'])
+def house_price_forecast(forecastdata):
+    print(forecastdata)
+    # 分隔字符串为列表
+    f = forecastdata.split(",")
+    print(f)
+    unit_price, total_price = predict(f)
+    # print(unit_price,total_price)
+    # print(type(unit_price))
+    # 转化为字符串
+    unit_price2 = str(unit_price[0][0])
+    total_price2 = str(total_price[0][0])
+    # print(unit_price2)
+    # print(type(unit_price2))
+    # 处理数据，得到price
+    price = [f[5],unit_price2,total_price2]
+    return jsonify(price)
